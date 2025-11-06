@@ -12,7 +12,7 @@ texture = SubResource("GradientTexture2D_w70uv")
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_never, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform sampler2D tex_frg_2;
 
@@ -29,6 +29,7 @@ void fragment() {
 
 }
 "
+modes/depth_draw = 2
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_yh561")
 nodes/fragment/2/position = Vector2(-260, 180)
 nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
