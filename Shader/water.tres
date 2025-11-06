@@ -61,9 +61,9 @@ domain_warp_fractal_gain = 1.035
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o50ug"]
 width = 256
 height = 128
+noise = SubResource("FastNoiseLite_awga1")
 seamless = true
 seamless_blend_skirt = 1.0
-noise = SubResource("FastNoiseLite_awga1")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_xoqpv"]
 texture = SubResource("NoiseTexture2D_o50ug")
@@ -76,9 +76,9 @@ cellular_distance_function = 1
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aky2j"]
 width = 256
 height = 30
+noise = SubResource("FastNoiseLite_xoqpv")
 seamless = true
 seamless_blend_skirt = 1.0
-noise = SubResource("FastNoiseLite_xoqpv")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_wa6i2"]
 texture = SubResource("NoiseTexture2D_aky2j")
@@ -100,7 +100,7 @@ function = 1
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_add, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_add, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform sampler2D depth_tex_frg_21 : hint_depth_texture;
 uniform float UV_Scale = 3.0;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://crkjfjha1j6uc"]
+[gd_scene load_steps=24 format=3 uid="uid://crkjfjha1j6uc"]
 
 [ext_resource type="Texture2D" uid="uid://deegxpt3y0ght" path="res://HDRI/brown_photostudio_02_4k.exr" id="1_2wwxx"]
 [ext_resource type="PackedScene" uid="uid://dpsitldkpfe0r" path="res://Model/map_01.tscn" id="2_3amdw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://xttbnrpuig0v" path="res://Material/Sea_Edge.tres" id="5_75buv"]
 [ext_resource type="Material" uid="uid://bd856bi2uq7r1" path="res://Material/Sea_Wave.tres" id="6_c2iwn"]
 [ext_resource type="Material" uid="uid://c7bh1vwmcvupe" path="res://Material/Sea_Gradient.tres" id="7_3pt4j"]
+[ext_resource type="Shader" uid="uid://dfjn6irk3ymom" path="res://Scene/Cloud.tres" id="7_c2iwn"]
 [ext_resource type="ArrayMesh" uid="uid://n8dybsnjy7t6" path="res://Model/cloud.obj" id="8_3pt4j"]
 [ext_resource type="ArrayMesh" uid="uid://drw8q1sv2lqmm" path="res://Model/cloud2.obj" id="9_7y4ci"]
 
@@ -33,7 +34,7 @@ ambient_light_energy = 0.96
 tonemap_mode = 4
 glow_enabled = true
 adjustment_enabled = true
-adjustment_contrast = 1.17
+adjustment_contrast = 1.35
 adjustment_color_correction = SubResource("GradientTexture1D_h2yge")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3amdw"]
@@ -51,6 +52,11 @@ subdivide_width = 100
 subdivide_depth = 100
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mxd2g"]
+render_priority = 0
+shader = ExtResource("7_c2iwn")
+shader_parameter/FloatParameter2 = 0.0
+shader_parameter/ColorParameter = Color(0.70980394, 0.8784314, 0.8784314, 1)
+shader_parameter/FloatParameter = 0.8
 
 [sub_resource type="Curve" id="Curve_0sxm5"]
 _limits = [-360.0, 360.0, 0.0, 1.0]
@@ -142,6 +148,7 @@ mesh = SubResource("PlaneMesh_mxd2g")
 [node name="GPU_Cloud" type="GPUParticles3D" parent="."]
 transform = Transform3D(0.866897, 0, 0.498488, 0, 1, 0, -0.498488, 0, 0.866897, 3.95639, 2.14793, -1.0018)
 material_override = SubResource("ShaderMaterial_mxd2g")
+gi_mode = 2
 amount = 100
 lifetime = 30.0
 speed_scale = 0.1
