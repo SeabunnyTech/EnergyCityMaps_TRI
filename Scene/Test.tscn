@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1ickmo8dfgq5"]
+
+[ext_resource type="Material" uid="uid://dax3rw7o6gv0l" path="res://Material/Sea_Displace.tres" id="1_fqvlb"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mypys"]
+subdivide_width = 20
+subdivide_depth = 20
+
+[node name="Test" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_fqvlb")
+mesh = SubResource("PlaneMesh_mypys")
