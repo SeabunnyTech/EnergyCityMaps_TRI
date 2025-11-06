@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ben0w34nuab1u"]
+
+[resource]
+diffuse_mode = 3
+albedo_color = Color(0.18378785, 0.31192237, 0.12193637, 1)
+roughness = 0.87
+rim_tint = 0.7
+anisotropy_enabled = true
+anisotropy = 0.85
+ao_light_affect = 1.0

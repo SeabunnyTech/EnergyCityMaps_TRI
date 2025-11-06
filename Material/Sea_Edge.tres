@@ -1,0 +1,43 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://xttbnrpuig0v"]
+
+[ext_resource type="Shader" uid="uid://um23ex8esg17" path="res://Shader/water2.gdshader" id="1_hv6qu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hv6qu"]
+seamless = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_hv6qu")
+shader_parameter/absorption_color = Color(1, 0.35, 0, 1)
+shader_parameter/fresnel_radius = 2.0
+shader_parameter/fresnel_color = Color(0, 0.57, 0.72, 1)
+shader_parameter/roughness = 0.15
+shader_parameter/specular = 0.25
+shader_parameter/depth_distance = 20.7
+shader_parameter/beers_law = 4.5
+shader_parameter/displacement_strength = 0.01
+shader_parameter/displacement_scroll_speed = 0.1
+shader_parameter/displacement_scroll_offset = Vector2(1, 2)
+shader_parameter/displacement_scale_offset = 0.5
+shader_parameter/displacement_scale = Vector2(0.05, 0.05)
+shader_parameter/displacement_texture = SubResource("NoiseTexture2D_hv6qu")
+shader_parameter/edge_thickness = 0.032
+shader_parameter/edge_speed = 0.195
+shader_parameter/edge_noise_scale = Vector2(1, 0.4)
+shader_parameter/influence_size = 1.0
+shader_parameter/player_wave_frequenzy = 10.0
+shader_parameter/player_wave_speed = 5.0
+shader_parameter/caustic_size = 0.8
+shader_parameter/caustic_range = 12.3
+shader_parameter/caustic_strength = 0.08
+shader_parameter/ssr_mix_strength = 0.06
+shader_parameter/ssr_travel = 40.0
+shader_parameter/ssr_resolution_near = 0.1
+shader_parameter/ssr_resolution_far = 5.0
+shader_parameter/ssr_tolerance = 1.0
+shader_parameter/refraction_strength = 0.33
+shader_parameter/normal_map_strength = 1.55
+shader_parameter/scroll_speed = 1.0
+shader_parameter/scroll_offset = Vector2(0.1, 0.29)
+shader_parameter/scale_offset = 0.5
+shader_parameter/normal_map_scale = Vector2(0.18, 0.1)

@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dl8x4i2vjps4f"]
+
+[ext_resource type="Shader" uid="uid://cygkgiujkmt15" path="res://Shader/GradientGrass.tres" id="1_jf3a6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_jf3a6")

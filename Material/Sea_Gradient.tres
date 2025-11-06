@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c7bh1vwmcvupe"]
+
+[ext_resource type="Shader" uid="uid://ba0dxcn4hbc2r" path="res://Shader/Gradient.tres" id="1_ejomb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ejomb")

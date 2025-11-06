@@ -1,0 +1,44 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Taiwan Research Institute"
+run/main_scene="uid://crkjfjha1j6uc"
+config/features=PackedStringArray("4.5", "Mobile")
+config/icon="res://icon.svg"
+
+[editor]
+
+movie_writer/movie_file="D:/Tong/Work/2025/Taiwan Research Institute/Godot/taiwan-research-institute/record.avi"
+movie_writer/fps=30
+
+[internationalization]
+
+rendering/root_node_auto_translate=false
+
+[rendering]
+
+lights_and_shadows/directional_shadow/size=2048
+
+[shader_globals]
+
+wind_intensity={
+"type": "float",
+"value": 0.0
+}
+wind_direction={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+player_position={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
