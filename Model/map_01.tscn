@@ -1,10 +1,10 @@
 [gd_scene load_steps=23 format=4 uid="uid://dpsitldkpfe0r"]
 
 [ext_resource type="PackedScene" uid="uid://dndrb00r8wsil" path="res://Model/Map01.glb" id="1_skrt8"]
-[ext_resource type="Script" uid="uid://5eqit3cv5sbs" path="res://Model/map_01.gd" id="2_abayo"]
 [ext_resource type="Material" uid="uid://dl8x4i2vjps4f" path="res://Material/GGrass.tres" id="2_r0uww"]
 [ext_resource type="Material" uid="uid://ceruimrpd4o8" path="res://Material/Sand.tres" id="3_rp5ni"]
 [ext_resource type="Material" uid="uid://bd856bi2uq7r1" path="res://Material/Sea_Wave.tres" id="4_r0uww"]
+[ext_resource type="PackedScene" uid="uid://dnx458mv0uhms" path="res://wind_turbine.tscn" id="6_0262g"]
 [ext_resource type="PackedScene" uid="uid://sbbfwa5bftvq" path="res://Model/windbase.glb" id="6_h1ee1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5fwl4"]
@@ -347,7 +347,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_pwtre")
 
 [node name="Map01" instance=ExtResource("1_skrt8")]
-script = ExtResource("2_abayo")
 
 [node name="Grass" parent="." index="14"]
 material_override = ExtResource("2_r0uww")
@@ -456,9 +455,13 @@ skeleton = NodePath("")
 
 [node name="windbase" parent="." index="110" instance=ExtResource("6_h1ee1")]
 transform = Transform3D(0.7276291, 0, -0.6859707, 0, 1, 0, 0.6859707, 0, 0.7276291, 0.9207305, 0.48615032, 3.4239929)
+visible = false
 
 [node name="windbase2" parent="." index="111" instance=ExtResource("6_h1ee1")]
 transform = Transform3D(0.7276291, 0, -0.6859707, 0, 1, 0, 0.6859707, 0, 0.7276291, -0.41688502, 0.48615032, 3.8785417)
 
 [node name="windbase3" parent="." index="112" instance=ExtResource("6_h1ee1")]
 transform = Transform3D(0.7276291, 0, -0.6859707, 0, 1, 0, 0.6859707, 0, 0.7276291, -1.6128389, 0.48615032, 3.1511624)
+
+[node name="windbase4" parent="." index="113" instance=ExtResource("6_0262g")]
+transform = Transform3D(0.7276291, 0, -0.6859707, 0, 1, 0, 0.6859707, 0, 0.7276291, 0.9207305, 0.48615032, 3.4239929)

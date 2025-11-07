@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnx458mv0uhms"]
+
+[ext_resource type="PackedScene" uid="uid://sbbfwa5bftvq" path="res://Model/windbase.glb" id="1_ppbjb"]
+[ext_resource type="Script" uid="uid://6jvpao4b0pac" path="res://wind_turbine.gd" id="2_uhnw5"]
+
+[node name="windbase" instance=ExtResource("1_ppbjb")]
+script = ExtResource("2_uhnw5")
