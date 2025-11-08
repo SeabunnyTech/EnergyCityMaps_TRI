@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dpsitldkpfe0r"]
+[gd_scene load_steps=27 format=4 uid="uid://dpsitldkpfe0r"]
 
 [ext_resource type="PackedScene" uid="uid://dndrb00r8wsil" path="res://Model/Map01.glb" id="1_skrt8"]
 [ext_resource type="Material" uid="uid://dl8x4i2vjps4f" path="res://Material/GGrass.tres" id="2_r0uww"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dnx458mv0uhms" path="res://wind_turbine.tscn" id="6_0262g"]
 [ext_resource type="PackedScene" uid="uid://sbbfwa5bftvq" path="res://Model/windbase.glb" id="6_h1ee1"]
 [ext_resource type="PackedScene" uid="uid://m21wmduhwp4w" path="res://Model/Grass.glb" id="8_1stge"]
+[ext_resource type="PackedScene" uid="uid://dk403p2tkhc6j" path="res://Model/ES_update.glb" id="9_cggwm"]
+[ext_resource type="PackedScene" uid="uid://ju32pq53eb1d" path="res://Model/Map01_update.glb" id="13_f5a8m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4yu1"]
 resource_name = "Glass"
@@ -538,6 +540,57 @@ shadow_mesh = SubResource("ArrayMesh_25fom")
 
 [node name="Map01" instance=ExtResource("1_skrt8")]
 
+[node name="Block" parent="." index="0"]
+visible = false
+
+[node name="Block_003" parent="." index="1"]
+visible = false
+
+[node name="Block_004" parent="." index="2"]
+visible = false
+
+[node name="Block_005" parent="." index="3"]
+visible = false
+
+[node name="Block_006" parent="." index="4"]
+visible = false
+
+[node name="SunPanel_010" parent="." index="5"]
+visible = false
+
+[node name="SunPanel_011" parent="." index="6"]
+visible = false
+
+[node name="SunPanel_009" parent="." index="7"]
+visible = false
+
+[node name="SunPanel_008" parent="." index="8"]
+visible = false
+
+[node name="SunPanel_004" parent="." index="9"]
+visible = false
+
+[node name="Building" parent="." index="10"]
+visible = false
+
+[node name="Cube_058" parent="Building" index="0"]
+visible = false
+
+[node name="Building_003" parent="." index="11"]
+visible = false
+
+[node name="Cube_074" parent="Building_003" index="0"]
+visible = false
+
+[node name="Building_001" parent="." index="12"]
+visible = false
+
+[node name="Building_005" parent="." index="13"]
+visible = false
+
+[node name="Cube_187" parent="Building_005" index="0"]
+visible = false
+
 [node name="Grass" parent="." index="14"]
 visible = false
 material_override = ExtResource("2_r0uww")
@@ -545,98 +598,359 @@ material_override = ExtResource("2_r0uww")
 [node name="Windbase_002" parent="." index="15"]
 visible = false
 
+[node name="WindNearFan_005" parent="Windbase_002" index="0"]
+visible = false
+
 [node name="Windbase" parent="." index="16"]
+visible = false
+
+[node name="WindNearFan_001" parent="Windbase" index="0"]
 visible = false
 
 [node name="Windbase_001" parent="." index="17"]
 visible = false
 
+[node name="WindNearFan_002" parent="Windbase_001" index="0"]
+visible = false
+
+[node name="House_002" parent="." index="18"]
+visible = false
+
 [node name="House_002" type="MeshInstance3D" parent="House_002" index="0"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 4.363, 0, -1.7)
+visible = false
 mesh = SubResource("ArrayMesh_qvcps")
 skeleton = NodePath("")
 
 [node name="House_003" type="MeshInstance3D" parent="House_002" index="1"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 4.6095486, 0, -1.8333842)
+visible = false
 mesh = SubResource("ArrayMesh_6r6be")
 skeleton = NodePath("")
 
+[node name="House_003" parent="." index="19"]
+visible = false
+
+[node name="House_001" parent="." index="20"]
+visible = false
+
+[node name="House" parent="." index="21"]
+visible = false
+
+[node name="House_005" parent="." index="22"]
+visible = false
+
+[node name="House_004" parent="." index="23"]
+visible = false
+
 [node name="House_006" type="MeshInstance3D" parent="." index="24"]
 transform = Transform3D(0.9998096, 0, -0.019511543, 0, 1, 0, 0.019511543, 0, 0.9998096, 2.7108912, 0.20331898, 0.17281434)
+visible = false
 mesh = SubResource("ArrayMesh_fl51n")
 skeleton = NodePath("")
 
 [node name="Sand" parent="." index="25"]
+visible = false
 material_override = ExtResource("3_rp5ni")
 
 [node name="Sea" parent="." index="26"]
 visible = false
 material_override = ExtResource("4_r0uww")
 
+[node name="SunPanel" parent="." index="27"]
+visible = false
+
+[node name="SunPanel_001" parent="." index="28"]
+visible = false
+
+[node name="SunPanel_002" parent="." index="29"]
+visible = false
+
+[node name="SunPanel_003" parent="." index="30"]
+visible = false
+
+[node name="SunPanel_005" parent="." index="31"]
+visible = false
+
+[node name="SunPanel_006" parent="." index="32"]
+visible = false
+
+[node name="SunPanel_007" parent="." index="33"]
+visible = false
+
+[node name="Building_002" parent="." index="34"]
+visible = false
+
+[node name="Cube_002" parent="Building_002" index="0"]
+visible = false
+
+[node name="Building_004" parent="." index="35"]
+visible = false
+
+[node name="Cube_003" parent="Building_004" index="0"]
+visible = false
+
+[node name="Building_006" parent="." index="36"]
+visible = false
+
+[node name="Cube_006" parent="Building_006" index="0"]
+visible = false
+
+[node name="ES" parent="." index="37"]
+visible = false
+
+[node name="ES_001" parent="." index="38"]
+visible = false
+
+[node name="ES_002" parent="." index="39"]
+visible = false
+
+[node name="ES_003" parent="." index="40"]
+visible = false
+
+[node name="ES_004" parent="." index="41"]
+visible = false
+
+[node name="Cube_075" parent="." index="42"]
+visible = false
+
 [node name="Cube_168" parent="." index="43"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.62389, 0.180471, 1.17847)
+visible = false
 
 [node name="Tree_001" parent="." index="44"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55921, 0.157805, 1.05518)
+visible = false
 
 [node name="Tree" parent="." index="45"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30423, 0.162414, 1.4177)
+visible = false
 
 [node name="Tree_002" parent="." index="46"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55671, 0.15782, 1.16608)
+visible = false
 
 [node name="Tree_003" parent="." index="47"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45345, 0.157782, 1.13384)
+visible = false
 
 [node name="Tree_004" parent="." index="48"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02414, 0.159813, 1.2841)
+visible = false
 
 [node name="Tree_005" parent="." index="49"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9662, 0.159807, 1.3877)
+visible = false
+
+[node name="Tree_006" parent="." index="50"]
+visible = false
+
+[node name="Tree_007" parent="." index="51"]
+visible = false
+
+[node name="Tree_008" parent="." index="52"]
+visible = false
 
 [node name="Tree_009" parent="." index="53"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99743, 0.162389, 0.766911)
+visible = false
 
 [node name="Tree_010" parent="." index="54"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88376, 0.16288, 1.04916)
+visible = false
+
+[node name="Tree_011" parent="." index="55"]
+visible = false
 
 [node name="Tree_012" parent="." index="56"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.50373, 0.156441, 1.91401)
+visible = false
 
 [node name="Tree_013" parent="." index="57"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.83524, 0.158779, 1.62677)
+visible = false
 
 [node name="Tree_014" parent="." index="58"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.18695, 0.160828, 1.51148)
+visible = false
 
 [node name="Tree_015" parent="." index="59"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87237, 0.158312, 1.24429)
+visible = false
 
 [node name="Tree_016" parent="." index="60"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12347, 0.157096, 0.843146)
+visible = false
 
 [node name="Tree_017" parent="." index="61"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52672, 0.157634, 0.798639)
+visible = false
 
 [node name="Tree_018" parent="." index="62"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.71019, 0.160076, 0.35072)
+visible = false
 
 [node name="Tree_019" parent="." index="63"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30733, 0.158417, -0.181994)
+visible = false
 
-[node name="windbase" parent="." index="104" instance=ExtResource("6_h1ee1")]
+[node name="Tree_020" parent="." index="64"]
+visible = false
+
+[node name="Tree_021" parent="." index="65"]
+visible = false
+
+[node name="Tree_022" parent="." index="66"]
+visible = false
+
+[node name="Tree_023" parent="." index="67"]
+visible = false
+
+[node name="Tree_024" parent="." index="68"]
+visible = false
+
+[node name="Tree_025" parent="." index="69"]
+visible = false
+
+[node name="Tree_026" parent="." index="70"]
+visible = false
+
+[node name="Tree_027" parent="." index="71"]
+visible = false
+
+[node name="Tree_028" parent="." index="72"]
+visible = false
+
+[node name="Tree_029" parent="." index="73"]
+visible = false
+
+[node name="Tree_030" parent="." index="74"]
+visible = false
+
+[node name="Tree_031" parent="." index="75"]
+visible = false
+
+[node name="Tree_032" parent="." index="76"]
+visible = false
+
+[node name="Tree_033" parent="." index="77"]
+visible = false
+
+[node name="Tree_034" parent="." index="78"]
+visible = false
+
+[node name="Tree_035" parent="." index="79"]
+visible = false
+
+[node name="Tree_036" parent="." index="80"]
+visible = false
+
+[node name="Tree_037" parent="." index="81"]
+visible = false
+
+[node name="Tree_038" parent="." index="82"]
+visible = false
+
+[node name="Tree_039" parent="." index="83"]
+visible = false
+
+[node name="Road_002" parent="." index="84"]
+visible = false
+
+[node name="Road_010" parent="." index="85"]
+visible = false
+
+[node name="Road_007" parent="." index="86"]
+visible = false
+
+[node name="Road_020" parent="." index="87"]
+visible = false
+
+[node name="Road_001" parent="." index="88"]
+visible = false
+
+[node name="Road_019" parent="." index="89"]
+visible = false
+
+[node name="Road_004" parent="." index="90"]
+visible = false
+
+[node name="Road_006" parent="." index="91"]
+visible = false
+
+[node name="Road_009" parent="." index="92"]
+visible = false
+
+[node name="Road_011" parent="." index="93"]
+visible = false
+
+[node name="Road_012" parent="." index="94"]
+visible = false
+
+[node name="Road_014" parent="." index="95"]
+visible = false
+
+[node name="Road_016" parent="." index="96"]
+visible = false
+
+[node name="Road_018" parent="." index="97"]
+visible = false
+
+[node name="Road_013" parent="." index="98"]
+visible = false
+
+[node name="Road_015" parent="." index="99"]
+visible = false
+
+[node name="Road_017" parent="." index="100"]
+visible = false
+
+[node name="Road_005" parent="." index="101"]
+visible = false
+
+[node name="Road_003" parent="." index="102"]
+visible = false
+
+[node name="Road_008" parent="." index="103"]
+visible = false
+
+[node name="ES_update" parent="." index="104" instance=ExtResource("9_cggwm")]
+transform = Transform3D(0.99962026, 0, -0.02755526, 0, 1, 0, 0.02755526, 0, 0.99962026, -0.0052542686, 0, -0.009322897)
+visible = false
+
+[node name="ES_update2" parent="." index="105" instance=ExtResource("9_cggwm")]
+transform = Transform3D(0.99962026, 0, -0.02755526, 0, 1, 0, 0.02755526, 0, 0.99962026, 0.33377507, 0, -0.1979461)
+visible = false
+
+[node name="ES_update3" parent="." index="106" instance=ExtResource("9_cggwm")]
+transform = Transform3D(0.99962026, 0, -0.02755526, 0, 1, 0, 0.02755526, 0, 0.99962026, 0.6784084, 0, -0.3786513)
+visible = false
+
+[node name="ES_update4" parent="." index="107" instance=ExtResource("9_cggwm")]
+transform = Transform3D(-0.05322488, 0, -0.99858254, 0, 1, 0, 0.99858254, 0, -0.05322488, 3.175998, 0, 1.3930155)
+visible = false
+
+[node name="ES_update5" parent="." index="108" instance=ExtResource("9_cggwm")]
+transform = Transform3D(-0.05322488, 0, -0.99858254, 0, 1, 0, 0.99858254, 0, -0.05322488, 3.35643, 0, 1.7286586)
+visible = false
+
+[node name="windbase" parent="." index="109" instance=ExtResource("6_h1ee1")]
 transform = Transform3D(0.7276291, 0, -0.6859707, 0, 1, 0, 0.6859707, 0, 0.7276291, 0.9207305, 0.48615032, 3.4239929)
 visible = false
 
-[node name="windbase2" parent="." index="105" instance=ExtResource("6_h1ee1")]
+[node name="windbase2" parent="." index="110" instance=ExtResource("6_h1ee1")]
 transform = Transform3D(0.7276291, 0, -0.6859707, 0, 1, 0, 0.6859707, 0, 0.7276291, -0.41688502, 0.48615032, 3.8785417)
 
-[node name="windbase3" parent="." index="106" instance=ExtResource("6_h1ee1")]
+[node name="windbase3" parent="." index="111" instance=ExtResource("6_h1ee1")]
 transform = Transform3D(0.7276291, 0, -0.6859707, 0, 1, 0, 0.6859707, 0, 0.7276291, -1.6128389, 0.48615032, 3.1511624)
 
-[node name="windbase4" parent="." index="107" instance=ExtResource("6_0262g")]
+[node name="windbase4" parent="." index="112" instance=ExtResource("6_0262g")]
 transform = Transform3D(0.7276291, 0, -0.6859707, 0, 1, 0, 0.6859707, 0, 0.7276291, 0.9207305, 0.48615032, 3.4239929)
 
-[node name="Grass2" parent="." index="108" instance=ExtResource("8_1stge")]
+[node name="Grass2" parent="." index="113" instance=ExtResource("8_1stge")]
+visible = false
 
-[node name="Grass3" parent="." index="109" instance=ExtResource("8_1stge")]
+[node name="Grass3" parent="." index="114" instance=ExtResource("8_1stge")]
+visible = false
+
+[node name="Map01_update" parent="." index="115" instance=ExtResource("13_f5a8m")]

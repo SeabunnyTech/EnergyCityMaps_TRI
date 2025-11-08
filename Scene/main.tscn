@@ -1,6 +1,5 @@
-[gd_scene load_steps=26 format=3 uid="uid://crkjfjha1j6uc"]
+[gd_scene load_steps=23 format=3 uid="uid://crkjfjha1j6uc"]
 
-[ext_resource type="Texture2D" uid="uid://deegxpt3y0ght" path="res://HDRI/brown_photostudio_02_4k.exr" id="1_2wwxx"]
 [ext_resource type="PackedScene" uid="uid://dpsitldkpfe0r" path="res://Model/map_01.tscn" id="2_3amdw"]
 [ext_resource type="Texture2D" uid="uid://cr8046q1mnray" path="res://Texture/FX_CloudAlpha02.png" id="5_1xcnr"]
 [ext_resource type="Material" uid="uid://dax3rw7o6gv0l" path="res://Material/Sea_Displace.tres" id="7_7y4ci"]
@@ -9,33 +8,24 @@
 [ext_resource type="Script" uid="uid://bupb0co8ypgyd" path="res://Scene/animation_player.gd" id="8_7y4ci"]
 [ext_resource type="ArrayMesh" uid="uid://drw8q1sv2lqmm" path="res://Model/cloud2.obj" id="9_7y4ci"]
 
-[sub_resource type="Gradient" id="Gradient_0xm2m"]
-offsets = PackedFloat32Array(0.018121911, 1)
-colors = PackedColorArray(0.0547041, 0.0456982, 0.0129374, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_h2yge"]
-gradient = SubResource("Gradient_0xm2m")
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
-panorama = ExtResource("1_2wwxx")
-energy_multiplier = 2.0
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ow1sv"]
 
 [sub_resource type="Sky" id="Sky_1bvp3"]
-sky_material = SubResource("PanoramaSkyMaterial_h2yge")
+sky_material = SubResource("ProceduralSkyMaterial_ow1sv")
 
 [sub_resource type="Environment" id="Environment_lquwl"]
 background_mode = 2
-background_energy_multiplier = 0.8
+background_energy_multiplier = 1.2
 sky = SubResource("Sky_1bvp3")
 sky_rotation = Vector3(1.12748, 1.46084, 0)
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.96
+ambient_light_source = 2
+ambient_light_color = Color(0.954078, 0.8639887, 0.6434658, 1)
 tonemap_mode = 4
+tonemap_white = 2.92
 glow_strength = 1.15
+fog_light_color = Color(0.60994583, 0.5322831, 0.49033672, 1)
 adjustment_enabled = true
-adjustment_contrast = 1.35
-adjustment_saturation = 0.9
-adjustment_color_correction = SubResource("GradientTexture1D_h2yge")
+adjustment_brightness = 1.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3amdw"]
 transparency = 1
@@ -112,16 +102,10 @@ _data = {
 [node name="Map_Coast" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.829038, 0.469509, -0.303739, 0, 0.543174, 0.83962, 0.559193, -0.696076, 0.450312, 0, 0, 0)
-light_color = Color(0.94745, 0.94571, 0.909212, 1)
-light_energy = 0.6
+transform = Transform3D(0.9531907, 0.22257353, -0.20466685, 0, 0.67687595, 0.7360971, 0.3023698, -0.7016409, 0.64519185, 0, 0, 0)
 shadow_enabled = true
-directional_shadow_max_distance = 12.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_lquwl")
-
-[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lquwl")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -148,7 +132,7 @@ scale_amount_min = 0.1
 scale_amount_max = 2.0
 
 [node name="Sea" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.0005967617, 0.11252558, -0.002485752)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.001, 0.112, -0.002)
 material_override = ExtResource("7_7y4ci")
 mesh = SubResource("PlaneMesh_3pt4j")
 

@@ -1,13 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1ickmo8dfgq5"]
+[gd_scene load_steps=9 format=3 uid="uid://b1ickmo8dfgq5"]
 
-[ext_resource type="Material" uid="uid://dl8x4i2vjps4f" path="res://Material/GGrass.tres" id="1_fqvlb"]
+[ext_resource type="PackedScene" uid="uid://c50pp6oo2q5dy" path="res://Model/map02.glb" id="1_fqvlb"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_mypys"]
-subdivide_width = 20
-subdivide_depth = 20
+[sub_resource type="Gradient" id="Gradient_fqvlb"]
+offsets = PackedFloat32Array(0.35334477, 1)
+colors = PackedColorArray(0.5058824, 0.8117647, 0.8352941, 0.5176471, 0.83137256, 0.9490196, 0.95686275, 0.28627452)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mypys"]
+gradient = SubResource("Gradient_fqvlb")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wv3v"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = SubResource("GradientTexture2D_mypys")
+
+[sub_resource type="Curve" id="Curve_i8xqr"]
+_data = [Vector2(1e-05, 0.30473918), 0.0, 0.0, 0, 0, Vector2(1, 0.8313476), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_id8a5"]
+curve = SubResource("Curve_i8xqr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3drnb"]
+emission_shape_scale = Vector3(0.1, 0.1, 0.55)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_id8a5")
+
+[sub_resource type="SphereMesh" id="SphereMesh_8ytl5"]
+radius = 0.125
+height = 0.25
 
 [node name="Test" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = ExtResource("1_fqvlb")
-mesh = SubResource("PlaneMesh_mypys")
+[node name="map02" parent="." instance=ExtResource("1_fqvlb")]
+
+[node name="Splash" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.15115732, 0.98850983, 0, -0.98850983, 0.15115732, 0, 0, 0, 1, -1.1539029, 0.28934288, -38.663982)
+material_override = SubResource("StandardMaterial3D_3wv3v")
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_3drnb")
+draw_pass_1 = SubResource("SphereMesh_8ytl5")

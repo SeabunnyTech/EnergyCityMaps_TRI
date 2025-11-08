@@ -1,6 +1,6 @@
-[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://cmeil1s8rcwel"]
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://cmeil1s8rcwel"]
 
-[ext_resource type="Texture2D" uid="uid://bitts8p7b014b" path="res://Texture/Grass_texture.jpg" id="1_kugx4"]
+[ext_resource type="Texture2D" uid="uid://shsjw7d54kyc" path="res://Texture/Grass_2.jpg" id="1_kugx4"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_qvlqw"]
 texture = ExtResource("1_kugx4")
@@ -12,22 +12,12 @@ function = 1
 parameter_name = "FloatParameter"
 default_value_enabled = true
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_kugx4"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
-op_type = 0
-operator = 2
-
-[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_qvlqw"]
-parameter_name = "ColorParameter"
-default_value_enabled = true
-
 [resource]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_toon, specular_schlick_ggx;
 
 uniform float FloatParameter = 0.0;
 uniform sampler2D tex_frg_2;
-uniform vec4 ColorParameter : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
 
 
 
@@ -45,16 +35,8 @@ void fragment() {
 	vec4 n_out2p0 = texture(tex_frg_2, n_out3p0);
 
 
-// ColorParameter:6
-	vec4 n_out6p0 = ColorParameter;
-
-
-// VectorOp:5
-	vec2 n_out5p0 = vec2(n_out2p0.xy) * vec2(n_out6p0.xy);
-
-
 // Output:0
-	ALBEDO = vec3(n_out5p0, 0.0);
+	ALBEDO = vec3(n_out2p0.xyz);
 
 
 }
@@ -66,8 +48,4 @@ nodes/fragment/3/node = SubResource("VisualShaderNodeUVFunc_kugx4")
 nodes/fragment/3/position = Vector2(-1680, 720)
 nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_qvlqw")
 nodes/fragment/4/position = Vector2(-2500, 1000)
-nodes/fragment/5/node = SubResource("VisualShaderNodeVectorOp_kugx4")
-nodes/fragment/5/position = Vector2(-60.590145, 693.75604)
-nodes/fragment/6/node = SubResource("VisualShaderNodeColorParameter_qvlqw")
-nodes/fragment/6/position = Vector2(-900, 1260)
-nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 4, 0, 3, 1, 2, 0, 5, 0, 6, 0, 5, 1, 5, 0, 0, 0)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 4, 0, 3, 1, 2, 0, 0, 0)
