@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxncitq8048d0"]
+
+[ext_resource type="PackedScene" uid="uid://ju32pq53eb1d" path="res://Model/Map01_update.glb" id="1_hwp0r"]
+[ext_resource type="PackedScene" uid="uid://cruyfx85e7niv" path="res://Model/ES_update.glb" id="2_0b4c8"]
+
+[node name="Map01_update" instance=ExtResource("1_hwp0r")]
+
+[node name="Cube" parent="." index="49"]
+visible = false
+
+[node name="Cube_034" parent="." index="71"]
+visible = false
+
+[node name="Cube_035" parent="." index="72"]
+visible = false
+
+[node name="Cube_040" parent="." index="111"]
+visible = false
+
+[node name="Cube_042" parent="." index="112"]
+visible = false
+
+[node name="ES_update" parent="." index="115" instance=ExtResource("2_0b4c8")]
