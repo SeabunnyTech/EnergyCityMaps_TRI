@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://crkjfjha1j6uc"]
+[gd_scene load_steps=26 format=3 uid="uid://crkjfjha1j6uc"]
 
 [ext_resource type="Texture2D" uid="uid://deegxpt3y0ght" path="res://HDRI/brown_photostudio_02_4k.exr" id="1_2wwxx"]
 [ext_resource type="PackedScene" uid="uid://dpsitldkpfe0r" path="res://Model/map_01.tscn" id="2_3amdw"]
@@ -7,13 +7,10 @@
 [ext_resource type="Shader" uid="uid://dfjn6irk3ymom" path="res://Shader/Cloud.tres" id="7_c2iwn"]
 [ext_resource type="ArrayMesh" uid="uid://n8dybsnjy7t6" path="res://Model/cloud.obj" id="8_3pt4j"]
 [ext_resource type="Script" uid="uid://bupb0co8ypgyd" path="res://Scene/animation_player.gd" id="8_7y4ci"]
-[ext_resource type="PackedScene" uid="uid://dpsv3tsmxh507" path="res://Model/cloud.tscn" id="8_75buv"]
-[ext_resource type="PackedScene" uid="uid://bkoupejoijyji" path="res://Model/cloud_2.tscn" id="9_3pt4j"]
 [ext_resource type="ArrayMesh" uid="uid://drw8q1sv2lqmm" path="res://Model/cloud2.obj" id="9_7y4ci"]
-[ext_resource type="PackedScene" uid="uid://cn43ca6us78by" path="res://Model/cloud_3.tscn" id="10_7y4ci"]
 
 [sub_resource type="Gradient" id="Gradient_0xm2m"]
-offsets = PackedFloat32Array(0.058264, 0.929845)
+offsets = PackedFloat32Array(0.018121911, 1)
 colors = PackedColorArray(0.0547041, 0.0456982, 0.0129374, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_h2yge"]
@@ -37,6 +34,7 @@ tonemap_mode = 4
 glow_strength = 1.15
 adjustment_enabled = true
 adjustment_contrast = 1.35
+adjustment_saturation = 0.9
 adjustment_color_correction = SubResource("GradientTexture1D_h2yge")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3amdw"]
@@ -68,28 +66,30 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_hspdg"]
 curve = SubResource("Curve_0sxm5")
 
-[sub_resource type="Curve" id="Curve_j63at"]
-_data = [Vector2(0.0173913, 0.330159), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_75buv"]
+_data = [Vector2(0, 0.17831606), 0.0, 1.1271317, 0, 0, Vector2(0.94246566, 0.0028835535), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_6njx3"]
-curve = SubResource("Curve_j63at")
+curve = SubResource("Curve_75buv")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1xcnr"]
 emission_shape = 3
 emission_box_extents = Vector3(0.5, 0.1, 5)
-angle_min = -20.0
-angle_max = 20.0
+angle_min = -179.99998
+angle_max = 180.00002
 angle_curve = SubResource("CurveTexture_hspdg")
 direction = Vector3(-1, 0, 0)
 spread = 0.0
 initial_velocity_min = 1.0
 initial_velocity_max = 3.0
+angular_velocity_min = -20.000015
+angular_velocity_max = 19.999983
 orbit_velocity_min = -2.0
 orbit_velocity_max = -2.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.1
-scale_max = 0.4
+scale_min = 0.099999994
+scale_max = 0.5
 scale_curve = SubResource("CurveTexture_6njx3")
 scale_over_velocity_min = 0.1
 scale_over_velocity_max = 0.5
@@ -99,153 +99,9 @@ anim_speed_max = 0.2
 [sub_resource type="Animation" id="Animation_mxd2g"]
 resource_name = "Cloud_move"
 length = 60.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cloud/cloud6:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 60),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(2.9407187, 1.5122278, 0.011292219), Vector3(-6.773843, 1.5122278, 0.011292219)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cloud/cloud5:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 30),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(3.791166, 1.5122278, 0.60536814), Vector3(-3.4787247, 1.5122278, 0.60536814)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Cloud/cloud3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 50),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(4.36827, 1.5122278, 1.4149151), Vector3(-2.340548, 1.5122278, 1.4149151)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Cloud/cloud2:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 60),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(3.927, 2.067, 3.38), Vector3(-8.346583, 1.5122278, 2.8487132)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Cloud/cloud4:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(13.7, 60),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(5.9799376, 1.5122278, 2.7075303), Vector3(-7.5539923, 1.5122278, 2.7075303)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Cloud/cloud:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(24.766666, 60),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(3.4479141, 1.5122278, 0.49182487), Vector3(-4.4340954, 1.5122278, 0.49182487)]
-}
 
 [sub_resource type="Animation" id="Animation_0sxm5"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cloud/cloud6:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(2.9407187, 1.5122278, 0.011292219)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cloud/cloud5:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(3.791166, 1.5122278, 0.60536814)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Cloud/cloud3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(4.36827, 1.5122278, 1.4149151)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Cloud/cloud2:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(3.9266033, 1.5122278, 2.8487132)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Cloud/cloud4:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(5.9799376, 1.5122278, 2.7075303)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Cloud/cloud:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(3.4479141, 1.5122278, 0.49182487)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hspdg"]
 _data = {
@@ -253,7 +109,7 @@ _data = {
 &"RESET": SubResource("Animation_0sxm5")
 }
 
-[node name="Main" type="Node3D"]
+[node name="Map_Coast" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.829038, 0.469509, -0.303739, 0, 0.543174, 0.83962, 0.559193, -0.696076, 0.450312, 0, 0, 0)
@@ -263,6 +119,9 @@ shadow_enabled = true
 directional_shadow_max_distance = 12.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lquwl")
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lquwl")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -298,8 +157,8 @@ transform = Transform3D(0.866897, 0, 0.498488, 0, 1, 0, -0.498488, 0, 0.866897, 
 visible = false
 material_override = SubResource("ShaderMaterial_mxd2g")
 gi_mode = 2
-amount = 100
-lifetime = 30.0
+amount = 20
+lifetime = 10.0
 speed_scale = 0.1
 randomness = 0.09
 process_material = SubResource("ParticleProcessMaterial_1xcnr")
@@ -312,23 +171,3 @@ libraries = {
 &"": SubResource("AnimationLibrary_hspdg")
 }
 script = ExtResource("8_7y4ci")
-
-[node name="Cloud" type="Node3D" parent="."]
-
-[node name="cloud" parent="Cloud" instance=ExtResource("8_75buv")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 3.4479141, 1.5122278, 0.49182487)
-
-[node name="cloud4" parent="Cloud" instance=ExtResource("8_75buv")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 5.9799376, 1.5122278, 2.7075303)
-
-[node name="cloud2" parent="Cloud" instance=ExtResource("9_3pt4j")]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 3.9266033, 1.5122278, 2.8487132)
-
-[node name="cloud6" parent="Cloud" instance=ExtResource("9_3pt4j")]
-transform = Transform3D(-0.15, 0, -1.3113417e-08, 0, 0.15, 0, 1.3113417e-08, 0, -0.15, 2.9407187, 1.5122278, 0.011292219)
-
-[node name="cloud3" parent="Cloud" instance=ExtResource("10_7y4ci")]
-transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 4.36827, 1.5122278, 1.4149151)
-
-[node name="cloud5" parent="Cloud" instance=ExtResource("10_7y4ci")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 3.791166, 1.5122278, 0.60536814)

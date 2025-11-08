@@ -1,7 +1,9 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dl8x4i2vjps4f"]
 
-[ext_resource type="Shader" uid="uid://cygkgiujkmt15" path="res://Shader/GradientGrass.tres" id="1_jf3a6"]
+[ext_resource type="Shader" uid="uid://cmeil1s8rcwel" path="res://Material/grass_noise.tres" id="1_jf3a6"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_jf3a6")
+shader_parameter/FloatParameter = 1.0
+shader_parameter/ColorParameter = Color(0.5598855, 0.6280422, 0.3400416, 1)

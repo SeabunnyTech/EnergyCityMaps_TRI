@@ -2,8 +2,9 @@
 
 [resource]
 diffuse_mode = 3
-albedo_color = Color(0.18378785, 0.31192237, 0.12193637, 1)
-roughness = 0.87
+specular_mode = 1
+albedo_color = Color(0.30364248, 0.36509496, 0.23426288, 1)
+metallic_specular = 0.46
 rim_tint = 0.7
 anisotropy_enabled = true
 anisotropy = 0.85

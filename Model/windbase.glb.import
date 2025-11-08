@@ -37,6 +37,19 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"base": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Wind_yellow.tres",
+"use_external/path": "uid://dph2dv2gig041"
+},
+"white": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Wind_white.tres",
+"use_external/path": "uid://cqkqn2ad4q87h"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
