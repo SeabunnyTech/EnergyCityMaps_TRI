@@ -12,4 +12,4 @@ rim_tint = 0.7
 anisotropy_enabled = true
 anisotropy = 0.85
 ao_light_affect = 1.0
-uv1_scale = Vector3(5, 5, 5)
+uv1_scale = Vector3(3, 3, 3)

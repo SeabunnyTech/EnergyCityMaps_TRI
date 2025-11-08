@@ -54,6 +54,16 @@ _subresources={
 "use_external/fallback_path": "res://Material/Grass.tres",
 "use_external/path": "uid://ben0w34nuab1u"
 },
+"Material.016": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Road_Dark.tres",
+"use_external/path": "uid://kqkfks8ldkgv"
+},
+"Road.001": {
+"use_external/enabled": false,
+"use_external/fallback_path": "res://Material/ES_Grey.tres",
+"use_external/path": "uid://ua1hvxohsd6s"
+},
 "Sunpanel_B": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Material/Sunpanel_Blue.tres",
@@ -63,6 +73,26 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Material/Sunpanel_Wire.tres",
 "use_external/path": "uid://fl7wase7f6ys"
+},
+"Tree_B": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/tree_bark.tres",
+"use_external/path": "uid://byw526raux0ik"
+},
+"Tree_B.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/tree_bark.tres",
+"use_external/path": "uid://byw526raux0ik"
+},
+"Tree_Dark Green": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/tree_dark.tres",
+"use_external/path": "uid://c8dlfrjr31c4l"
+},
+"Tree_G": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/tree_light.tres",
+"use_external/path": "uid://2uhfrg70ub84"
 }
 }
 }
