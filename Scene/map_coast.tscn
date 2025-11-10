@@ -1,12 +1,12 @@
 [gd_scene load_steps=23 format=3 uid="uid://crkjfjha1j6uc"]
 
-[ext_resource type="PackedScene" uid="uid://dpsitldkpfe0r" path="res://Model/map_01.tscn" id="2_3amdw"]
-[ext_resource type="Texture2D" uid="uid://cr8046q1mnray" path="res://Texture/FX_CloudAlpha02.png" id="5_1xcnr"]
-[ext_resource type="Material" uid="uid://dax3rw7o6gv0l" path="res://Material/Sea_Displace.tres" id="7_7y4ci"]
-[ext_resource type="Shader" uid="uid://dfjn6irk3ymom" path="res://Shader/Cloud.tres" id="7_c2iwn"]
-[ext_resource type="ArrayMesh" uid="uid://n8dybsnjy7t6" path="res://Model/cloud.obj" id="8_3pt4j"]
-[ext_resource type="Script" uid="uid://bupb0co8ypgyd" path="res://Scene/animation_player.gd" id="8_7y4ci"]
-[ext_resource type="ArrayMesh" uid="uid://drw8q1sv2lqmm" path="res://Model/cloud2.obj" id="9_7y4ci"]
+[ext_resource type="PackedScene" uid="uid://dpsitldkpfe0r" path="res://Model/map_01.tscn" id="1_mwwvg"]
+[ext_resource type="Texture2D" uid="uid://cr8046q1mnray" path="res://Texture/FX_CloudAlpha02.png" id="2_xfafr"]
+[ext_resource type="Material" uid="uid://dax3rw7o6gv0l" path="res://Material/Sea_Displace.tres" id="3_lekes"]
+[ext_resource type="Shader" uid="uid://dfjn6irk3ymom" path="res://Shader/Cloud.tres" id="4_uuaio"]
+[ext_resource type="ArrayMesh" uid="uid://n8dybsnjy7t6" path="res://Model/cloud.obj" id="5_1fete"]
+[ext_resource type="ArrayMesh" uid="uid://drw8q1sv2lqmm" path="res://Model/cloud2.obj" id="6_k80fi"]
+[ext_resource type="Script" uid="uid://bupb0co8ypgyd" path="res://Scene/animation_player.gd" id="7_wgta1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ow1sv"]
 
@@ -30,7 +30,7 @@ adjustment_brightness = 1.01
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3amdw"]
 transparency = 1
 shading_mode = 0
-albedo_texture = ExtResource("5_1xcnr")
+albedo_texture = ExtResource("2_xfafr")
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_1xcnr"]
@@ -43,7 +43,7 @@ subdivide_depth = 100
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mxd2g"]
 render_priority = 0
-shader = ExtResource("7_c2iwn")
+shader = ExtResource("4_uuaio")
 shader_parameter/FloatParameter2 = 0.0
 shader_parameter/ColorParameter = Color(0.70980394, 0.8784314, 0.8784314, 1)
 shader_parameter/FloatParameter = 0.8
@@ -99,7 +99,7 @@ _data = {
 &"RESET": SubResource("Animation_0sxm5")
 }
 
-[node name="Map_Coast" type="Node3D"]
+[node name="map_coast" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9531907, 0.22257353, -0.20466685, 0, 0.67687595, 0.7360971, 0.3023698, -0.7016409, 0.64519185, 0, 0, 0)
@@ -115,7 +115,7 @@ size = 3.396
 near = 0.001
 far = 4031.45
 
-[node name="Map01" parent="." instance=ExtResource("2_3amdw")]
+[node name="Map01" parent="." instance=ExtResource("1_mwwvg")]
 
 [node name="CPU_Cloud" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00905, 1.30596, 0)
@@ -133,7 +133,7 @@ scale_amount_max = 2.0
 
 [node name="Sea" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.001, 0.112, -0.002)
-material_override = ExtResource("7_7y4ci")
+material_override = ExtResource("3_lekes")
 mesh = SubResource("PlaneMesh_3pt4j")
 
 [node name="GPU_Cloud" type="GPUParticles3D" parent="."]
@@ -147,11 +147,11 @@ speed_scale = 0.1
 randomness = 0.09
 process_material = SubResource("ParticleProcessMaterial_1xcnr")
 draw_passes = 2
-draw_pass_1 = ExtResource("8_3pt4j")
-draw_pass_2 = ExtResource("9_7y4ci")
+draw_pass_1 = ExtResource("5_1fete")
+draw_pass_2 = ExtResource("6_k80fi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_hspdg")
 }
-script = ExtResource("8_7y4ci")
+script = ExtResource("7_wgta1")

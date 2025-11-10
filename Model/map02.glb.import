@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c50pp6oo2q5dy"
+uid="uid://bds0q7m3o1q5a"
 path="res://.godot/imported/map02.glb-7da12aa2e7f69a363a16931f9f865029.scn"
 
 [deps]
@@ -39,10 +39,50 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
+"ES_Grey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/ES_Blue.tres",
+"use_external/path": "uid://cnqfq5r5p357f"
+},
+"ES_LGrey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/ES_BlueL.tres",
+"use_external/path": "uid://rhhpmr3ah8e8"
+},
+"Grass.003": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Grass.tres",
+"use_external/path": "uid://ben0w34nuab1u"
+},
+"Material.007": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Building_LYellow.tres",
+"use_external/path": "uid://cr57mhv3iww0g"
+},
+"Material.018": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/House_RoofRed.tres",
+"use_external/path": "uid://dhgx8sjtdq0fl"
+},
+"Material.023": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Electricity_Grey.tres",
+"use_external/path": "uid://bk51gibhhlems"
+},
 "Sea": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Material/Sea_Displace2.tres",
 "use_external/path": "uid://14luysroug6f"
+},
+"Sunpanel_B": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Sunpanel_Blue.tres",
+"use_external/path": "uid://c64hh08fh2fia"
+},
+"Sunpanel_W": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Sunpanel_Wire.tres",
+"use_external/path": "uid://fl7wase7f6ys"
 }
 }
 }

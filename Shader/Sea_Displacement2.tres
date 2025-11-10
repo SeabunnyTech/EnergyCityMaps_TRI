@@ -37,8 +37,8 @@ colors = PackedColorArray(4.3317675e-07, 0.18252319, 0.18342948, 1, 0.2927603, 0
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yox7o"]
 gradient = SubResource("Gradient_7suun")
-fill_from = Vector2(0, 0.64102566)
-fill_to = Vector2(1, 0.2863248)
+fill_from = Vector2(0.41452992, 0.9423077)
+fill_to = Vector2(0, 0.9529914)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_8kcg6"]
 texture = SubResource("GradientTexture2D_yox7o")
