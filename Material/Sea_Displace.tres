@@ -6,6 +6,6 @@
 render_priority = 0
 shader = ExtResource("1_li0vy")
 shader_parameter/Wave_Speed = 0.1
-shader_parameter/UV_Scale = 2.125
+shader_parameter/UV_Scale = 3.02
 shader_parameter/Highlight = 0.4090000194275
 shader_parameter/Main = 0.1330000063175

@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://b858qocihkfvr"]
+[gd_scene load_steps=22 format=3 uid="uid://b858qocihkfvr"]
 
 [ext_resource type="PackedScene" uid="uid://c4ean6jvcjcqv" path="res://Scene/map_02.tscn" id="1_xjj8w"]
 [ext_resource type="Shader" uid="uid://dfjn6irk3ymom" path="res://Shader/Cloud.tres" id="2_mj3sc"]
 [ext_resource type="ArrayMesh" uid="uid://n8dybsnjy7t6" path="res://Model/cloud.obj" id="3_g02ns"]
 [ext_resource type="ArrayMesh" uid="uid://drw8q1sv2lqmm" path="res://Model/cloud2.obj" id="4_0tvqd"]
+[ext_resource type="PackedScene" uid="uid://dl2bhijdqwrxq" path="res://Scene/map_02_update.tscn" id="5_g02ns"]
 
 [sub_resource type="Gradient" id="Gradient_ghgpa"]
 offsets = PackedFloat32Array(0.35334477, 1)
@@ -106,12 +107,16 @@ anim_speed_max = 0.2
 
 [node name="MapWest" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.4984877, -0.5034095, 0.7057541, 0, 0.8141155, 0.58070296, -0.86689675, -0.2894733, 0.4058266, 0, 0, 0)
+shadow_enabled = true
+
 [node name="Splash" type="GPUParticles3D" parent="."]
 transform = Transform3D(0.15115732, 0.98850983, 0, -0.98850983, 0.15115732, 0, 0, 0, 1, -0.85575664, 0.3872127, -3.6243415)
 material_override = SubResource("StandardMaterial3D_sc0cm")
 cast_shadow = 0
 custom_aabb = AABB(-4, -4, -4, 8, 8, 8)
-lod_bias = 0.001
+lod_bias = 0.5
 amount = 500
 collision_base_size = 0.0
 visibility_aabb = AABB(-4, -4, -20, 8, 8, 8)
@@ -124,12 +129,14 @@ fov = 36.2
 near = 0.001
 
 [node name="map02" parent="." instance=ExtResource("1_xjj8w")]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4vawr")
 
 [node name="GPU_Cloud" type="GPUParticles3D" parent="."]
 transform = Transform3D(-4.3711402e-08, 0, 1.0000004, 0, 1, 0, -1.0000004, 0, -4.3711402e-08, 3.95639, 2.14793, -9.344229)
+visible = false
 material_override = SubResource("ShaderMaterial_xanjp")
 gi_mode = 2
 amount = 20
@@ -140,3 +147,5 @@ process_material = SubResource("ParticleProcessMaterial_ce126")
 draw_passes = 2
 draw_pass_1 = ExtResource("3_g02ns")
 draw_pass_2 = ExtResource("4_0tvqd")
+
+[node name="Map02_update" parent="." instance=ExtResource("5_g02ns")]

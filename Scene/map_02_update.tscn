@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl2bhijdqwrxq"]
+
+[ext_resource type="PackedScene" uid="uid://bgvh8rxhhq8l4" path="res://Model/Map02_update.glb" id="1_bo78j"]
+[ext_resource type="PackedScene" uid="uid://b1sabu3ktbhuc" path="res://Model/Map02_waterfall.glb" id="2_ylcsa"]
+
+[node name="Map02_update" instance=ExtResource("1_bo78j")]
+
+[node name="Plane_002" parent="." index="9"]
+visible = false
+
+[node name="Pole_002" parent="." index="36"]
+visible = false
+
+[node name="House_02_007" parent="." index="41"]
+visible = false
+
+[node name="Retopo_Tree_051" parent="." index="58"]
+visible = false
+
+[node name="Map02_waterfall" parent="." index="112" instance=ExtResource("2_ylcsa")]
