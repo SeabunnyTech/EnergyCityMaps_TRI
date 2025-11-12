@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dnx458mv0uhms" path="res://wind_turbine.tscn" id="6_0262g"]
 [ext_resource type="PackedScene" uid="uid://sbbfwa5bftvq" path="res://Model/windbase.glb" id="6_h1ee1"]
 [ext_resource type="PackedScene" uid="uid://m21wmduhwp4w" path="res://Model/Grass.glb" id="8_1stge"]
-[ext_resource type="PackedScene" uid="uid://dk403p2tkhc6j" path="res://Model/ES_update.glb" id="9_cggwm"]
-[ext_resource type="PackedScene" uid="uid://ju32pq53eb1d" path="res://Model/Map01_update.glb" id="13_f5a8m"]
+[ext_resource type="PackedScene" uid="uid://cruyfx85e7niv" path="res://Model/ES_update.glb" id="9_cggwm"]
+[ext_resource type="PackedScene" uid="uid://cqueli4d77yl4" path="res://Scene/map_01_update.tscn" id="13_f5a8m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4yu1"]
 resource_name = "Glass"

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ju32pq53eb1d"
+uid="uid://bwaahsrk1jfyb"
 path="res://.godot/imported/Map01_update.glb-ec7ee47c73cc65ccafd9dc4e60c4adfd.scn"
 
 [deps]
@@ -39,6 +39,51 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
+"Block_Dgrey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Road_Dark.tres",
+"use_external/path": "uid://kqkfks8ldkgv"
+},
+"Building_DBrown": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Building_DBrown.tres",
+"use_external/path": "uid://cie05tw6mhpqm"
+},
+"Building_DOrange": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Building_DOrange.tres",
+"use_external/path": "uid://cewodimu4dx4u"
+},
+"Building_Grey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Building_Grey.tres",
+"use_external/path": "uid://dawqeceoaktfv"
+},
+"Building_LBrown": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Building_LBrown.tres",
+"use_external/path": "uid://p4yffpyr6125"
+},
+"Building_LGrey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Building_LGrey.tres",
+"use_external/path": "uid://bidqsvdeveiff"
+},
+"Building_Orange": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Building_Orange.tres",
+"use_external/path": "uid://bu8qmigr0dnv2"
+},
+"Building_White": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Building_White.tres",
+"use_external/path": "uid://76hle0mm0rxs"
+},
+"ESP_Dark": {
+"use_external/enabled": false,
+"use_external/fallback_path": "",
+"use_external/path": "uid://cnqfq5r5p357f"
+},
 "ES_Grey": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Material/ES_Blue.tres",
@@ -49,20 +94,55 @@ _subresources={
 "use_external/fallback_path": "res://Material/ES_BlueL.tres",
 "use_external/path": "uid://rhhpmr3ah8e8"
 },
+"Glass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Window.tres",
+"use_external/path": "uid://2kt44w0kjkkp"
+},
 "Grass.003": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Material/Grass.tres",
 "use_external/path": "uid://ben0w34nuab1u"
 },
-"Material.016": {
+"House_DRoof": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Road_Dark.tres",
-"use_external/path": "uid://kqkfks8ldkgv"
+"use_external/fallback_path": "res://Material/House_RoofRed.tres",
+"use_external/path": "uid://dhgx8sjtdq0fl"
 },
-"Road.001": {
-"use_external/enabled": false,
-"use_external/fallback_path": "res://Material/ES_Grey.tres",
-"use_external/path": "uid://ua1hvxohsd6s"
+"House_Dyellow": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/House_DYellow.tres",
+"use_external/path": "uid://dian4qjauwbyq"
+},
+"House_LYellow": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/House_Yellow.tres",
+"use_external/path": "uid://biwbp6plxne65"
+},
+"House_Roof": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/House_RoofRed.tres",
+"use_external/path": "uid://dhgx8sjtdq0fl"
+},
+"House_RoofBlack": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/House_RoofBlack.tres",
+"use_external/path": "uid://b0bevfijse5rf"
+},
+"Road_LGrey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Road_Grey.tres",
+"use_external/path": "uid://88lcfcrnfisw"
+},
+"Sand": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Sand.tres",
+"use_external/path": "uid://ceruimrpd4o8"
+},
+"Sea": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Sea_Displace.tres",
+"use_external/path": "uid://dax3rw7o6gv0l"
 },
 "Sunpanel_B": {
 "use_external/enabled": true,
@@ -74,17 +154,12 @@ _subresources={
 "use_external/fallback_path": "res://Material/Sunpanel_Wire.tres",
 "use_external/path": "uid://fl7wase7f6ys"
 },
-"Tree_B": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://Material/tree_bark.tres",
-"use_external/path": "uid://byw526raux0ik"
-},
 "Tree_B.001": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Material/tree_bark.tres",
 "use_external/path": "uid://byw526raux0ik"
 },
-"Tree_Dark Green": {
+"Tree_DGreen": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Material/tree_dark.tres",
 "use_external/path": "uid://c8dlfrjr31c4l"
@@ -93,6 +168,16 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Material/tree_light.tres",
 "use_external/path": "uid://2uhfrg70ub84"
+},
+"Window": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Window.tres",
+"use_external/path": "uid://2kt44w0kjkkp"
+},
+"Window.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Window.tres",
+"use_external/path": "uid://2kt44w0kjkkp"
 }
 }
 }

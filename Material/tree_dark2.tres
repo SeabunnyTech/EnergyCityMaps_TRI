@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cqslgjkvntrak"]
-
-[ext_resource type="Shader" uid="uid://duoo76elfv16l" path="res://Shader/tree.tres" id="1_b80ec"]
-
-[resource]
-render_priority = 0
-shader = ExtResource("1_b80ec")
-shader_parameter/ColorParameter = Color(0.19701162, 0.30390918, 0.12547415, 1)
