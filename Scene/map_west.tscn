@@ -1,10 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://b858qocihkfvr"]
+[gd_scene load_steps=27 format=3 uid="uid://b858qocihkfvr"]
 
-[ext_resource type="PackedScene" uid="uid://c4ean6jvcjcqv" path="res://Scene/map_02.tscn" id="1_xjj8w"]
 [ext_resource type="Shader" uid="uid://dfjn6irk3ymom" path="res://Shader/Cloud.tres" id="2_mj3sc"]
 [ext_resource type="ArrayMesh" uid="uid://n8dybsnjy7t6" path="res://Model/cloud.obj" id="3_g02ns"]
 [ext_resource type="ArrayMesh" uid="uid://drw8q1sv2lqmm" path="res://Model/cloud2.obj" id="4_0tvqd"]
-[ext_resource type="PackedScene" uid="uid://dl2bhijdqwrxq" path="res://Scene/map_02_update.tscn" id="5_g02ns"]
+[ext_resource type="PackedScene" uid="uid://0h4tpanx0ebv" path="res://Model/Map02_Dam.glb" id="4_xanjp"]
+[ext_resource type="PackedScene" uid="uid://bd2rpya210vn8" path="res://Model/Map02_farm.glb" id="5_rh5i0"]
+[ext_resource type="PackedScene" uid="uid://clu40m1745anv" path="res://Model/Map02_land.glb" id="6_s128g"]
+[ext_resource type="PackedScene" uid="uid://b1sabu3ktbhuc" path="res://Model/Map02_waterfall.glb" id="7_ce126"]
+[ext_resource type="PackedScene" uid="uid://46bdp3n76jcs" path="res://Model/Map02_water.glb" id="8_2vhxd"]
+[ext_resource type="PackedScene" uid="uid://scvqmadt7jfs" path="res://Model/Map02_building.glb" id="9_65t2i"]
+[ext_resource type="PackedScene" uid="uid://b8j1oifrn0a25" path="res://Model/Grass_particle.glb" id="10_rh5i0"]
 
 [sub_resource type="Gradient" id="Gradient_ghgpa"]
 offsets = PackedFloat32Array(0.35334477, 1)
@@ -52,13 +57,18 @@ background_energy_multiplier = 1.2
 sky = SubResource("Sky_1bvp3")
 sky_rotation = Vector3(1.12748, 1.46084, 0)
 ambient_light_source = 2
-ambient_light_color = Color(0.954078, 0.8639887, 0.6434658, 1)
+ambient_light_color = Color(0.84761727, 0.88859814, 0.80982685, 1)
+ambient_light_energy = 1.9
 tonemap_mode = 4
 tonemap_white = 2.92
-glow_strength = 1.15
+glow_enabled = true
+glow_intensity = 0.77
+glow_strength = 0.54
+glow_bloom = 0.1
 fog_light_color = Color(0.60994583, 0.5322831, 0.49033672, 1)
 adjustment_enabled = true
-adjustment_brightness = 1.01
+adjustment_contrast = 1.03
+adjustment_saturation = 1.18
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xanjp"]
 render_priority = 0
@@ -108,7 +118,8 @@ anim_speed_max = 0.2
 [node name="MapWest" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.4984877, -0.5034095, 0.7057541, 0, 0.8141155, 0.58070296, -0.86689675, -0.2894733, 0.4058266, 0, 0, 0)
+transform = Transform3D(0.70710677, -0.62141746, 0.3374022, 0, 0.47715873, 0.87881714, -0.70710677, -0.62141746, 0.3374022, 0, 0, 0)
+light_energy = 0.65
 shadow_enabled = true
 
 [node name="Splash" type="GPUParticles3D" parent="."]
@@ -116,7 +127,6 @@ transform = Transform3D(0.15115732, 0.98850983, 0, -0.98850983, 0.15115732, 0, 0
 material_override = SubResource("StandardMaterial3D_sc0cm")
 cast_shadow = 0
 custom_aabb = AABB(-4, -4, -4, 8, 8, 8)
-lod_bias = 0.5
 amount = 500
 collision_base_size = 0.0
 visibility_aabb = AABB(-4, -4, -20, 8, 8, 8)
@@ -124,18 +134,15 @@ process_material = SubResource("ParticleProcessMaterial_g02ns")
 draw_pass_1 = SubResource("SphereMesh_0tvqd")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.5150381, -0.43375564, 0.73931855, 0, 0.8625137, 0.5060338, -0.85716736, 0.26062667, -0.44422737, 7.3139663, 4.0608926, -6.340312)
-fov = 36.2
+transform = Transform3D(-0.6101451, -0.40092534, 0.6833607, 0, 0.86251366, 0.5060338, -0.7922897, 0.30875403, -0.52625847, 7.177755, 3.3534765, -6.4809837)
+fov = 52.9
 near = 0.001
-
-[node name="map02" parent="." instance=ExtResource("1_xjj8w")]
-visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4vawr")
 
 [node name="GPU_Cloud" type="GPUParticles3D" parent="."]
-transform = Transform3D(-4.3711402e-08, 0, 1.0000004, 0, 1, 0, -1.0000004, 0, -4.3711402e-08, 3.95639, 2.14793, -9.344229)
+transform = Transform3D(-4.3711402e-08, 0, 1.0000004, 0, 1, 0, -1.0000004, 0, -4.3711402e-08, 3.95639, 2.4385846, -9.344229)
 visible = false
 material_override = SubResource("ShaderMaterial_xanjp")
 gi_mode = 2
@@ -148,4 +155,24 @@ draw_passes = 2
 draw_pass_1 = ExtResource("3_g02ns")
 draw_pass_2 = ExtResource("4_0tvqd")
 
-[node name="Map02_update" parent="." instance=ExtResource("5_g02ns")]
+[node name="Map02_Dam" parent="." instance=ExtResource("4_xanjp")]
+
+[node name="Map02_farm" parent="." instance=ExtResource("5_rh5i0")]
+
+[node name="Map02_land" parent="." instance=ExtResource("6_s128g")]
+
+[node name="Map02_waterfall" parent="." instance=ExtResource("7_ce126")]
+
+[node name="Map02_building" parent="." instance=ExtResource("9_65t2i")]
+
+[node name="Map02_water" parent="." instance=ExtResource("8_2vhxd")]
+
+[node name="Grass_particle" parent="." instance=ExtResource("10_rh5i0")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.2517614, -0.72135556, 0.645184, 0.11528924, 0.63955563, 0.76005065, -0.96089774, 0.2657342, -0.07785092, 11.617915, 7.8965263, -3.8566642)
+light_energy = 16.0
+light_indirect_energy = 3.102
+light_volumetric_fog_energy = 0.0
+spot_range = 102.88745
+spot_angle = 25.987125

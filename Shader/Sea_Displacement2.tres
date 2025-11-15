@@ -37,8 +37,8 @@ colors = PackedColorArray(4.3317675e-07, 0.18252319, 0.18342948, 1, 0.2927603, 0
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yox7o"]
 gradient = SubResource("Gradient_7suun")
-fill_from = Vector2(0.92094016, 0.9230769)
-fill_to = Vector2(0.33547008, 0.1388889)
+fill_from = Vector2(0.20512821, 0.6752137)
+fill_to = Vector2(0.79273504, 0.12606838)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_8kcg6"]
 texture = SubResource("GradientTexture2D_yox7o")
@@ -74,8 +74,8 @@ domain_warp_fractal_lacunarity = 6.41
 domain_warp_fractal_gain = 1.035
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o50ug"]
-width = 256
-height = 128
+width = 128
+height = 256
 noise = SubResource("FastNoiseLite_awga1")
 seamless = true
 seamless_blend_skirt = 1.0
@@ -89,8 +89,8 @@ fractal_gain = 0.0
 cellular_distance_function = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aky2j"]
-width = 256
-height = 30
+width = 30
+height = 256
 noise = SubResource("FastNoiseLite_xoqpv")
 seamless = true
 seamless_blend_skirt = 1.0
