@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyi51ph7vvfga"]
+
+[ext_resource type="PackedScene" uid="uid://dip2w0tmxl4xt" path="res://Model/Map03_waterfall.glb" id="1_ckwso"]
+
+[node name="Map03_waterfall" instance=ExtResource("1_ckwso")]

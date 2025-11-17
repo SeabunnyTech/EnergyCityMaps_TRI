@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_g1qj4")
-shader_parameter/Wave_Speed = 5.0
-shader_parameter/UV_Scale = 2.31
-shader_parameter/Highlight = 0.4610000218975
-shader_parameter/Main = 0.1070000050825
+shader_parameter/Wave_Speed = 0.0
+shader_parameter/UV_Scale = -1.87
+shader_parameter/Highlight = 0.4310000204725
+shader_parameter/Main = 0.10800000512999999

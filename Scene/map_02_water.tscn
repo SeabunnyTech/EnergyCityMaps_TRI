@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cghikofxlcyy3"]
+
+[ext_resource type="PackedScene" uid="uid://46bdp3n76jcs" path="res://Model/Map02_water.glb" id="1_vbh0p"]
+
+[node name="Map02_water" instance=ExtResource("1_vbh0p")]

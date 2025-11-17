@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpukwa4nkumfs"]
+
+[ext_resource type="PackedScene" uid="uid://cdhy1xc1jn4cw" path="res://Model/Map03_Land.glb" id="2_qwhuu"]
+[ext_resource type="PackedScene" uid="uid://c5tn3bpwg7les" path="res://Model/Map03_water.glb" id="3_kx7bm"]
+[ext_resource type="PackedScene" uid="uid://cpfqaodmu1gpe" path="res://Scene/map_03_building.tscn" id="4_4a0bs"]
+[ext_resource type="PackedScene" uid="uid://dip2w0tmxl4xt" path="res://Model/Map03_waterfall.glb" id="4_5sh3t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4a0bs"]
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("ProceduralSkyMaterial_4a0bs")
+
+[sub_resource type="Environment" id="Environment_qwhuu"]
+background_mode = 2
+background_energy_multiplier = 1.2
+sky = SubResource("Sky_1bvp3")
+sky_rotation = Vector3(1.12748, 1.46084, 0)
+ambient_light_source = 2
+ambient_light_color = Color(0.88834107, 0.8746786, 0.78055435, 1)
+ambient_light_energy = 1.24
+tonemap_mode = 4
+tonemap_white = 2.92
+glow_strength = 1.15
+fog_light_color = Color(0.60994583, 0.5322831, 0.49033672, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.01
+adjustment_contrast = 1.21
+
+[node name="MapEast" type="Node3D"]
+
+[node name="Map03_Land" parent="." instance=ExtResource("2_qwhuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2117233, 0, 70.26916)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.49242365, -0.5358445, 0.68584967, 0, 0.7880108, 0.61566156, -0.87035567, 0.3031663, -0.38803515, 4.077533, 4.077599, -1.6213452)
+fov = 42.1
+
+[node name="Map03_water" parent="." instance=ExtResource("3_kx7bm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.212, 0, 70.269)
+
+[node name="Map03_waterfall" parent="." instance=ExtResource("4_5sh3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.212, 0, 70.269)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9531907, 0.22257353, -0.20466685, 0, 0.67687595, 0.7360971, 0.3023698, -0.7016409, 0.64519185, 0, 0, 0)
+light_energy = 1.831
+light_indirect_energy = 1.242
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qwhuu")
+
+[node name="Map03_building" parent="." instance=ExtResource("4_4a0bs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.212, 0, 70.269)

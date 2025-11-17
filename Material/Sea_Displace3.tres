@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ccr3i16twf48g"]
+
+[ext_resource type="Shader" uid="uid://bgsvuc1n5gm66" path="res://Shader/Sea_Displacement3.tres" id="1_du621"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_du621")
+shader_parameter/Wave_Speed = 0.1
+shader_parameter/UV_Scale = 1.17
+shader_parameter/Highlight = 0.466000022135
+shader_parameter/Main = 0.1170000055575

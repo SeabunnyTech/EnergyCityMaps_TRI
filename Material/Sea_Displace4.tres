@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://7vsn8sukh2n4"]
+
+[ext_resource type="Shader" uid="uid://ck0ram80ksrml" path="res://Shader/Sea_Displacement4.tres" id="1_t5qyk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_t5qyk")
+shader_parameter/Wave_Speed = 0.0
+shader_parameter/UV_Scale = -0.17
+shader_parameter/Highlight = 0.3550000168625
+shader_parameter/Main = 0.16800000798
