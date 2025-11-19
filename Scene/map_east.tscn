@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpukwa4nkumfs"]
+[gd_scene load_steps=9 format=3 uid="uid://bpukwa4nkumfs"]
 
-[ext_resource type="PackedScene" uid="uid://cdhy1xc1jn4cw" path="res://Model/Map03_Land.glb" id="2_qwhuu"]
 [ext_resource type="PackedScene" uid="uid://c5tn3bpwg7les" path="res://Model/Map03_water.glb" id="3_kx7bm"]
+[ext_resource type="PackedScene" uid="uid://iah0feaiylol" path="res://Model/Map03_waterwheel.glb" id="3_qwhuu"]
 [ext_resource type="PackedScene" uid="uid://cpfqaodmu1gpe" path="res://Scene/map_03_building.tscn" id="4_4a0bs"]
-[ext_resource type="PackedScene" uid="uid://dip2w0tmxl4xt" path="res://Model/Map03_waterfall.glb" id="4_5sh3t"]
+[ext_resource type="PackedScene" uid="uid://b7ncd3uqkf81j" path="res://Model/Map03_waterfall.glb" id="4_5sh3t"]
+[ext_resource type="PackedScene" uid="uid://b8au37qmylc3p" path="res://Scene/Map03_Land.glb" id="4_kx7bm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4a0bs"]
 
@@ -28,17 +29,11 @@ adjustment_contrast = 1.21
 
 [node name="MapEast" type="Node3D"]
 
-[node name="Map03_Land" parent="." instance=ExtResource("2_qwhuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2117233, 0, 70.26916)
-
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.49242365, -0.5358445, 0.68584967, 0, 0.7880108, 0.61566156, -0.87035567, 0.3031663, -0.38803515, 4.077533, 4.077599, -1.6213452)
+transform = Transform3D(-0.49242365, -0.5358445, 0.68584967, 0, 0.7880108, 0.61566156, -0.87035567, 0.3031663, -0.38803515, 4.858, 4.143, -1.861)
 fov = 42.1
 
 [node name="Map03_water" parent="." instance=ExtResource("3_kx7bm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.212, 0, 70.269)
-
-[node name="Map03_waterfall" parent="." instance=ExtResource("4_5sh3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.212, 0, 70.269)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -51,4 +46,13 @@ shadow_enabled = true
 environment = SubResource("Environment_qwhuu")
 
 [node name="Map03_building" parent="." instance=ExtResource("4_4a0bs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.212, 0, 70.269)
+
+[node name="Map03_waterwheel" parent="." instance=ExtResource("3_qwhuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.212, 0, 70.269)
+
+[node name="Map03_Land" parent="." instance=ExtResource("4_kx7bm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.212, 0, 70.269)
+
+[node name="Map03_waterfall" parent="." instance=ExtResource("4_5sh3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.212, 0, 70.269)
