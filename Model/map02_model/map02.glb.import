@@ -1,0 +1,90 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bds0q7m3o1q5a"
+path="res://.godot/imported/map02.glb-96d2e897c1e54b976b194158c4bdbff5.scn"
+
+[deps]
+
+source_file="res://Model/map02_model/map02.glb"
+dest_files=["res://.godot/imported/map02.glb-96d2e897c1e54b976b194158c4bdbff5.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"ES_Grey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/ES_Blue.tres",
+"use_external/path": "uid://cnqfq5r5p357f"
+},
+"ES_LGrey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/ES_BlueL.tres",
+"use_external/path": "uid://rhhpmr3ah8e8"
+},
+"Grass.003": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Grass.tres",
+"use_external/path": "uid://ben0w34nuab1u"
+},
+"Material.007": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Building_LYellow.tres",
+"use_external/path": "uid://cr57mhv3iww0g"
+},
+"Material.018": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/House_RoofRed.tres",
+"use_external/path": "uid://dhgx8sjtdq0fl"
+},
+"Material.023": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Electricity_Grey.tres",
+"use_external/path": "uid://bk51gibhhlems"
+},
+"Sea": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Sea_Displace2.tres",
+"use_external/path": "uid://14luysroug6f"
+},
+"Sunpanel_B": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Sunpanel_Blue.tres",
+"use_external/path": "uid://c64hh08fh2fia"
+},
+"Sunpanel_W": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Sunpanel_Wire.tres",
+"use_external/path": "uid://fl7wase7f6ys"
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

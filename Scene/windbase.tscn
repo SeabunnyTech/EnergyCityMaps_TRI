@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj4iqv7qrxjec"]
-
-[ext_resource type="PackedScene" uid="uid://sbbfwa5bftvq" path="res://Model/windbase.glb" id="1_p106u"]
-
-[node name="windbase" instance=ExtResource("1_p106u")]

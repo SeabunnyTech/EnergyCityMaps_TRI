@@ -35,7 +35,6 @@ Shortcuts/density_decrement=Object(Shortcut,"resource_local_to_scene":false,"res
 [application]
 
 config/name="Taiwan Research Institute"
-run/main_scene="uid://crkjfjha1j6uc"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 

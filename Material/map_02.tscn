@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://jrypa1h1t610"]
 
-[ext_resource type="PackedScene" uid="uid://bds0q7m3o1q5a" path="res://Model/map02.glb" id="1_w6m1h"]
-[ext_resource type="PackedScene" uid="uid://cl0wycl3rdex1" path="res://Model/Map02_road.glb" id="2_ajhut"]
+[ext_resource type="PackedScene" uid="uid://bds0q7m3o1q5a" path="res://Model/map02_model/map02.glb" id="1_w6m1h"]
+[ext_resource type="PackedScene" uid="uid://cl0wycl3rdex1" path="res://Model/map02_model/Map02_road.glb" id="2_ajhut"]
 
 [node name="map02" instance=ExtResource("1_w6m1h")]
 
