@@ -2,28 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cr8046q1mnray" path="res://Texture/FX_CloudAlpha02.png" id="1_y38x3"]
 [ext_resource type="Material" uid="uid://dax3rw7o6gv0l" path="res://Material/Sea_Displace.tres" id="2_63xpt"]
-[ext_resource type="PackedScene" uid="uid://do4yeyfndifbi" path="res://Model/map01_model/map01_landscape.glb" id="6_i4hs8"]
-[ext_resource type="PackedScene" uid="uid://fl4c2eligdxy" path="res://Model/map01_model/map01_buiding.glb" id="7_dv2xw"]
+[ext_resource type="PackedScene" uid="uid://d3n651p5etq6a" path="res://Model/map01_model/map01_landscape_update.glb" id="5_ll3dc"]
+[ext_resource type="PackedScene" uid="uid://bl4ep72je63oj" path="res://Model/map01_model/map01_building_update.glb" id="5_ql8py"]
 [ext_resource type="PackedScene" uid="uid://sbbfwa5bftvq" path="res://Model/map01_model/map01_windbase.glb" id="8_6ehum"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5k8um"]
-
-[sub_resource type="Sky" id="Sky_gphye"]
-sky_material = SubResource("ProceduralSkyMaterial_5k8um")
-
-[sub_resource type="Environment" id="Environment_gxk5j"]
-background_mode = 2
-background_energy_multiplier = 1.2
-sky = SubResource("Sky_gphye")
-sky_rotation = Vector3(1.12748, 1.46084, 0)
-ambient_light_source = 2
-ambient_light_color = Color(0.954078, 0.8639887, 0.6434658, 1)
-tonemap_mode = 4
-tonemap_white = 2.92
-glow_strength = 1.15
-fog_light_color = Color(0.60994583, 0.5322831, 0.49033672, 1)
-adjustment_enabled = true
-adjustment_brightness = 1.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ni5pt"]
 transparency = 1
@@ -39,14 +20,32 @@ size = Vector2(20, 20)
 subdivide_width = 100
 subdivide_depth = 100
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ql8py"]
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("ProceduralSkyMaterial_ql8py")
+
+[sub_resource type="Environment" id="Environment_6i51v"]
+background_mode = 2
+background_energy_multiplier = 1.2
+sky = SubResource("Sky_1bvp3")
+sky_rotation = Vector3(1.12748, 1.46084, 0)
+ambient_light_source = 2
+ambient_light_color = Color(0.88834107, 0.8746786, 0.78055435, 1)
+ambient_light_energy = 1.24
+tonemap_mode = 4
+tonemap_white = 2.92
+glow_strength = 1.15
+fog_light_color = Color(0.60994583, 0.5322831, 0.49033672, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.01
+adjustment_contrast = 1.21
+
 [node name="MapCoastModel_tscn" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9531907, 0.22257353, -0.20466685, 0, 0.67687595, 0.7360971, 0.3023698, -0.7016409, 0.64519185, 0, 0, 0)
 shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gxk5j")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.376224, -0.570428, 0.730115, 0, 0.788011, 0.615662, -0.926529, -0.231627, 0.296469, 4.33487, 3.66409, 3.2657)
@@ -74,12 +73,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.0
 material_override = ExtResource("2_63xpt")
 mesh = SubResource("PlaneMesh_0k02q")
 
-[node name="map01_landscape" parent="." instance=ExtResource("6_i4hs8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4874599)
-
-[node name="map01_buiding" parent="." instance=ExtResource("7_dv2xw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4874599)
-
 [node name="windbase" parent="." instance=ExtResource("8_6ehum")]
 transform = Transform3D(0.7277727, 0, -0.6858184, 0, 1, 0, 0.6858184, 0, 0.7277727, -1.613, 0.486, 3.151)
 
@@ -88,3 +81,12 @@ transform = Transform3D(0.7277727, 0, -0.6858184, 0, 1, 0, 0.6858184, 0, 0.72777
 
 [node name="windbase3" parent="." instance=ExtResource("8_6ehum")]
 transform = Transform3D(0.7277727, 0, -0.6858184, 0, 1, 0, 0.6858184, 0, 0.7277727, 0.921, 0.486, 3.424)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6i51v")
+
+[node name="map01_landscape_update" parent="." instance=ExtResource("5_ll3dc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -37.372)
+
+[node name="map01_building_update" parent="." instance=ExtResource("5_ql8py")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -37.372)

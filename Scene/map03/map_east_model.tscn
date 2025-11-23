@@ -12,13 +12,13 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4a0bs"]
 
-[sub_resource type="Sky" id="Sky_1bvp3"]
+[sub_resource type="Sky" id="Sky_4im42"]
 sky_material = SubResource("ProceduralSkyMaterial_4a0bs")
 
 [sub_resource type="Environment" id="Environment_qwhuu"]
 background_mode = 2
 background_energy_multiplier = 1.2
-sky = SubResource("Sky_1bvp3")
+sky = SubResource("Sky_4im42")
 sky_rotation = Vector3(1.12748, 1.46084, 0)
 ambient_light_source = 2
 ambient_light_color = Color(0.88834107, 0.8746786, 0.78055435, 1)
@@ -95,15 +95,15 @@ height = 0.2
 
 [node name="MapEast" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9304176, -0.32208756, 0.17487927, 0, 0.47715876, 0.87881714, -0.3665012, -0.81766695, 0.4439569, 0, 0, 0)
+light_energy = 1.5
+shadow_enabled = true
+directional_shadow_max_distance = 44.0
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.49242365, -0.5358445, 0.68584967, 0, 0.7880108, 0.61566156, -0.87035567, 0.3031663, -0.38803515, 4.858, 4.143, -1.861)
 fov = 42.1
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.9531907, 0.22257353, -0.20466685, 0, 0.67687595, 0.7360971, 0.3023698, -0.7016409, 0.64519185, 0, 0, 0)
-light_energy = 1.831
-light_indirect_energy = 1.242
-shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qwhuu")

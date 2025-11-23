@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://shsjw7d54kyc" path="res://Texture/Grass_2.jpg" id="1_ydlx5"]
 
 [resource]
-diffuse_mode = 3
+diffuse_mode = 1
 specular_mode = 1
-albedo_color = Color(0.7371441, 0.86207557, 0.92788535, 1)
+albedo_color = Color(0.5477092, 0.5784337, 0.32867232, 1)
 albedo_texture = ExtResource("1_ydlx5")
 metallic_specular = 0.46
 rim_tint = 0.7

@@ -41,8 +41,8 @@ _subresources={
 "materials": {
 "Grass.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Grass3.tres",
-"use_external/path": "uid://rvpn151n4dy1"
+"use_external/fallback_path": "res://Material/House_Frame.tres",
+"use_external/path": "uid://b56cgorroa02w"
 }
 }
 }

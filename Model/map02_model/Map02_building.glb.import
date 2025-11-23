@@ -79,6 +79,11 @@ _subresources={
 "use_external/fallback_path": "res://Material/House_RoofRed.tres",
 "use_external/path": "uid://dhgx8sjtdq0fl"
 },
+"House_Grey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/House_Grey.tres",
+"use_external/path": "uid://dglidp6vw6imi"
+},
 "House_LYellow": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Material/House_Yellow.tres",
@@ -86,7 +91,7 @@ _subresources={
 },
 "House_White": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/House_Wall.tres",
+"use_external/fallback_path": "res://Material/House_White.tres",
 "use_external/path": "uid://csmv3yp5uoxjp"
 },
 "Sunpanel_B": {
@@ -118,6 +123,16 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Material/tree_light.tres",
 "use_external/path": "uid://2uhfrg70ub84"
+},
+"Watertower_Lgrey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Dam_GreyL.tres",
+"use_external/path": "uid://cofhpgn8sxjtj"
+},
+"Watertower_grey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Dam_GreyD.tres",
+"use_external/path": "uid://dqvl07787pv53"
 },
 "Window": {
 "use_external/enabled": true,

@@ -32,13 +32,13 @@ op_type = 2
 function = 31
 
 [sub_resource type="Gradient" id="Gradient_7suun"]
-offsets = PackedFloat32Array(0.19359533, 0.9970888)
-colors = PackedColorArray(0, 0.19305855, 0.14085858, 1, 0.43904898, 0.82720417, 0.7423781, 1)
+offsets = PackedFloat32Array(0.25730994, 0.7865497)
+colors = PackedColorArray(0, 0.18431373, 0.18431373, 1, 0.29411766, 0.6627451, 0.7019608, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yox7o"]
 gradient = SubResource("Gradient_7suun")
-fill_from = Vector2(1, 0.60683763)
-fill_to = Vector2(0, 0.5726496)
+fill_from = Vector2(1, 0.64529914)
+fill_to = Vector2(0.070512824, 0.71153843)
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_8kcg6"]
 texture = SubResource("GradientTexture2D_yox7o")
