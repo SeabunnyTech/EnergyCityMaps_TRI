@@ -6,6 +6,6 @@
 render_priority = 0
 shader = ExtResource("1_du621")
 shader_parameter/Wave_Speed = 0.1
-shader_parameter/UV_Scale = 1.17
-shader_parameter/Highlight = 0.466000022135
-shader_parameter/Main = 0.1170000055575
+shader_parameter/UV_Scale = 2.68
+shader_parameter/Highlight = 0.50400002394
+shader_parameter/Main = 0.10400000494

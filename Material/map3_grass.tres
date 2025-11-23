@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cwx76kwfi0dxk"]
+
+[ext_resource type="Texture2D" uid="uid://dibhl7ouvvt8l" path="res://Model/map03_model/map03_landscape_map03_grass.png" id="1_4igm0"]
+
+[resource]
+diffuse_mode = 1
+specular_mode = 1
+albedo_color = Color(0.89893866, 0.91093206, 0.86365, 1)
+albedo_texture = ExtResource("1_4igm0")
+metallic_specular = 1.0
+rim_tint = 0.7
+anisotropy_enabled = true
+anisotropy = 0.85
+ao_light_affect = 1.0

@@ -56,32 +56,10 @@ default_value_enabled = true
 default_value = 0.3
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_ck8d3"]
-default_input_values = [1, Vector2(0.03, 0), 2, Vector2(0, 0)]
+default_input_values = [1, Vector2(0, -0.03), 2, Vector2(0, 0)]
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_hafrp"]
 function = 1
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_awga1"]
-frequency = 0.388
-fractal_octaves = 1
-fractal_lacunarity = 2.22
-fractal_gain = 0.0
-cellular_distance_function = 1
-domain_warp_amplitude = 30.425
-domain_warp_frequency = 0.14
-domain_warp_fractal_octaves = 10
-domain_warp_fractal_lacunarity = 6.41
-domain_warp_fractal_gain = 1.035
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o50ug"]
-width = 256
-height = 128
-noise = SubResource("FastNoiseLite_awga1")
-seamless = true
-seamless_blend_skirt = 1.0
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_tfivs"]
-texture = SubResource("NoiseTexture2D_o50ug")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xoqpv"]
 frequency = 0.1598
@@ -89,20 +67,35 @@ fractal_gain = 0.0
 cellular_distance_function = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aky2j"]
-width = 256
-height = 360
+width = 128
+height = 256
 noise = SubResource("FastNoiseLite_xoqpv")
 seamless = true
 seamless_blend_skirt = 1.0
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_u3cd4"]
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_tfivs"]
 texture = SubResource("NoiseTexture2D_aky2j")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tqf43"]
+frequency = 0.1598
+fractal_gain = 0.0
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_strfc"]
+width = 30
+height = 256
+noise = SubResource("FastNoiseLite_tqf43")
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_u3cd4"]
+texture = SubResource("NoiseTexture2D_strfc")
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_v73o1"]
 operator = 2
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_cxb6g"]
-default_input_values = [1, Vector2(-0.01, -0.01), 2, Vector2(0, 0)]
+default_input_values = [1, Vector2(0, 0.08), 2, Vector2(0, 0)]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_l1xtr"]
 input_name = "time"
@@ -236,7 +229,7 @@ void fragment() {
 
 
 // UVFunc:6
-	vec2 n_in6p1 = vec2(-0.01000, -0.01000);
+	vec2 n_in6p1 = vec2(0.00000, 0.08000);
 	vec2 n_out6p0 = vec2(n_out7p0) * n_in6p1 + n_out24p0;
 
 
@@ -250,7 +243,7 @@ void fragment() {
 
 
 // UVFunc:23
-	vec2 n_in23p1 = vec2(0.03000, 0.00000);
+	vec2 n_in23p1 = vec2(0.00000, -0.03000);
 	vec2 n_out23p0 = vec2(n_out7p0) * n_in23p1 + n_out8p0;
 
 

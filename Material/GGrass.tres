@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dl8x4i2vjps4f"]
 
-[ext_resource type="Shader" uid="uid://cmeil1s8rcwel" path="res://Material/grass_noise.tres" id="1_jf3a6"]
+[ext_resource type="Shader" uid="uid://cmeil1s8rcwel" path="res://Shader/grass_noise.tres" id="1_jf3a6"]
 
 [resource]
 render_priority = 0

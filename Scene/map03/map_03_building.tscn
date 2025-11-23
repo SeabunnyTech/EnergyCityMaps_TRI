@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpfqaodmu1gpe"]
-
-[ext_resource type="PackedScene" uid="uid://dcdv4xl4ief6q" path="res://Model/map03_model/Map03_building.glb" id="1_n3eri"]
-
-[node name="Map03_building" instance=ExtResource("1_n3eri")]
-
-[node name="Plane_006" parent="." index="25"]
-visible = false

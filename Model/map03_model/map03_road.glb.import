@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d3w2s7gjeimt5"
-path="res://.godot/imported/Map03_waterfall.glb-63567c83976cb69288c850d7dc443adf.scn"
+uid="uid://dbtpuwm30hwdf"
+path="res://.godot/imported/map03_road.glb-a74c4dda3d4d965e236e7dc65bd337f5.scn"
 
 [deps]
 
-source_file="res://Model/map03_model/Map03_waterfall.glb"
-dest_files=["res://.godot/imported/Map03_waterfall.glb-63567c83976cb69288c850d7dc443adf.scn"]
+source_file="res://Model/map03_model/map03_road.glb"
+dest_files=["res://.godot/imported/map03_road.glb-a74c4dda3d4d965e236e7dc65bd337f5.scn"]
 
 [params]
 
@@ -39,10 +39,25 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"Sea": {
+"Block_Dgrey.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Sea_Displace4.tres",
-"use_external/path": "uid://7vsn8sukh2n4"
+"use_external/fallback_path": "res://Material/Road_Dark.tres",
+"use_external/path": "uid://kqkfks8ldkgv"
+},
+"Block_Dgrey.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Road_Dark.tres",
+"use_external/path": "uid://kqkfks8ldkgv"
+},
+"Road_LGrey.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Road_Grey.tres",
+"use_external/path": "uid://88lcfcrnfisw"
+},
+"Road_LGrey.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Road_Grey.tres",
+"use_external/path": "uid://88lcfcrnfisw"
 }
 }
 }

@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://bxa4eafj3mjr4" path="res://Shader/Waterfall.tres" id="1_wxvpr"]
 
 [resource]
-render_priority = 0
+render_priority = 2
 shader = ExtResource("1_wxvpr")
 shader_parameter/Wave_Speed = 0.1
 shader_parameter/UV_Scale = 0.585

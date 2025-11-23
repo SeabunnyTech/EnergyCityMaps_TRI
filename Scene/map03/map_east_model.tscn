@@ -1,0 +1,165 @@
+[gd_scene load_steps=24 format=3 uid="uid://bpukwa4nkumfs"]
+
+[ext_resource type="Shader" uid="uid://d32tjyf7gyjn2" path="res://Shader/smoke.tres" id="1_4im42"]
+[ext_resource type="ArrayMesh" uid="uid://uujbkt6k6s1l" path="res://Model/particle_model/smoke.obj" id="2_edyda"]
+[ext_resource type="PackedScene" uid="uid://bsyhpry6r68a5" path="res://Model/map03_model/map03_geothrermal.glb" id="3_0wbfd"]
+[ext_resource type="PackedScene" uid="uid://c60r1kx5es0x2" path="res://Model/map03_model/map03_tree.glb" id="4_fbyxn"]
+[ext_resource type="PackedScene" uid="uid://txdw6s8uwdl1" path="res://Model/map03_model/map03_water.glb" id="5_tfyn2"]
+[ext_resource type="PackedScene" uid="uid://dxlduckn2ufhs" path="res://Model/map03_model/map03_waterenergy.glb" id="6_155cb"]
+[ext_resource type="PackedScene" uid="uid://dbtpuwm30hwdf" path="res://Model/map03_model/map03_road.glb" id="7_schg6"]
+[ext_resource type="PackedScene" uid="uid://bavq07ji0vnwc" path="res://Model/map03_model/map03_building.glb" id="8_juoda"]
+[ext_resource type="PackedScene" uid="uid://bigvy5v5syqts" path="res://Model/map03_model/map03_landscape.glb" id="9_yg5u5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4a0bs"]
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("ProceduralSkyMaterial_4a0bs")
+
+[sub_resource type="Environment" id="Environment_qwhuu"]
+background_mode = 2
+background_energy_multiplier = 1.2
+sky = SubResource("Sky_1bvp3")
+sky_rotation = Vector3(1.12748, 1.46084, 0)
+ambient_light_source = 2
+ambient_light_color = Color(0.88834107, 0.8746786, 0.78055435, 1)
+ambient_light_energy = 1.24
+tonemap_mode = 4
+tonemap_white = 2.92
+glow_strength = 1.15
+fog_light_color = Color(0.60994583, 0.5322831, 0.49033672, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.01
+adjustment_contrast = 1.21
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ahd6"]
+render_priority = 0
+shader = ExtResource("1_4im42")
+
+[sub_resource type="Curve" id="Curve_4jism"]
+_data = [Vector2(0.0033898316, 0.10246909), 0.0, 0.0, 0, 0, Vector2(1, 0.68641967), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_i71ke"]
+curve = SubResource("Curve_4jism")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r1rdv"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(-0.02, 0.05, -0.05)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_i71ke")
+
+[sub_resource type="Gradient" id="Gradient_4im42"]
+offsets = PackedFloat32Array(0.35334477, 1)
+colors = PackedColorArray(0.5058824, 0.8117647, 0.8352941, 0.7647059, 0.83137256, 0.9490196, 0.95686275, 0.5411765)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mypys"]
+gradient = SubResource("Gradient_4im42")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edyda"]
+render_priority = 2
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = SubResource("GradientTexture2D_mypys")
+
+[sub_resource type="Curve" id="Curve_0wbfd"]
+_data = [Vector2(1e-05, 0.30473918), 0.0, 0.0, 0, 0, Vector2(1, 0.8313476), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_id8a5"]
+curve = SubResource("Curve_0wbfd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fbyxn"]
+emission_shape_scale = Vector3(0.25, 0.05, 0.2)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_id8a5")
+
+[sub_resource type="SphereMesh" id="SphereMesh_tfyn2"]
+radius = 0.1
+height = 0.2
+
+[node name="MapEast" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.49242365, -0.5358445, 0.68584967, 0, 0.7880108, 0.61566156, -0.87035567, 0.3031663, -0.38803515, 4.858, 4.143, -1.861)
+fov = 42.1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9531907, 0.22257353, -0.20466685, 0, 0.67687595, 0.7360971, 0.3023698, -0.7016409, 0.64519185, 0, 0, 0)
+light_energy = 1.831
+light_indirect_energy = 1.242
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qwhuu")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.14, 0, 0, 0, 0.17, -1.3770765, 2.2612581, -1.9265685)
+material_override = SubResource("ShaderMaterial_3ahd6")
+amount = 30
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_r1rdv")
+draw_pass_1 = ExtResource("2_edyda")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.14, 0, 0, 0, 0.17, 0.050376296, 1.717927, -1.0453618)
+material_override = SubResource("ShaderMaterial_3ahd6")
+amount = 30
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_r1rdv")
+draw_pass_1 = ExtResource("2_edyda")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.14, 0, 0, 0, 0.17, -1.0320536, 1.717927, -0.3318761)
+material_override = SubResource("ShaderMaterial_3ahd6")
+amount = 30
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_r1rdv")
+draw_pass_1 = ExtResource("2_edyda")
+
+[node name="map03_geothrermal" parent="." instance=ExtResource("3_0wbfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.376107, 0, 0.8685684)
+
+[node name="map03_tree" parent="." instance=ExtResource("4_fbyxn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.376107, 0, 0.8685684)
+
+[node name="map03_water" parent="." instance=ExtResource("5_tfyn2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.376107, 0, 0.8685684)
+
+[node name="map03_waterenergy" parent="." instance=ExtResource("6_155cb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.376107, 0, 0.8685684)
+
+[node name="map03_road" parent="." instance=ExtResource("7_schg6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.376, 0, 0.869)
+
+[node name="map03_building" parent="." instance=ExtResource("8_juoda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.376, 0, 0.869)
+
+[node name="map03_landscape" parent="." instance=ExtResource("9_yg5u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.376, 0, 0.869)
+
+[node name="Splash" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0993261, 1.0665338, 0.64681923)
+material_override = SubResource("StandardMaterial3D_edyda")
+cast_shadow = 0
+custom_aabb = AABB(-4, -4, -4, 8, 8, 8)
+amount = 200
+collision_base_size = 0.0
+visibility_aabb = AABB(-4, -4, -20, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_fbyxn")
+draw_pass_1 = SubResource("SphereMesh_tfyn2")

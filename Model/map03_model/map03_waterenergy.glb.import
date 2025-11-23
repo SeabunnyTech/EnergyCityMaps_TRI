@@ -1,0 +1,130 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dxlduckn2ufhs"
+path="res://.godot/imported/map03_waterenergy.glb-1a5947664996e21584f40a7b3b37da7d.scn"
+
+[deps]
+
+source_file="res://Model/map03_model/map03_waterenergy.glb"
+dest_files=["res://.godot/imported/map03_waterenergy.glb-1a5947664996e21584f40a7b3b37da7d.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Building.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Waterbuilding_DGrey.tres",
+"use_external/path": "uid://cshr23n0f82t8"
+},
+"Building.004": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Waterbuilding_Grey.tres",
+"use_external/path": "uid://j47iwrbjs0ll"
+},
+"Dock_Grey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Dock_Grey.tres",
+"use_external/path": "uid://5ffen5d0f8wv"
+},
+"EES_White.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/ES_White.tres",
+"use_external/path": "uid://27b0b1bdlbvk"
+},
+"ES_Black.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/ES_Black.tres",
+"use_external/path": "uid://34744n7qms70"
+},
+"ES_DBlue.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/ES_DBlue.tres",
+"use_external/path": "uid://c6037gburvv7x"
+},
+"Material.008": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/ES_Grey.tres",
+"use_external/path": "uid://ua1hvxohsd6s"
+},
+"Water_Black.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Waterbuilding_Black.tres",
+"use_external/path": "uid://dcjcwmsckfeg7"
+},
+"Water_BuildingLR.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Waterbuilding_LRed.tres",
+"use_external/path": "uid://2l7o7nucx1kq"
+},
+"Water_BuildingR.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Waterbuilding_Red.tres",
+"use_external/path": "uid://cwq7qeo3wuxso"
+},
+"Water_Dgrey.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Waterbuilding_DGrey.tres",
+"use_external/path": "uid://cshr23n0f82t8"
+},
+"Water_Grey.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Waterbuilding_Grey.tres",
+"use_external/path": "uid://j47iwrbjs0ll"
+},
+"Water_LGrey.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Waterbuilding_LGrey.tres",
+"use_external/path": "uid://deeafobbvkekl"
+},
+"Wheel_DGrey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Wheel_DGrey.tres",
+"use_external/path": "uid://b3lf8c12unahc"
+},
+"Wheel_Iron": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Wheel_Iron.tres",
+"use_external/path": "uid://cwae2p3inpw1m"
+},
+"Wheel_White": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Wheel_White.tres",
+"use_external/path": "uid://dx7fq3hm1w5je"
+},
+"White_LGrey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Wheel_LGrey.tres",
+"use_external/path": "uid://dcx26a73wvukj"
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

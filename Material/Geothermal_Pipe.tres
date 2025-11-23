@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ccy5yag8m2vn8"]
+
+[resource]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.72156864, 0.67058825, 0.54509807, 1)
+metallic = 0.14
+metallic_specular = 0.0

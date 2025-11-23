@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5w6pat1fp572"
-path.s3tc="res://.godot/imported/Map03_Land_Grass_2.jpg-f57993adef60a2d8c26a6c7bb8652468.s3tc.ctex"
+uid="uid://h6id8eeicbsg"
+path.s3tc="res://.godot/imported/map03_tree_tree_dark.jpg-1fe2856d44649babb5e81a3d28e34393.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b0eff85c6c3da7b1e9684aa9b45f3b72"
+"md5": "03751cf7552300e9ceb364921d10670a"
 }
 
 [deps]
 
-source_file="res://Scene/map03/Map03_Land_Grass_2.jpg"
-dest_files=["res://.godot/imported/Map03_Land_Grass_2.jpg-f57993adef60a2d8c26a6c7bb8652468.s3tc.ctex"]
+source_file="res://Model/map03_model/map03_tree_tree_dark.jpg"
+dest_files=["res://.godot/imported/map03_tree_tree_dark.jpg-1fe2856d44649babb5e81a3d28e34393.s3tc.ctex"]
 
 [params]
 
