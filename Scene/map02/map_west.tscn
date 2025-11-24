@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bd2rpya210vn8" path="res://Model/map02_model/Map02_farm.glb" id="5_rh5i0"]
 [ext_resource type="PackedScene" uid="uid://b1sabu3ktbhuc" path="res://Model/map02_model/Map02_waterfall.glb" id="7_ce126"]
 [ext_resource type="PackedScene" uid="uid://46bdp3n76jcs" path="res://Model/map02_model/Map02_water.glb" id="8_2vhxd"]
-[ext_resource type="PackedScene" uid="uid://scvqmadt7jfs" path="res://Model/map02_model/Map02_building.glb" id="9_65t2i"]
 [ext_resource type="Shader" uid="uid://bi3o8elbtqoni" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="10_ce126"]
 [ext_resource type="Texture2D" uid="uid://h3t1b86w2h1j" path="res://Texture/Grass_2.png" id="11_2vhxd"]
 [ext_resource type="Script" uid="uid://2juaclm8gc1n" path="res://addons/simplegrasstextured/grass.gd" id="12_65t2i"]
-[ext_resource type="PackedScene" uid="uid://cuajif2d6eiwn" path="res://Model/map02_model/Map02_land_update.glb" id="12_d8y85"]
+[ext_resource type="PackedScene" uid="uid://cyyu8ey8odv83" path="res://Model/map02_model/Map02_building2.glb" id="13_tfuea"]
+[ext_resource type="PackedScene" uid="uid://bawtg1cl0pt3p" path="res://Model/map02_model/Map02_land_update2.glb" id="14_a3vg7"]
 
 [sub_resource type="Gradient" id="Gradient_ghgpa"]
 offsets = PackedFloat32Array(0.35334477, 1)
@@ -221,9 +221,6 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 [node name="Map02_waterfall" parent="." instance=ExtResource("7_ce126")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
-[node name="Map02_building" parent="." instance=ExtResource("9_65t2i")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -0.03)
-
 [node name="Map02_water" parent="." instance=ExtResource("8_2vhxd")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
@@ -272,5 +269,8 @@ metadata/SimpleGrassTextured = "2.0.5"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a3vg7")
 
-[node name="Map02_land_update" parent="." instance=ExtResource("12_d8y85")]
+[node name="Map02_building2" parent="." instance=ExtResource("13_tfuea")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="Map02_land_update2" parent="." instance=ExtResource("14_a3vg7")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)

@@ -1,0 +1,155 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cyyu8ey8odv83"
+path="res://.godot/imported/Map02_building2.glb-3b9c5645ea05cbdace18ea8e02e868e1.scn"
+
+[deps]
+
+source_file="res://Model/map02_model/Map02_building2.glb"
+dest_files=["res://.godot/imported/Map02_building2.glb-3b9c5645ea05cbdace18ea8e02e868e1.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Building_DBrown": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Building_DBrown.tres",
+"use_external/path": "uid://cie05tw6mhpqm"
+},
+"Building_LBrown": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Building_LBrown.tres",
+"use_external/path": "uid://p4yffpyr6125"
+},
+"Door": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/House_Door.tres",
+"use_external/path": "uid://ddovtc7wjia8m"
+},
+"EES_White.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/ES_White.tres",
+"use_external/path": "uid://27b0b1bdlbvk"
+},
+"ES_Black.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/ES_Black.tres",
+"use_external/path": "uid://34744n7qms70"
+},
+"ES_DBlue.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/ES_DBlue.tres",
+"use_external/path": "uid://c6037gburvv7x"
+},
+"ES_Platform": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/ES_Grey.tres",
+"use_external/path": "uid://ua1hvxohsd6s"
+},
+"Glass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Window.tres",
+"use_external/path": "uid://2kt44w0kjkkp"
+},
+"House_DRoof": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/House_RoofRed.tres",
+"use_external/path": "uid://dhgx8sjtdq0fl"
+},
+"House_Grey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/House_Grey.tres",
+"use_external/path": "uid://dglidp6vw6imi"
+},
+"House_LYellow": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/House_Yellow.tres",
+"use_external/path": "uid://biwbp6plxne65"
+},
+"House_White": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/House_White.tres",
+"use_external/path": "uid://csmv3yp5uoxjp"
+},
+"Soil": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Soil.tres",
+"use_external/path": "uid://dgu1n6hvchy76"
+},
+"Sunpanel_B": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Sunpanel_Blue.tres",
+"use_external/path": "uid://c64hh08fh2fia"
+},
+"Sunpanel_W": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Sunpanel_Wire.tres",
+"use_external/path": "uid://fl7wase7f6ys"
+},
+"Tower": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Waterbuilding_Grey.tres",
+"use_external/path": "uid://j47iwrbjs0ll"
+},
+"Tree_B.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/tree_bark.tres",
+"use_external/path": "uid://byw526raux0ik"
+},
+"Tree_DGreen": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/tree_dark.tres",
+"use_external/path": "uid://c8dlfrjr31c4l"
+},
+"Tree_G": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/tree_light.tres",
+"use_external/path": "uid://2uhfrg70ub84"
+},
+"Watertower_Lgrey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Waterbuilding_LGrey.tres",
+"use_external/path": "uid://deeafobbvkekl"
+},
+"Watertower_grey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Waterbuilding_DGrey.tres",
+"use_external/path": "uid://cshr23n0f82t8"
+},
+"Window": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Window.tres",
+"use_external/path": "uid://2kt44w0kjkkp"
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1
