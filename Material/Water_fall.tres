@@ -6,6 +6,6 @@
 render_priority = 2
 shader = ExtResource("1_wxvpr")
 shader_parameter/Wave_Speed = 0.1
-shader_parameter/UV_Scale = 0.585
+shader_parameter/UV_Scale = 0.945
 shader_parameter/Highlight = 0.4390000208525
 shader_parameter/Main = 0.1330000063175

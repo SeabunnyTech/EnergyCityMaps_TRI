@@ -1,0 +1,122 @@
+[gd_scene load_steps=12 format=3 uid="uid://bouxk177gug2u"]
+
+[ext_resource type="PackedScene" uid="uid://dtfri8jloons4" path="res://Model/map02_lowpoly/Map02_lowpoly.glb" id="2_j6njp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1u80e"]
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("ProceduralSkyMaterial_1u80e")
+
+[sub_resource type="Environment" id="Environment_ql7ti"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 3.07
+sky = SubResource("Sky_1bvp3")
+sky_rotation = Vector3(1.12748, 1.46084, 0)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.9
+tonemap_mode = 4
+tonemap_white = 2.92
+glow_intensity = 0.35
+glow_strength = 1.15
+glow_bloom = 0.1
+fog_light_color = Color(0.588215, 0.71243984, 1, 1)
+fog_light_energy = 0.48
+fog_sun_scatter = 0.09
+fog_density = 0.048
+fog_height_density = -0.3357
+adjustment_enabled = true
+adjustment_contrast = 1.8
+adjustment_saturation = 0.9
+
+[sub_resource type="Gradient" id="Gradient_j6njp"]
+offsets = PackedFloat32Array(0.35334477, 1)
+colors = PackedColorArray(0.5058824, 0.8117647, 0.8352941, 0.7647059, 0.83137256, 0.9490196, 0.95686275, 0.5411765)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d8y85"]
+gradient = SubResource("Gradient_j6njp")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rllp4"]
+render_priority = 5
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = SubResource("GradientTexture2D_d8y85")
+
+[sub_resource type="Curve" id="Curve_o86uw"]
+_data = [Vector2(1e-05, 0.30473918), 0.0, 0.0, 0, 0, Vector2(1, 0.8313476), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tfuea"]
+curve = SubResource("Curve_o86uw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p085q"]
+emission_shape_scale = Vector3(0.1, 0.1, 0.77)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_tfuea")
+
+[sub_resource type="SphereMesh" id="SphereMesh_5a5jr"]
+radius = 0.2
+height = 0.4
+
+[node name="MapWestModelCompatibility" type="Node3D"]
+
+[node name="Map02_DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.97397596, -0.16656932, 0.15370575, 0, 0.67815965, 0.7349146, -0.22665127, 0.71578914, -0.6605112, 0, 0, 0)
+light_color = Color(0.71452594, 0.63012964, 0.38255593, 1)
+light_energy = 1.45
+shadow_enabled = true
+shadow_normal_bias = 1.495
+shadow_blur = 10.0
+directional_shadow_split_1 = 0.136
+directional_shadow_split_2 = 0.182
+directional_shadow_split_3 = 0.265
+directional_shadow_fade_start = 0.137
+directional_shadow_max_distance = 49.7
+directional_shadow_pancake_size = 8.5
+
+[node name="Map02_WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ql7ti")
+
+[node name="Map02_CameraPositions" type="Node3D" parent="."]
+
+[node name="Menu" type="Camera3D" parent="Map02_CameraPositions"]
+transform = Transform3D(-0.5402404, -0.46812874, 0.69928235, 0, 0.8309845, 0.55629563, -0.8415107, 0.30053338, -0.4489314, 7.214, 2.493, -5.162)
+fov = 65.0
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Sun" type="Camera3D" parent="Map02_CameraPositions"]
+transform = Transform3D(-0.4193573, -0.50501704, 0.75438535, -1.4955603e-08, 0.8309845, 0.55629563, -0.9078213, 0.23328663, -0.3484794, 5.2000337, 2.2385638, -7.7055917)
+fov = 29.1
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Water" type="Camera3D" parent="Map02_CameraPositions"]
+transform = Transform3D(-0.54024047, -0.46812874, 0.69928235, 0, 0.8309845, 0.55629563, -0.8415108, 0.30053338, -0.4489314, 2.678679, 2.7328634, -4.997456)
+fov = 40.4
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Map02_lowpoly" parent="." instance=ExtResource("2_j6njp")]
+
+[node name="Splash" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.68, -0.94650793, 0.32341993, -3.6067183)
+material_override = SubResource("StandardMaterial3D_rllp4")
+cast_shadow = 0
+custom_aabb = AABB(-4, -4, -4, 8, 8, 8)
+amount = 300
+collision_base_size = 0.0
+visibility_aabb = AABB(0, 0, 0, 1, 1, 1)
+process_material = SubResource("ParticleProcessMaterial_p085q")
+draw_pass_1 = SubResource("SphereMesh_5a5jr")

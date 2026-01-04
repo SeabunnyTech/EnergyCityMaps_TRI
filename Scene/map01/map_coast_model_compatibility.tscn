@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxvrqggvu48ux"]
+
+[ext_resource type="Material" uid="uid://14luysroug6f" path="res://Material/Sea_Displace2.tres" id="2_c6wyl"]
+[ext_resource type="PackedScene" uid="uid://d1hg0gbrsjkoi" path="res://Model/map01_lowpoly/Map01_wind_lowpoly.glb" id="4_l5ke1"]
+[ext_resource type="PackedScene" uid="uid://b64skdymbkm8l" path="res://Model/map01_lowpoly/Map01_lowpoly.glb" id="9_571lu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ql8py"]
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("ProceduralSkyMaterial_ql8py")
+
+[sub_resource type="Environment" id="Environment_6i51v"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 1.62
+sky = SubResource("Sky_1bvp3")
+sky_rotation = Vector3(1.12748, 1.46084, 0)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 4
+tonemap_white = 2.92
+glow_intensity = 0.35
+glow_strength = 1.15
+glow_bloom = 0.1
+fog_light_color = Color(0.588215, 0.71243984, 1, 1)
+fog_light_energy = 0.48
+fog_sun_scatter = 0.09
+fog_density = 0.048
+fog_height_density = -0.3357
+adjustment_enabled = true
+adjustment_contrast = 1.89
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0k02q"]
+size = Vector2(20, 20)
+subdivide_width = 100
+subdivide_depth = 100
+
+[node name="MapCoastModel_tscn" type="Node3D"]
+
+[node name="Map01_DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, -1.2470868e-07, 1.2255087e-07, 0, 0.70090926, 0.71325046, -1.7484555e-07, -0.71325046, 0.70090926, 0, 0, 0)
+light_color = Color(0.6075482, 0.5319484, 0.30377516, 1)
+light_energy = 0.2
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.925
+shadow_enabled = true
+directional_shadow_split_1 = 0.074
+directional_shadow_split_2 = 0.297
+directional_shadow_split_3 = 0.265
+directional_shadow_fade_start = 0.938
+directional_shadow_max_distance = 38.7
+directional_shadow_pancake_size = 31.7
+
+[node name="Map01_WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6i51v")
+
+[node name="Map01_CameraPositions" type="Node3D" parent="."]
+
+[node name="Wind" type="Camera3D" parent="Map01_CameraPositions"]
+transform = Transform3D(-0.017452352, -0.61556774, 0.78789073, 0, 0.7880107, 0.61566156, -0.9998477, 0.010744741, -0.013752641, 3.8855119, 3.7094953, 3.4189622)
+fov = 26.7
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Menu" type="Camera3D" parent="Map01_CameraPositions"]
+transform = Transform3D(0.37622392, -0.5704281, 0.73011464, 0, 0.78801084, 0.61566144, -0.92652875, -0.23162657, 0.29646853, 4.1369615, 3.66409, 3.2212846)
+fov = 40.0
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Powersave" type="Camera3D" parent="Map01_CameraPositions"]
+transform = Transform3D(0.37622392, -0.5704281, 0.73011464, 0, 0.78801084, 0.61566144, -0.92652875, -0.23162657, 0.29646853, 4.082928, 3.66409, 2.8949473)
+fov = 14.0
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Roof" type="Camera3D" parent="Map01_CameraPositions"]
+transform = Transform3D(0.37622392, -0.5704281, 0.73011464, 0, 0.78801084, 0.61566144, -0.92652875, -0.23162657, 0.29646853, 3.4905076, 3.66409, 0.42677665)
+fov = 23.2
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Floor" type="Camera3D" parent="Map01_CameraPositions"]
+transform = Transform3D(0.37622392, -0.5704281, 0.73011464, 0, 0.78801084, 0.61566144, -0.92652875, -0.23162657, 0.29646853, 3.3219867, 3.66409, 2.0367172)
+fov = 10.8
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Map01_Sea" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.001, 0.11, -0.002)
+material_override = ExtResource("2_c6wyl")
+mesh = SubResource("PlaneMesh_0k02q")
+
+[node name="Map01_lowpoly" parent="." instance=ExtResource("9_571lu")]
+
+[node name="Map01_wind_lowpoly" parent="." instance=ExtResource("4_l5ke1")]

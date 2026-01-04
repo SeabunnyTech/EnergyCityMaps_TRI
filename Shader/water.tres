@@ -123,7 +123,7 @@ void fragment() {
 	float n_in21p0 = 1.00000;
 	{
 		float __depth_tex = texture(depth_tex_frg_21, SCREEN_UV).r;
-		vec4 __depth_world_pos = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, __depth_tex, 1.0);
+		vec4 __depth_world_pos = INV_PROJECTION_MATRIX * vec4(vec3(SCREEN_UV, __depth_tex) * 2.0 - 1.0, 1.0);
 		__depth_world_pos.xyz /= __depth_world_pos.w;
 		n_out21p0 = clamp(1.0 - smoothstep(__depth_world_pos.z + n_in21p0, __depth_world_pos.z, VERTEX.z), 0.0, 1.0);
 	}
@@ -215,7 +215,7 @@ void fragment() {
 
 // MultiplyAdd:27
 	vec3 n_in27p2 = vec3(0.00000, 0.00000, 0.00000);
-	vec3 n_out27p0 = fma(n_out23p0, n_out26p0, n_in27p2);
+	vec3 n_out27p0 = (n_out23p0 * n_out26p0) + n_in27p2;
 
 
 // Output:0

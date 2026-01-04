@@ -1,0 +1,155 @@
+[gd_scene load_steps=15 format=3 uid="uid://dukrbbuokrlkx"]
+
+[ext_resource type="Texture2D" uid="uid://b8q4kvt6mtvrx" path="res://Texture/cloud1.png" id="1_2cxlb"]
+[ext_resource type="Material" uid="uid://cau7bcmbaply1" path="res://Material/Sea_Displace2_forward.tres" id="2_2cxlb"]
+[ext_resource type="PackedScene" uid="uid://sbbfwa5bftvq" path="res://Model/map01_model/map01_windbase.glb" id="3_611qk"]
+[ext_resource type="PackedScene" uid="uid://1f1l2u2gq8vs" path="res://Model/map01_model/map01_landscape_update2.glb" id="4_y13in"]
+[ext_resource type="PackedScene" uid="uid://bxdb48moyeyip" path="res://Model/map01_model/map01_building_update2.glb" id="5_hr2du"]
+[ext_resource type="PackedScene" uid="uid://bgwhvio85y47x" path="res://Model/map01_model/low poly landscape.glb" id="6_h80jf"]
+[ext_resource type="PackedScene" uid="uid://38q8dwgkxoif" path="res://Model/map01_model/low poly tree.glb" id="7_keqri"]
+[ext_resource type="PackedScene" uid="uid://ckdyyvmnu7ih3" path="res://Model/map01_lowpoly/low poly_building_green.glb" id="8_870bb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ni5pt"]
+render_priority = 3
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_2cxlb")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_exmv7"]
+material = SubResource("StandardMaterial3D_ni5pt")
+size = Vector2(0.7, 0.7)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0k02q"]
+size = Vector2(20, 20)
+subdivide_width = 100
+subdivide_depth = 100
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bb7ih"]
+
+[sub_resource type="Sky" id="Sky_611qk"]
+sky_material = SubResource("ProceduralSkyMaterial_bb7ih")
+
+[sub_resource type="Environment" id="Environment_y13in"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 1.62
+sky = SubResource("Sky_611qk")
+sky_rotation = Vector3(1.12748, 1.46084, 0)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.8
+tonemap_mode = 4
+tonemap_white = 2.92
+glow_intensity = 0.35
+glow_strength = 1.15
+glow_bloom = 0.1
+fog_light_color = Color(0.588215, 0.71243984, 1, 1)
+fog_light_energy = 0.48
+fog_sun_scatter = 0.09
+fog_density = 0.048
+fog_height_density = -0.3357
+adjustment_enabled = true
+adjustment_contrast = 1.86
+
+[node name="MapCoastModel_tscn" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.948876, -0.26013464, 0.17878559, 0, 0.56640625, 0.8241262, -0.31564903, -0.78199357, 0.5374493, 0, 0, 0)
+light_color = Color(0.37036434, 0.37036452, 0.37036446, 1)
+light_energy = 3.724
+shadow_enabled = true
+shadow_blur = 1.517
+directional_shadow_mode = 0
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 30.0
+
+[node name="CPU_Cloud" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00905, 1.30596, 0)
+amount = 50
+speed_scale = 0.01
+mesh = SubResource("QuadMesh_exmv7")
+emission_shape = 3
+emission_box_extents = Vector3(1, 0.2, 4)
+gravity = Vector3(-50, 0, 0)
+angular_velocity_max = 249.8
+radial_accel_min = 0.01
+radial_accel_max = 0.1
+angle_max = 360.0
+scale_amount_min = 0.1
+scale_amount_max = 2.0
+
+[node name="Sea" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.001, 0.11, -0.002)
+material_override = ExtResource("2_2cxlb")
+mesh = SubResource("PlaneMesh_0k02q")
+
+[node name="windbase" parent="." instance=ExtResource("3_611qk")]
+transform = Transform3D(0.7277727, 0, -0.6858184, 0, 1, 0, 0.6858184, 0, 0.7277727, -1.613, 0.486, 3.151)
+visible = false
+
+[node name="windbase2" parent="." instance=ExtResource("3_611qk")]
+transform = Transform3D(0.7277727, 0, -0.6858184, 0, 1, 0, 0.6858184, 0, 0.7277727, -0.417, 0.486, 3.879)
+visible = false
+
+[node name="windbase3" parent="." instance=ExtResource("3_611qk")]
+transform = Transform3D(0.7277727, 0, -0.6858184, 0, 1, 0, 0.6858184, 0, 0.7277727, 0.921, 0.486, 3.424)
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y13in")
+
+[node name="map01_landscape_update2" parent="." instance=ExtResource("4_y13in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.478)
+visible = false
+
+[node name="map01_building_update2" parent="." instance=ExtResource("5_hr2du")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.478)
+visible = false
+
+[node name="low poly landscape" parent="." instance=ExtResource("6_h80jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.51539207)
+visible = false
+
+[node name="low poly tree" parent="." instance=ExtResource("7_keqri")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4719485)
+visible = false
+
+[node name="CameraPositions" type="Node3D" parent="."]
+
+[node name="Wind" type="Camera3D" parent="CameraPositions"]
+transform = Transform3D(-0.017452352, -0.61556774, 0.78789073, 0, 0.7880107, 0.61566156, -0.9998477, 0.010744741, -0.013752641, 3.8855119, 3.7094953, 3.4189622)
+fov = 26.7
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Menu" type="Camera3D" parent="CameraPositions"]
+transform = Transform3D(0.37622392, -0.5704281, 0.73011464, 0, 0.78801084, 0.61566144, -0.92652875, -0.23162657, 0.29646853, 4.1369615, 3.66409, 3.2212846)
+fov = 40.0
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Powersave" type="Camera3D" parent="CameraPositions"]
+transform = Transform3D(0.37622392, -0.5704281, 0.73011464, 0, 0.78801084, 0.61566144, -0.92652875, -0.23162657, 0.29646853, 4.082928, 3.66409, 2.8949473)
+fov = 14.0
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Roof" type="Camera3D" parent="CameraPositions"]
+transform = Transform3D(0.37622392, -0.5704281, 0.73011464, 0, 0.78801084, 0.61566144, -0.92652875, -0.23162657, 0.29646853, 3.4905076, 3.66409, 0.42677665)
+fov = 23.2
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Floor" type="Camera3D" parent="CameraPositions"]
+transform = Transform3D(0.37622392, -0.5704281, 0.73011464, 0, 0.78801084, 0.61566144, -0.92652875, -0.23162657, 0.29646853, 3.3219867, 3.66409, 2.0367172)
+fov = 10.8
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="low poly_building_green" parent="." instance=ExtResource("8_870bb")]
