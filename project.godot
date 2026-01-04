@@ -38,10 +38,6 @@ config/name="Taiwan Research Institute"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
-[autoload]
-
-SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
-
 [editor]
 
 movie_writer/movie_file="D:/Tong/Work/2025/Taiwan Research Institute/Godot/taiwan-research-institute/record.avi"
@@ -49,7 +45,7 @@ movie_writer/fps=30
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/simplegrasstextured/plugin.cfg")
+enabled=PackedStringArray()
 
 [internationalization]
 
