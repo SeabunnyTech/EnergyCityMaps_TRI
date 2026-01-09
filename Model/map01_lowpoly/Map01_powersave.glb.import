@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dgo2omsl51ifg"
+uid="uid://bb8m8abudk3mm"
 path="res://.godot/imported/Map01_powersave.glb-e25b390747d7969e4b2bfb97917edfff.scn"
 
 [deps]
@@ -46,7 +46,7 @@ _subresources={
 },
 "Color palette": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Map01/Map01_Color_Palette_Blue.tres",
+"use_external/fallback_path": "res://Material/Map01/Map01_Color_Palette.tres",
 "use_external/path": "uid://c5xubnr8dxna3"
 }
 }

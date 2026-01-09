@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cau5il8hwa32v"
+uid="uid://csjwomiybo3yp"
 path="res://.godot/imported/Map01_landscape.glb-3907ccc15d072fc00fe3f4a6efd31eda.scn"
 
 [deps]
@@ -41,37 +41,37 @@ _subresources={
 "materials": {
 "Color palette": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Map01_Color_Palette_Blue.tres",
+"use_external/fallback_path": "res://Material/Map01/Map01_Color_Palette.tres",
 "use_external/path": "uid://c5xubnr8dxna3"
 },
 "Map01_grass": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Map01_Grass.tres",
+"use_external/fallback_path": "res://Material/Map01/Map01_Grass.tres",
 "use_external/path": "uid://cohypws21m6tq"
 },
 "Mounatain3": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Map01_Mountain3.tres",
+"use_external/fallback_path": "res://Material/Map01/Map01_Mountain3.tres",
 "use_external/path": "uid://b14muohspd0ow"
 },
 "Mountain": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Map01_Mountain1.tres",
+"use_external/fallback_path": "res://Material/Map01/Map01_Mountain1.tres",
 "use_external/path": "uid://fy6rhud6gj0i"
 },
 "Mountain2": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Map01_Mountain2.tres",
+"use_external/fallback_path": "res://Material/Map01/Map01_Mountain2.tres",
 "use_external/path": "uid://d4a4xge2t4u53"
 },
 "Mountain4": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Map01_Mountain4.tres",
+"use_external/fallback_path": "res://Material/Map01/Map01_Mountain4.tres",
 "use_external/path": "uid://oriy3elh07t1"
 },
 "Sand.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Map01_Sand.tres",
+"use_external/fallback_path": "res://Material/Map01/Map01_Sand.tres",
 "use_external/path": "uid://ceruimrpd4o8"
 }
 }

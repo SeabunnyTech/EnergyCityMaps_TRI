@@ -41,127 +41,127 @@ _subresources={
 "materials": {
 "Black": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Well_Black.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_WellBlack.tres",
 "use_external/path": "uid://5ovlej62kypo"
 },
 "Color palette": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Color_Palette_Blue.tres",
-"use_external/path": "uid://c5xubnr8dxna3"
+"use_external/fallback_path": "res://Material/Map03/Map03_Color_Palette.tres",
+"use_external/path": "uid://d2se8lhqbabh7"
 },
 "Color palette.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Color_Palette_Blue.tres",
-"use_external/path": "uid://c5xubnr8dxna3"
+"use_external/fallback_path": "res://Material/Map03/Map03_Color_Palette.tres",
+"use_external/path": "uid://d2se8lhqbabh7"
 },
 "Color palette.002": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Color_Palette_Blue.tres",
-"use_external/path": "uid://c5xubnr8dxna3"
+"use_external/fallback_path": "res://Material/Map03/Map03_Color_Palette.tres",
+"use_external/path": "uid://d2se8lhqbabh7"
 },
 "Color palette.003": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Color_Palette_map03.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_colorpalette2.tres",
 "use_external/path": "uid://bjjjdpvie60js"
 },
 "Geo_Fan": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Geothermal_Fan.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_GeoFan.tres",
 "use_external/path": "uid://xnfiaxsapwq3"
 },
 "Geo_Grey": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Geothermal_LGrey.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_GeoLGrey.tres",
 "use_external/path": "uid://yntfp81fn6is"
 },
 "Geo_Grey.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Geothermal_Grey.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_GeoGrey.tres",
 "use_external/path": "uid://bhn5n4n6h1xnl"
 },
 "Geo_Pipe": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Geothermal_Pipe.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_GeoPipe1.tres",
 "use_external/path": "uid://ccy5yag8m2vn8"
 },
 "Geo_Pipe.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Geothermal_Pipe001.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_GeoPipe2.tres",
 "use_external/path": "uid://ch8c3srmv66w7"
 },
 "Geo_Tank": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Geothermal_Tank.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_GeoTank.tres",
 "use_external/path": "uid://qw6rix2wtny8"
 },
 "House_Grey": {
 "use_external/enabled": true,
-"use_external/fallback_path": "",
-"use_external/path": ""
+"use_external/fallback_path": "res://Material/Map03/Map03_Building_Grey.tres",
+"use_external/path": "uid://dawqeceoaktfv"
 },
 "Poll": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Poll_Yellow.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_PollYellow.tres",
 "use_external/path": "uid://bsej7t6gopjaw"
 },
 "Poll_Grey": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Poll_Gr.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_PollGr.tres",
 "use_external/path": "uid://c6v1b6aw0k4hj"
 },
 "Poll_Yellow": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Poll_Yellow.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_PollYellow.tres",
 "use_external/path": "uid://bsej7t6gopjaw"
 },
 "Poll_black": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Poll_Black.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_PollBlack.tres",
 "use_external/path": "uid://dk2dalnfcjkua"
 },
 "Sea.002": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Sea_Displace4.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_River.tres",
 "use_external/path": "uid://7vsn8sukh2n4"
 },
 "Soil.002": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Soil_map03.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_Soil.tres",
 "use_external/path": "uid://3vt2sy3luxmv"
 },
 "Well_Grey": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Well_Grey.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_WellGrey1.tres",
 "use_external/path": "uid://d1sxpxic5kq5k"
 },
 "Well_Grey.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Well_Grey001.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_WellGrey2.tres",
 "use_external/path": "uid://cuktimweu32vw"
 },
 "Well_Yellow": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Well_Yellow.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_WellYellow.tres",
 "use_external/path": "uid://bg6fvydx6hnkv"
 },
 "map03_grass": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Grass_lowpolymap03.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_grass3.tres",
 "use_external/path": "uid://ce5yb4plpipt"
 },
 "map03_grass.002": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Grass_lowpolymap03-1.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_grass1.tres",
 "use_external/path": "uid://d4ntplrqoc3n5"
 },
 "map03_grass.003": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Grass_lowpolymap03-2.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_grass2.tres",
 "use_external/path": "uid://byb04ljetbbww"
 },
 "rock": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Rock.tres",
+"use_external/fallback_path": "res://Material/Map03/Map03_Rock.tres",
 "use_external/path": "uid://dbu5mg25sevut"
 }
 }

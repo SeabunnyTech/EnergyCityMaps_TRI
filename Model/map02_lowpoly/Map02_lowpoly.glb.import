@@ -41,7 +41,7 @@ _subresources={
 "materials": {
 "Color palette.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Color_Palette_Blue.tres",
+"use_external/fallback_path": "res://Material/Map01/Map01_Color_Palette.tres",
 "use_external/path": "uid://c5xubnr8dxna3"
 },
 "Farm": {
@@ -123,6 +123,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Material/Soil.tres",
 "use_external/path": "uid://dgu1n6hvchy76"
+},
+"Wire.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Flat grey.tres",
+"use_external/path": "uid://ha1utxcvhcip"
 },
 "waterfall": {
 "use_external/enabled": true,

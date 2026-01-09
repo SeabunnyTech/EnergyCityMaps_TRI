@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://14luysroug6f"]
 
-[ext_resource type="Shader" uid="uid://c5hudwj5gex6" path="res://Shader/Sea_Displacement2.tres" id="1_g1qj4"]
+[ext_resource type="Shader" uid="uid://c5hudwj5gex6" path="res://Shader/Map01_sea_shader.tres" id="1_g1qj4"]
 
 [resource]
 render_priority = 0

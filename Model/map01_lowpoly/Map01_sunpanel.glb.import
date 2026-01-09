@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b0a8ssravyl6e"
+uid="uid://cabwaf0aqfygx"
 path="res://.godot/imported/Map01_sunpanel.glb-e0b153a5dcc2d50e021ae8630c6ee68b.scn"
 
 [deps]
@@ -46,7 +46,7 @@ _subresources={
 },
 "Color palette": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Map01/Map01_Color_Palette_Blue.tres",
+"use_external/fallback_path": "res://Material/Map01/Map01_Color_Palette.tres",
 "use_external/path": "uid://c5xubnr8dxna3"
 }
 }
