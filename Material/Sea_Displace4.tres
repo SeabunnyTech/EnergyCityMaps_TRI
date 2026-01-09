@@ -6,6 +6,6 @@
 render_priority = 0
 shader = ExtResource("1_t5qyk")
 shader_parameter/Wave_Speed = 0.0
-shader_parameter/UV_Scale = -0.17
-shader_parameter/Highlight = 0.5290000251275
-shader_parameter/Main = 0.1250000059375
+shader_parameter/UV_Scale = 2.495
+shader_parameter/Highlight = 0.5530000262675
+shader_parameter/Main = 0.1090000051775

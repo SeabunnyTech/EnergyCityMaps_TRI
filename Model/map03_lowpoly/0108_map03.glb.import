@@ -1,0 +1,170 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://c572ay2qs0se8"
+path="res://.godot/imported/0108_map03.glb-0c6b6deef6d5e3424e94984bb56fd1e7.scn"
+
+[deps]
+
+source_file="res://Model/map03_lowpoly/0108_map03.glb"
+dest_files=["res://.godot/imported/0108_map03.glb-0c6b6deef6d5e3424e94984bb56fd1e7.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Black": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Well_Black.tres",
+"use_external/path": "uid://5ovlej62kypo"
+},
+"Color palette": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Color_Palette_Blue.tres",
+"use_external/path": "uid://c5xubnr8dxna3"
+},
+"Color palette.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Color_Palette_Blue.tres",
+"use_external/path": "uid://c5xubnr8dxna3"
+},
+"Color palette.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Color_Palette_Blue.tres",
+"use_external/path": "uid://c5xubnr8dxna3"
+},
+"Color palette.003": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Color_Palette_map03.tres",
+"use_external/path": "uid://bjjjdpvie60js"
+},
+"Geo_Fan": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Geothermal_Fan.tres",
+"use_external/path": "uid://xnfiaxsapwq3"
+},
+"Geo_Grey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Geothermal_LGrey.tres",
+"use_external/path": "uid://yntfp81fn6is"
+},
+"Geo_Grey.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Geothermal_Grey.tres",
+"use_external/path": "uid://bhn5n4n6h1xnl"
+},
+"Geo_Pipe": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Geothermal_Pipe.tres",
+"use_external/path": "uid://ccy5yag8m2vn8"
+},
+"Geo_Pipe.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Geothermal_Pipe001.tres",
+"use_external/path": "uid://ch8c3srmv66w7"
+},
+"Geo_Tank": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Geothermal_Tank.tres",
+"use_external/path": "uid://qw6rix2wtny8"
+},
+"House_Grey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "",
+"use_external/path": ""
+},
+"Poll": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Poll_Yellow.tres",
+"use_external/path": "uid://bsej7t6gopjaw"
+},
+"Poll_Grey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Poll_Gr.tres",
+"use_external/path": "uid://c6v1b6aw0k4hj"
+},
+"Poll_Yellow": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Poll_Yellow.tres",
+"use_external/path": "uid://bsej7t6gopjaw"
+},
+"Poll_black": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Poll_Black.tres",
+"use_external/path": "uid://dk2dalnfcjkua"
+},
+"Sea.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Sea_Displace4.tres",
+"use_external/path": "uid://7vsn8sukh2n4"
+},
+"Soil.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Soil_map03.tres",
+"use_external/path": "uid://3vt2sy3luxmv"
+},
+"Well_Grey": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Well_Grey.tres",
+"use_external/path": "uid://d1sxpxic5kq5k"
+},
+"Well_Grey.001": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Well_Grey001.tres",
+"use_external/path": "uid://cuktimweu32vw"
+},
+"Well_Yellow": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Well_Yellow.tres",
+"use_external/path": "uid://bg6fvydx6hnkv"
+},
+"map03_grass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Grass_lowpolymap03.tres",
+"use_external/path": "uid://ce5yb4plpipt"
+},
+"map03_grass.002": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Grass_lowpolymap03-1.tres",
+"use_external/path": "uid://d4ntplrqoc3n5"
+},
+"map03_grass.003": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Grass_lowpolymap03-2.tres",
+"use_external/path": "uid://byb04ljetbbww"
+},
+"rock": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Material/Rock.tres",
+"use_external/path": "uid://dbu5mg25sevut"
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

@@ -1,0 +1,171 @@
+[gd_scene load_steps=18 format=3 uid="uid://ccvg2ag2h8tam"]
+
+[ext_resource type="Shader" uid="uid://d32tjyf7gyjn2" path="res://Shader/smoke.tres" id="1_kvdgl"]
+[ext_resource type="ArrayMesh" uid="uid://uujbkt6k6s1l" path="res://Model/particle_model/smoke.obj" id="2_cr5c5"]
+[ext_resource type="PackedScene" uid="uid://c572ay2qs0se8" path="res://Model/map03_lowpoly/0108_map03.glb" id="3_q426h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ahd6"]
+render_priority = 0
+shader = ExtResource("1_kvdgl")
+
+[sub_resource type="Curve" id="Curve_4jism"]
+_data = [Vector2(0.0033898316, 0.10246909), 0.0, 0.0, 0, 0, Vector2(1, 0.68641967), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_i71ke"]
+curve = SubResource("Curve_4jism")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r1rdv"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(-0.02, 0.05, -0.05)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_i71ke")
+
+[sub_resource type="Gradient" id="Gradient_4im42"]
+offsets = PackedFloat32Array(0.35334477, 1)
+colors = PackedColorArray(0.5058824, 0.8117647, 0.8352941, 0.7647059, 0.83137256, 0.9490196, 0.95686275, 0.5411765)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mypys"]
+gradient = SubResource("Gradient_4im42")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edyda"]
+render_priority = 2
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = SubResource("GradientTexture2D_mypys")
+
+[sub_resource type="Curve" id="Curve_0wbfd"]
+_data = [Vector2(1e-05, 0.30473918), 0.0, 0.0, 0, 0, Vector2(1, 0.8313476), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_id8a5"]
+curve = SubResource("Curve_0wbfd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fbyxn"]
+emission_shape_scale = Vector3(0.3, 0.05, 0.2)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_id8a5")
+
+[sub_resource type="SphereMesh" id="SphereMesh_tfyn2"]
+radius = 0.16
+height = 0.36
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vba6a"]
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("ProceduralSkyMaterial_vba6a")
+
+[sub_resource type="Environment" id="Environment_gbe2w"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 3.07
+sky = SubResource("Sky_1bvp3")
+sky_rotation = Vector3(1.12748, 1.46084, 0)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.61
+tonemap_mode = 4
+tonemap_white = 2.92
+glow_intensity = 0.35
+glow_strength = 1.15
+glow_bloom = 0.1
+fog_light_color = Color(0.588215, 0.71243984, 1, 1)
+fog_light_energy = 0.48
+fog_sun_scatter = 0.09
+fog_density = 0.048
+fog_height_density = -0.3357
+adjustment_enabled = true
+adjustment_contrast = 1.54
+
+[node name="MapEast" type="Node3D"]
+
+[node name="Map03_DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.87788254, 0.8911621, 0.8257944, 1)
+light_energy = 0.7
+shadow_enabled = true
+directional_shadow_max_distance = 44.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.14, 0, 0, 0, 0.17, -1.3770765, 2.2612581, -1.9265685)
+material_override = SubResource("ShaderMaterial_3ahd6")
+amount = 30
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_r1rdv")
+draw_pass_1 = ExtResource("2_cr5c5")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.14, 0, 0, 0, 0.17, 0.050376296, 1.717927, -1.0453618)
+material_override = SubResource("ShaderMaterial_3ahd6")
+amount = 30
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_r1rdv")
+draw_pass_1 = ExtResource("2_cr5c5")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.14, 0, 0, 0, 0.17, -1.0320536, 1.717927, -0.3318761)
+material_override = SubResource("ShaderMaterial_3ahd6")
+amount = 30
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_r1rdv")
+draw_pass_1 = ExtResource("2_cr5c5")
+
+[node name="Splash" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0993261, 1.0665338, 0.64681923)
+material_override = SubResource("StandardMaterial3D_edyda")
+cast_shadow = 0
+custom_aabb = AABB(-4, -4, -4, 8, 8, 8)
+amount = 200
+collision_base_size = 0.0
+visibility_aabb = AABB(-4, -4, -20, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_fbyxn")
+draw_pass_1 = SubResource("SphereMesh_tfyn2")
+
+[node name="Map03_WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gbe2w")
+
+[node name="0108_map03" parent="." instance=ExtResource("3_q426h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.479, 0, 0.815)
+
+[node name="Map03_CameraPositions" type="Node3D" parent="."]
+
+[node name="Water" type="Camera3D" parent="Map03_CameraPositions"]
+transform = Transform3D(-0.6131827, -0.4394408, 0.6564288, 0, 0.8309845, 0.5562957, -0.7899411, 0.34111091, -0.5095453, 5.2520356, 3.164284, -1.58462)
+fov = 14.0
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Power Save" type="Camera3D" parent="Map03_CameraPositions"]
+transform = Transform3D(-0.6131827, -0.43944082, 0.6564288, 0, 0.8309845, 0.5562957, -0.7899411, 0.3411109, -0.5095453, 4.914206, 3.5126116, -2.0664315)
+fov = 8.4
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Geothermal" type="Camera3D" parent="Map03_CameraPositions"]
+transform = Transform3D(-0.44444773, -0.49833232, 0.7443999, -2.8639908e-08, 0.8309845, 0.5562957, -0.8958048, 0.2472443, -0.36932918, 1.7901902, 3.207717, -1.9804883)
+fov = 32.9
+size = 3.396
+near = 0.001
+far = 4031.45
+
+[node name="Menu" type="Camera3D" parent="Map03_CameraPositions"]
+transform = Transform3D(-0.49242365, -0.5358445, 0.68584967, 0, 0.7880108, 0.61566156, -0.87035567, 0.3031663, -0.38803515, 4.858, 4.143, -1.861)
+fov = 42.1
