@@ -46,92 +46,92 @@ _subresources={
 },
 "Farm": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Farm.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Farm.tres",
 "use_external/path": "uid://squv58prqiad"
 },
 "Farm2": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Farm2.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Farm2.tres",
 "use_external/path": "uid://cg4ukr4py4q3i"
 },
 "Farm3": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Farm3.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Farm3.tres",
 "use_external/path": "uid://dcg5ar4wm3c1k"
 },
 "Grass01": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Grass_lowpolymap02.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_grass.tres",
 "use_external/path": "uid://cloapw3b3tyof"
 },
 "Grass01.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Mountain5.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Mountain5.tres",
 "use_external/path": "uid://bpfym4oprpqoi"
 },
 "Grass01.002": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Mountain6.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Mountain6.tres",
 "use_external/path": "uid://ctqcnoivooypj"
 },
 "Grass02": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Mountain8.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Mountain8.tres",
 "use_external/path": "uid://dq5rdocc1hp15"
 },
 "Grass03": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Mountain7.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Mountain7.tres",
 "use_external/path": "uid://bhigsxdfpt35a"
 },
 "Grass04": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Mountain6.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Mountain6.tres",
 "use_external/path": "uid://ctqcnoivooypj"
 },
 "Grass05": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Mountain6.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Mountain6.tres",
 "use_external/path": "uid://ctqcnoivooypj"
 },
 "Mountain2.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Mountain7.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Mountain7.tres",
 "use_external/path": "uid://bhigsxdfpt35a"
 },
 "Sea.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Sea_Displace3.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Water.tres",
 "use_external/path": "uid://ccr3i16twf48g"
 },
 "Sea.002": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Sea_Displace3.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Water.tres",
 "use_external/path": "uid://ccr3i16twf48g"
 },
 "Soil.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Soil.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Soil1.tres",
 "use_external/path": "uid://dgu1n6hvchy76"
 },
 "Soil.002": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Soil2.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Soil3.tres",
 "use_external/path": "uid://c80iryf6ghqbq"
 },
 "Soil.003": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Soil.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Soil1.tres",
 "use_external/path": "uid://dgu1n6hvchy76"
 },
 "Wire.001": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Flat grey.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Wire.tres",
 "use_external/path": "uid://ha1utxcvhcip"
 },
 "waterfall": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://Material/Water_fall.tres",
+"use_external/fallback_path": "res://Material/Map02/Map02_Waterfall.tres",
 "use_external/path": "uid://bfmei6xt25r5i"
 }
 }

@@ -7,7 +7,7 @@
 [ext_resource type="Material" uid="uid://ctqcnoivooypj" path="res://Material/Map02/Map02_Mountain6.tres" id="5_rprnc"]
 [ext_resource type="Material" uid="uid://dq5rdocc1hp15" path="res://Material/Map02/Map02_Mountain8.tres" id="6_mqj8q"]
 [ext_resource type="Material" uid="uid://bhigsxdfpt35a" path="res://Material/Map02/Map02_Mountain7.tres" id="7_p1k7w"]
-[ext_resource type="Material" uid="uid://lbs1yd7cobms" path="res://Material/Map02/Map02_Soil1.tres" id="8_alghi"]
+[ext_resource type="Material" uid="uid://dgu1n6hvchy76" path="res://Material/Map02/Map02_Soil1.tres" id="8_alghi"]
 [ext_resource type="Material" uid="uid://cg4ukr4py4q3i" path="res://Material/Map02/Map02_Farm2.tres" id="9_qb81j"]
 [ext_resource type="Material" uid="uid://dcg5ar4wm3c1k" path="res://Material/Map02/Map02_Farm3.tres" id="10_t4ddv"]
 [ext_resource type="Material" uid="uid://squv58prqiad" path="res://Material/Map02/Map02_Farm.tres" id="11_omkrw"]
