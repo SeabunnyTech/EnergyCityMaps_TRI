@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ccr3i16twf48g"]
+
+[ext_resource type="Shader" uid="uid://bgsvuc1n5gm66" path="res://maps/Shader/Map02_river_shader.tres" id="1_du621"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_du621")
+shader_parameter/Wave_Speed = 0.425
+shader_parameter/UV_Scale = 4.4
+shader_parameter/Highlight = 0.6670000316825
+shader_parameter/Main = 0.094000004465

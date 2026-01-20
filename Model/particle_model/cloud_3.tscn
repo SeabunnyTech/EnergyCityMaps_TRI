@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn43ca6us78by"]
-
-[ext_resource type="PackedScene" uid="uid://csmwaung18l7x" path="res://Model/particle_model/cloud3.glb" id="1_h7wxv"]
-[ext_resource type="Material" uid="uid://4c1q4wwlqqus" path="res://Material/Cloud.tres" id="2_bae04"]
-
-[node name="cloud3" instance=ExtResource("1_h7wxv")]
-
-[node name="Retopo_Sphere_009" parent="." index="0"]
-material_override = ExtResource("2_bae04")

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://4c1q4wwlqqus"]
+
+[ext_resource type="Shader" uid="uid://dfjn6irk3ymom" path="res://maps/Shader/Cloud.tres" id="1_v62mu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_v62mu")
+shader_parameter/FloatParameter2 = 0.1
+shader_parameter/ColorParameter = Color(0.649254, 0.893519, 0.882272, 1)
+shader_parameter/FloatParameter = 0.8

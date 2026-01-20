@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://yjee51i1wdbj"]
+
+[ext_resource type="PackedScene" path="res://maps/Model/map01_model/map01_windbase.glb" id="1_p50qj"]
+[ext_resource type="Script" uid="uid://bdecvu8fejb4m" path="res://maps/facilities/wind_turbine.gd" id="2_t7ujj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_particle"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.8, 0.9, 1, 0.6)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wind"]
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3(-1, 0, 0)
+spread = 6.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 1.5
+color = Color(0.8, 0.9, 1, 0.6)
+
+[sub_resource type="SphereMesh" id="SphereMesh_particle"]
+radius = 0.01
+height = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_burst"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 0.9, 0.5, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_burst"]
+emission_shape = 1
+emission_sphere_radius = 0.15
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 0.4
+initial_velocity_max = 1.25
+gravity = Vector3(0, -1, 0)
+scale_min = 0.04
+scale_max = 0.1
+color = Color(1, 0.9, 0.5, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_burst"]
+radius = 0.006
+height = 0.012
+
+[node name="Turbine" instance=ExtResource("1_p50qj")]
+script = ExtResource("2_t7ujj")
+debug_camera_position = Vector3(1.2752397, 1.2823611, 1.1830375)
+
+[node name="WindNearFan" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -0.74345654, -0.6686576, 0, 0.6686576, -0.74345654, 0.13403545, 0.5734843, 8.524276e-06)
+custom_aabb = AABB(-15, -15, -15, 30, 30, 30)
+
+[node name="WindParticles1" type="GPUParticles3D" parent="WindNearFan" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_particle")
+emitting = false
+amount = 10
+lifetime = 2.0
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_wind")
+draw_pass_1 = SubResource("SphereMesh_particle")
+
+[node name="WindParticles2" type="GPUParticles3D" parent="WindNearFan" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0.433)
+material_override = SubResource("StandardMaterial3D_particle")
+emitting = false
+amount = 10
+lifetime = 2.0
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_wind")
+draw_pass_1 = SubResource("SphereMesh_particle")
+
+[node name="WindParticles3" type="GPUParticles3D" parent="WindNearFan" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.433)
+material_override = SubResource("StandardMaterial3D_particle")
+emitting = false
+amount = 10
+lifetime = 2.0
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_wind")
+draw_pass_1 = SubResource("SphereMesh_particle")
+
+[node name="UpgradeBurst" type="GPUParticles3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+material_override = SubResource("StandardMaterial3D_burst")
+emitting = false
+amount = 60
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.9
+visibility_aabb = AABB(-3, -3, -3, 6, 6, 6)
+process_material = SubResource("ParticleProcessMaterial_burst")
+draw_pass_1 = SubResource("SphereMesh_burst")

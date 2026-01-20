@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bfmei6xt25r5i"]
+
+[ext_resource type="Shader" uid="uid://bxa4eafj3mjr4" path="res://maps/Shader/Map03_waterfall.tres" id="1_wxvpr"]
+
+[resource]
+render_priority = 2
+shader = ExtResource("1_wxvpr")
+shader_parameter/Wave_Speed = 0.1
+shader_parameter/UV_Scale = 0.945
+shader_parameter/Highlight = 0.4390000208525
+shader_parameter/Main = 0.1330000063175
