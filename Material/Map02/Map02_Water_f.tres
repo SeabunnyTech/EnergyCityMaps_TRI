@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://uhl44vdtlp0t"]
+
+[ext_resource type="Shader" uid="uid://bosttpfo3f0i8" path="res://Shader/Map02_river_shader_f.tres" id="1_ftu18"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ftu18")
+shader_parameter/Wave_Speed = 0.425
+shader_parameter/UV_Scale = 4.4
+shader_parameter/Highlight = 0.6670000316825
+shader_parameter/Main = 0.094000004465

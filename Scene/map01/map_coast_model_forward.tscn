@@ -1,6 +1,6 @@
 [gd_scene load_steps=235 format=4 uid="uid://dukrbbuokrlkx"]
 
-[ext_resource type="Material" uid="uid://cau7bcmbaply1" path="res://Material/Sea_Displace2_forward.tres" id="1_tttjy"]
+[ext_resource type="Material" uid="uid://b6jvkwaqmqkwj" path="res://Material/Map01/Map01_Sea_f.tres" id="1_tttjy"]
 [ext_resource type="PackedScene" uid="uid://csjwomiybo3yp" path="res://Model/map01_lowpoly/Map01_landscape.glb" id="2_x6lj3"]
 [ext_resource type="Material" uid="uid://c5xubnr8dxna3" path="res://Material/Map01/Map01_Color_Palette.tres" id="3_n78nm"]
 [ext_resource type="Material" uid="uid://c64hh08fh2fia" path="res://Material/Map01/Map01_Sunpanel_Blue.tres" id="4_nfl83"]
@@ -17,6 +17,7 @@ background_energy_multiplier = 0.0
 sky = SubResource("Sky_bb7ih")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.72
 tonemap_mode = 4
 tonemap_white = 2.92
 glow_intensity = 0.35
@@ -28,8 +29,7 @@ fog_sun_scatter = 0.09
 fog_density = 0.048
 fog_height_density = -0.3357
 adjustment_enabled = true
-adjustment_brightness = 0.98
-adjustment_contrast = 1.9
+adjustment_contrast = 1.76
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_y13in"]
 size = Vector2(20, 20)
@@ -4343,15 +4343,8 @@ shadow_mesh = SubResource("ArrayMesh_ncdc0")
 [node name="MapCoastModel_tscn" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.948876, -0.26013464, 0.17878559, 0, 0.56640625, 0.8241262, -0.31564903, -0.78199357, 0.5374493, 0, 0, 0)
-light_color = Color(0.94173604, 0.9016489, 0.8298994, 1)
-light_energy = 0.983
-light_indirect_energy = 0.0
+transform = Transform3D(1, 0, 0, 0, 0.6547408, 0.7558535, 0, -0.7558535, 0.6547408, 0, 0, 0)
 shadow_enabled = true
-shadow_blur = 1.517
-directional_shadow_mode = 0
-directional_shadow_fade_start = 1.0
-directional_shadow_max_distance = 25.1
 
 [node name="WorldEnvironment_Forward" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_611qk")
