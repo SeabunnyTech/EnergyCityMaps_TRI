@@ -18,22 +18,20 @@ func _ready():
 
 func _build_camera_positions_dict():
 	camera_positions.clear()
-	
+
 	# 尋找同層級或父節點下的 CameraPositions
 	var positions_node = _find_camera_positions_node()
-	
+
 	if not positions_node:
 		push_warning("找不到 CameraPositions 節點")
 		return
-	
+
 	for child in positions_node.get_children():
 		if child is Marker3D or child is Node3D:
-			if child.has_meta("position_id"):
-				var pos_id = child.get_meta("position_id")
-				camera_positions[pos_id] = child
-				print("註冊相機位置: ", pos_id)
-			else:
-				push_warning("節點 '%s' 沒有設定 position_id metadata" % child.name)
+			# 直接用節點名稱當作 position_id
+			var pos_id = child.name.to_lower()
+			camera_positions[pos_id] = child
+			print("註冊相機位置: ", pos_id)
 
 func _find_camera_positions_node() -> Node:
 	# 先檢查父節點的子節點中是否有 CameraPositions

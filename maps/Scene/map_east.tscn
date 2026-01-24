@@ -1,4 +1,4 @@
-[gd_scene load_steps=390 format=4 uid="uid://bautw2sajw6d7"]
+[gd_scene load_steps=392 format=4 uid="uid://bautw2sajw6d7"]
 
 [ext_resource type="Shader" uid="uid://d32tjyf7gyjn2" path="res://maps/Shader/smoke.tres" id="1_s1vta"]
 [ext_resource type="ArrayMesh" uid="uid://cajd02ch5tx50" path="res://maps/Model/particle_model/smoke.obj" id="2_6qwmj"]
@@ -25,6 +25,8 @@
 [ext_resource type="Material" uid="uid://dbu5mg25sevut" path="res://maps/Material/Map03/Map03_Rock.tres" id="22_i0yi8"]
 [ext_resource type="Material" uid="uid://dk2dalnfcjkua" path="res://maps/Material/Map03/Map03_PollBlack.tres" id="23_anl50"]
 [ext_resource type="Material" uid="uid://c6v1b6aw0k4hj" path="res://maps/Material/Map03/Map03_PollGr.tres" id="24_mgsoq"]
+[ext_resource type="Script" uid="uid://bcqkjwv3hbrbp" path="res://maps/map_control/camera_controller.gd" id="CameraControllerScript"]
+[ext_resource type="Script" uid="uid://6mv5bg3phw5s" path="res://maps/map_control/map_control.gd" id="MapControlScript"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ahd6"]
 render_priority = 0
@@ -6779,6 +6781,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6ec3g")
 
 [node name="MapEast" type="Node3D"]
+script = ExtResource("MapControlScript")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.59482276, -0.607598, 0.5263179, 0, 0.6547408, 0.7558535, -0.80385685, -0.44959885, 0.38945475, 0, 0, 0)
@@ -6824,926 +6827,945 @@ visibility_aabb = AABB(-4, -4, -20, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_fbyxn")
 draw_pass_1 = SubResource("SphereMesh_tfyn2")
 
-[node name="Map03_WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q2ff0")
 
-[node name="Map03_CameraPositions" type="Node3D" parent="."]
+[node name="CameraPositions" type="Node3D" parent="."]
 
-[node name="Water" type="Camera3D" parent="Map03_CameraPositions"]
-transform = Transform3D(-0.6131827, -0.4394408, 0.6564288, 0, 0.8309845, 0.5562957, -0.7899411, 0.34111091, -0.5095453, 5.2520356, 3.164284, -1.58462)
-fov = 14.0
+[node name="hydro" type="Camera3D" parent="CameraPositions"]
+transform = Transform3D(-0.44460127, -0.53778726, 0.71632016, 0, 0.7997067, 0.60039085, -0.8957286, 0.26693454, -0.35555062, 4.4702697, 2.347178, -0.15254283)
+fov = 37.0
 size = 3.396
 near = 0.001
 far = 4031.45
 
-[node name="Power Save" type="Camera3D" parent="Map03_CameraPositions"]
-transform = Transform3D(-0.6131827, -0.43944082, 0.6564288, 0, 0.8309845, 0.5562957, -0.7899411, 0.3411109, -0.5095453, 4.914206, 3.5126116, -2.0664315)
-fov = 8.4
+[node name="energy_storage" type="Camera3D" parent="CameraPositions"]
+transform = Transform3D(-0.44460127, -0.53778726, 0.71632016, 0, 0.7997067, 0.60039085, -0.8957286, 0.26693454, -0.35555062, 3.4409945, 2.2469454, -0.5234251)
+fov = 37.0
 size = 3.396
 near = 0.001
 far = 4031.45
 
-[node name="Geothermal" type="Camera3D" parent="Map03_CameraPositions"]
-transform = Transform3D(-0.44444773, -0.49833232, 0.7443999, -2.8639908e-08, 0.8309845, 0.5562957, -0.8958048, 0.2472443, -0.36932918, 1.7901902, 3.207717, -1.9804883)
-fov = 32.9
+[node name="geothermal" type="Camera3D" parent="CameraPositions"]
+transform = Transform3D(-0.44460168, -0.6723907, 0.591794, 0, 0.66068465, 0.7506636, -0.8957284, 0.33374628, -0.2937415, 1.4139595, 3.684761, -1.7137747)
+fov = 37.0
 size = 3.396
 near = 0.001
 far = 4031.45
 
-[node name="Menu" type="Camera3D" parent="Map03_CameraPositions"]
+[node name="overview" type="Camera3D" parent="CameraPositions"]
 transform = Transform3D(-0.49242365, -0.5358445, 0.68584967, 0, 0.7880108, 0.61566156, -0.87035567, 0.3031663, -0.38803515, 4.858, 4.143, -1.861)
-fov = 42.1
+fov = 37.0
 
-[node name="Map03_Model" type="Node3D" parent="."]
+[node name="MainCamera" type="Camera3D" parent="."]
+current = true
+fov = 37.0
+script = ExtResource("CameraControllerScript")
+
+[node name="ButtonPositions" type="Node3D" parent="."]
+
+[node name="HydroPowerButton" type="Marker3D" parent="ButtonPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -1)
+
+[node name="GeothermalButton" type="Marker3D" parent="ButtonPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1.5)
+
+[node name="RoofSolarButton" type="Marker3D" parent="ButtonPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 0.5)
+
+[node name="EnergyStorageButton" type="Marker3D" parent="ButtonPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -2)
+
+[node name="Model" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.479, 0, 0.815)
 
-[node name="River" type="MeshInstance3D" parent="Map03_Model"]
+[node name="River" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1.6179768, 0, 0, 0, 1, 0, 0, 0, 1, -1.4389024, 1.5597543, 0.96001345)
 material_override = ExtResource("3_6qwmj")
 mesh = SubResource("ArrayMesh_epngn")
 skeleton = NodePath("")
 
-[node name="Hydroelectric" type="Node3D" parent="Map03_Model"]
+[node name="Hydroelectric" type="Node3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3344846, 1.1522506, -0.20950401)
 
-[node name="Water_energy_001" type="MeshInstance3D" parent="Map03_Model/Hydroelectric"]
+[node name="Water_energy_001" type="MeshInstance3D" parent="Model/Hydroelectric"]
 transform = Transform3D(0, 0, 0.013743422, 0, 0.013743422, 0, -0.103053756, 0, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_5s1hk")
 skeleton = NodePath("")
 
-[node name="Water_energy_002" type="MeshInstance3D" parent="Map03_Model/Hydroelectric"]
+[node name="Water_energy_002" type="MeshInstance3D" parent="Model/Hydroelectric"]
 transform = Transform3D(0, 1.5700277, 0, 0, 0, -1.5700277, -1.5700277, 0, 0, -0.0006299019, 0.02488625, 0.00015342236)
 mesh = SubResource("ArrayMesh_47krq")
 skeleton = NodePath("")
 
-[node name="Hydroelectric_buiding" type="Node3D" parent="Map03_Model"]
+[node name="Hydroelectric_buiding" type="Node3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13116, 1.1285032, -0.38722312)
 
-[node name="Dam_001" type="MeshInstance3D" parent="Map03_Model/Hydroelectric_buiding"]
+[node name="Dam_001" type="MeshInstance3D" parent="Model/Hydroelectric_buiding"]
 transform = Transform3D(0, 0, 1.0035683, 0, 1.0035683, 0, -1.0035683, 0, 0, -0.0567317, 0, -0.13403237)
 mesh = SubResource("ArrayMesh_jhvko")
 skeleton = NodePath("")
 
-[node name="Dam_Building" type="MeshInstance3D" parent="Map03_Model/Hydroelectric_buiding"]
+[node name="Dam_Building" type="MeshInstance3D" parent="Model/Hydroelectric_buiding"]
 transform = Transform3D(0.11317468, 0, 0, 0, 0.13735996, 0, 0, 0, 0.17003736, -0.10780001, 0.2152493, 0.023270488)
 mesh = SubResource("ArrayMesh_bwgmg")
 skeleton = NodePath("")
 
-[node name="Water_energy_bridge" type="MeshInstance3D" parent="Map03_Model/Hydroelectric_buiding"]
+[node name="Water_energy_bridge" type="MeshInstance3D" parent="Model/Hydroelectric_buiding"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54524076, 0.13859797, -0.2615806)
 mesh = SubResource("ArrayMesh_ohdxd")
 skeleton = NodePath("")
 
-[node name="Geothermal" type="Node3D" parent="Map03_Model"]
+[node name="Geothermal" type="Node3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29696, 1.5823123, -1.7462395)
 
-[node name="Block_010" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Block_010" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.70082474, -0.019172668, 0.11672294)
 mesh = SubResource("ArrayMesh_y0y78")
 skeleton = NodePath("")
 
-[node name="Bottle" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Bottle" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(-1, 0, -3.2584137e-07, 0, 1, 0, 3.2584137e-07, 0, -1, 0.16318035, 0.06844461, -0.4278022)
 mesh = SubResource("ArrayMesh_xp3u6")
 skeleton = NodePath("")
 
-[node name="Bottle_001" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Bottle_001" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(-1, 0, -3.2584137e-07, 0, 1, 0, 3.2584137e-07, 0, -1, -0.021930695, 0.06844461, -0.4278022)
 mesh = SubResource("ArrayMesh_0samj")
 skeleton = NodePath("")
 
-[node name="Bottle_002" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Bottle_002" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0.83588487, 0, 0.5489048, 0, 1, 0, -0.5489048, 0, 0.83588487, 0.26378536, 0.068442464, 0.033379436)
 mesh = SubResource("ArrayMesh_g2ktk")
 skeleton = NodePath("")
 
-[node name="Bottle_003" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Bottle_003" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0.025571175, 0, 0, 0, 0.035168704, 0, 0, 0, 0.025571175, 0.27104187, 0.017852306, -0.18973458)
 mesh = SubResource("ArrayMesh_fqqmo")
 skeleton = NodePath("")
 
-[node name="Fan" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Fan" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(-0.0052767163, 0, 0.050640523, 0, 0.0016753271, 0, -0.008564423, 0, -0.031200662, -0.54516697, 0.24542391, 0.6003579)
 mesh = SubResource("ArrayMesh_87k87")
 skeleton = NodePath("")
 
-[node name="Fan_001" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Fan_001" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(-0.01641443, 0, -5.3485003e-09, 0, 0.0051300363, 0, 5.3485003e-09, 0, -0.01641443, -0.86748505, 0.24542403, 0.6003579)
 mesh = SubResource("ArrayMesh_xd8m4")
 skeleton = NodePath("")
 
-[node name="Fan_002" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Fan_002" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(-0.01641443, 0, -5.3485003e-09, 0, 0.0051300363, 0, 5.3485003e-09, 0, -0.01641443, -0.545166, 0.24542403, 0.2780465)
 mesh = SubResource("ArrayMesh_bqabt")
 skeleton = NodePath("")
 
-[node name="Fan_003" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Fan_003" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0.004036928, 0, 0.054480918, 0, 0.0016753271, 0, -0.009213916, 0, 0.023869932, -0.86748505, 0.24542403, 0.2780465)
 mesh = SubResource("ArrayMesh_8bkbt")
 skeleton = NodePath("")
 
-[node name="Fan_004" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Fan_004" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(-0.0052767163, 0, 0.050640523, 0, 0.0016753271, 0, -0.008564423, 0, -0.031200662, -0.54516506, 0.24542391, -0.03561318)
 mesh = SubResource("ArrayMesh_fkem7")
 skeleton = NodePath("")
 
-[node name="Fan_005" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Fan_005" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0.004036928, 0, 0.054480918, 0, 0.0016753271, 0, -0.009213916, 0, 0.023869932, -0.8674836, 0.24542403, -0.03560555)
 mesh = SubResource("ArrayMesh_hjt6b")
 skeleton = NodePath("")
 
-[node name="Fan_006" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Fan_006" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(-0.01641443, 0, -5.3485003e-09, 0, 0.0051300363, 0, 5.3485003e-09, 0, -0.01641443, -0.545166, 0.24542403, -0.35792458)
 mesh = SubResource("ArrayMesh_l1uoi")
 skeleton = NodePath("")
 
-[node name="Fan_007" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Fan_007" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(-0.01641443, 0, -5.3485003e-09, 0, 0.0051300363, 0, 5.3485003e-09, 0, -0.01641443, -0.86748505, 0.24542403, -0.35792458)
 mesh = SubResource("ArrayMesh_ar7fu")
 skeleton = NodePath("")
 
-[node name="Geo_building" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Geo_building" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 0.6793995, 0, 0.6793995, 0, -0.6793995, 0, 0, -0.6861267, 0.013559341, 0.45731437)
 mesh = SubResource("ArrayMesh_sap40")
 skeleton = NodePath("")
 
-[node name="Geo_building_001" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Geo_building_001" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 0.6793995, 0, 0.6793995, 0, -0.6793995, 0, 0, -0.7257385, 0.013559341, 0.45731437)
 mesh = SubResource("ArrayMesh_wagxf")
 skeleton = NodePath("")
 
-[node name="Geo_building_002" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Geo_building_002" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 0.6793995, 0, 0.6793995, 0, -0.6793995, 0, 0, -0.6861267, 0.013559341, 0.13499534)
 mesh = SubResource("ArrayMesh_nel30")
 skeleton = NodePath("")
 
-[node name="Geo_building_003" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Geo_building_003" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 0.6793995, 0, 0.6793995, 0, -0.6793995, 0, 0, -1.0084381, 0.013559341, 0.13499534)
 mesh = SubResource("ArrayMesh_xxet6")
 skeleton = NodePath("")
 
-[node name="Geo_building_004" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Geo_building_004" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 0.01109878, 0, 0.055481266, 0, -0.01109878, 0, 0, -1.0084457, 0.114795685, 0.104195476)
 mesh = SubResource("ArrayMesh_r1aus")
 skeleton = NodePath("")
 
-[node name="Geo_building_005" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Geo_building_005" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 0.6793995, 0, 0.6793995, 0, -0.6793995, 0, 0, -0.6861267, 0.013559341, -0.1786567)
 mesh = SubResource("ArrayMesh_2mb5b")
 skeleton = NodePath("")
 
-[node name="Geo_building_006" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Geo_building_006" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 0.6793995, 0, 0.6793995, 0, -0.6793995, 0, 0, -0.40342712, 0.013559341, -0.5009681)
 mesh = SubResource("ArrayMesh_slqyg")
 skeleton = NodePath("")
 
-[node name="Geo_building_007" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Geo_building_007" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 0.6793995, 0, 0.6793995, 0, -0.6793995, 0, 0, -1.0084381, 0.013559341, -0.5009681)
 mesh = SubResource("ArrayMesh_o3jcs")
 skeleton = NodePath("")
 
-[node name="Pipe" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Pipe" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0.017828897, 0, 0, 0, 0.10457247, 0, 0, 0, 0.017828897, -0.34579754, 0.07156181, -0.08939278)
 mesh = SubResource("ArrayMesh_ndheq")
 skeleton = NodePath("")
 
-[node name="Pipe_001" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Pipe_001" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0.015761653, 0, 0, 0, 0.10457246, 0, 0, 0, 0.017828897, -0.32871056, 0.05541563, 0.5068368)
 mesh = SubResource("ArrayMesh_eev0g")
 skeleton = NodePath("")
 
-[node name="Pipe_002" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Pipe_002" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3768325, 0.08807576, -0.09256661)
 mesh = SubResource("ArrayMesh_fgwgj")
 skeleton = NodePath("")
 
-[node name="Pipe_003" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Pipe_003" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35976362, 0.07207739, 0.5051507)
 mesh = SubResource("ArrayMesh_js431")
 skeleton = NodePath("")
 
-[node name="Pipe_004" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Pipe_004" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(-1, 0, -3.2584137e-07, 0, 1, 0, 3.2584137e-07, 0, -1, 0.054593086, 0, -0.3117286)
 mesh = SubResource("ArrayMesh_ec4oc")
 skeleton = NodePath("")
 
-[node name="Pipe_005" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Pipe_005" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.121442795, 0.086431146, -0.087165)
 mesh = SubResource("ArrayMesh_7vncy")
 skeleton = NodePath("")
 
-[node name="Pipe_006" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Pipe_006" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0.1715002, 0.064839244, -0.0624305)
 mesh = SubResource("ArrayMesh_v55hf")
 skeleton = NodePath("")
 
-[node name="Pipe_007" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Pipe_007" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.017519474, 0.06741297, 0.041085124)
 mesh = SubResource("ArrayMesh_clyeb")
 skeleton = NodePath("")
 
-[node name="Pipe_008" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Pipe_008" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.14186096, 0, 0)
 mesh = SubResource("ArrayMesh_eqvwi")
 skeleton = NodePath("")
 
-[node name="Pipe_009" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Pipe_009" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_11fhq")
 skeleton = NodePath("")
 
-[node name="Pipe_010" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Pipe_010" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0.13289547, 0, 0)
 mesh = SubResource("ArrayMesh_ghtw6")
 skeleton = NodePath("")
 
-[node name="Geothermal_tower" type="MeshInstance3D" parent="Map03_Model/Geothermal"]
+[node name="Geothermal_tower" type="MeshInstance3D" parent="Model/Geothermal"]
 transform = Transform3D(0.81364393, 0, -0.58136356, 0, 1, 0, 0.58136356, 0, 0.81364393, -1.180501, 0.27180672, -0.9311448)
 mesh = SubResource("ArrayMesh_4uw3y")
 skeleton = NodePath("")
 
-[node name="Tree" type="Node3D" parent="Map03_Model"]
+[node name="Tree" type="Node3D" parent="Model"]
 
-[node name="Cube_457" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_457" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -0.5030987, 1.5324409, 0.49610358)
 mesh = SubResource("ArrayMesh_esvn7")
 skeleton = NodePath("")
 
-[node name="Cube_458" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_458" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -0.67777157, 1.6281102, 0.6533211)
 mesh = SubResource("ArrayMesh_70sxs")
 skeleton = NodePath("")
 
-[node name="Cube_459" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_459" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -0.61615705, 1.7237582, 1.0587015)
 mesh = SubResource("ArrayMesh_7k08t")
 skeleton = NodePath("")
 
-[node name="Cube_460" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_460" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -0.2919855, 1.3944229, 0.36118764)
 mesh = SubResource("ArrayMesh_8irou")
 skeleton = NodePath("")
 
-[node name="Cube_461" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_461" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -0.63174295, 1.4053959, 0.11437732)
 mesh = SubResource("ArrayMesh_f8bt7")
 skeleton = NodePath("")
 
-[node name="Cube_462" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_462" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -0.7201328, 1.5474969, 0.52196103)
 mesh = SubResource("ArrayMesh_5mcqr")
 skeleton = NodePath("")
 
-[node name="Cube_463" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_463" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -0.57083845, 1.2018422, -0.5288497)
 mesh = SubResource("ArrayMesh_26ex0")
 skeleton = NodePath("")
 
-[node name="Cube_464" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_464" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.002204428, 0.0015752416, -0.0057502696, 0.00061956444, -0.034642745, -5.9932394e-05, 0.0057235933, 0.0031432891, 0.00222119, -2.1948225, 2.3074114, 1.3659923)
 mesh = SubResource("ArrayMesh_0v258")
 skeleton = NodePath("")
 
-[node name="Cube_465" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_465" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0041498397, 0.010586042, -0.0041556307, 0.0013242995, -0.03317254, -0.0013261477, 0.0043621017, -3.8860914e-10, 0.0043560243, -1.9212127, 2.325681, 1.532984)
 mesh = SubResource("ArrayMesh_h0xbu")
 skeleton = NodePath("")
 
-[node name="Cube_467" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_467" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.002291111, 0.017662793, -0.004793273, 0.0013485339, -0.030008454, -0.0028212913, 0.0055619376, -2.751424e-10, 0.0026585208, -3.071851, 2.1730447, 1.0222213)
 mesh = SubResource("ArrayMesh_tkmao")
 skeleton = NodePath("")
 
-[node name="Cube_468" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_468" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -2.9588895, 2.322245, 1.2478292)
 mesh = SubResource("ArrayMesh_nf0w0")
 skeleton = NodePath("")
 
-[node name="Cube_469" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_469" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -3.2813766, 2.7787747, 1.9646966)
 mesh = SubResource("ArrayMesh_n1v1d")
 skeleton = NodePath("")
 
-[node name="Cube_470" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_470" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.004356025, 2.0754758e-09, -0.004362101, 0.0015923498, -0.032417767, 0.001590131, 0.0040610773, 0.0127110155, 0.00405542, -3.4943986, 2.0172658, 0.7927678)
 mesh = SubResource("ArrayMesh_hij6j")
 skeleton = NodePath("")
 
-[node name="Cube_471" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_471" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.002291111, 0.017662793, -0.004793273, 0.0013485339, -0.030008454, -0.0028212913, 0.0055619376, -2.751424e-10, 0.0026585208, -3.9135664, 2.3035088, 1.1699464)
 mesh = SubResource("ArrayMesh_43hgb")
 skeleton = NodePath("")
 
-[node name="Cube_472" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_472" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -4.639788, 2.5756238, 1.642359)
 mesh = SubResource("ArrayMesh_akyuf")
 skeleton = NodePath("")
 
-[node name="Cube_474" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_474" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.002291111, 0.017662793, -0.004793273, 0.0013485339, -0.030008454, -0.0028212913, 0.0055619376, -2.751424e-10, 0.0026585208, -4.2820606, 2.014791, 0.9413925)
 mesh = SubResource("ArrayMesh_sdbe0")
 skeleton = NodePath("")
 
-[node name="Cube_475" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_475" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -4.3745637, 1.6907874, 0.48380452)
 mesh = SubResource("ArrayMesh_2amb7")
 skeleton = NodePath("")
 
-[node name="Cube_476" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_476" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -3.8787558, 1.5776378, -0.24010533)
 mesh = SubResource("ArrayMesh_0oc4w")
 skeleton = NodePath("")
 
-[node name="Cube_477" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_477" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -3.5753093, 1.5108918, -0.074996114)
 mesh = SubResource("ArrayMesh_rmpn4")
 skeleton = NodePath("")
 
-[node name="Cube_478" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_478" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -2.7314289, 1.1108919, -0.5917589)
 mesh = SubResource("ArrayMesh_jaqmf")
 skeleton = NodePath("")
 
-[node name="Cube_479" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_479" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -3.2284596, 1.3378412, -0.2599638)
 mesh = SubResource("ArrayMesh_ijt2u")
 skeleton = NodePath("")
 
-[node name="Cube_480" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_480" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -3.329101, 1.4869492, -1.1945568)
 mesh = SubResource("ArrayMesh_7mtjw")
 skeleton = NodePath("")
 
-[node name="Cube_481" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_481" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -3.1262012, 1.4904631, -1.6578534)
 mesh = SubResource("ArrayMesh_ihl36")
 skeleton = NodePath("")
 
-[node name="Cube_482" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_482" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -3.13151, 1.5420469, -2.1278346)
 mesh = SubResource("ArrayMesh_kwfd4")
 skeleton = NodePath("")
 
-[node name="Cube_483" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_483" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -2.6396742, 1.4963298, -2.1006243)
 mesh = SubResource("ArrayMesh_b3w28")
 skeleton = NodePath("")
 
-[node name="Cube_484" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_484" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -3.455462, 1.6092862, -2.564652)
 mesh = SubResource("ArrayMesh_iq630")
 skeleton = NodePath("")
 
-[node name="Cube_485" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_485" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -3.5192244, 1.6211869, -2.7656438)
 mesh = SubResource("ArrayMesh_cmhhh")
 skeleton = NodePath("")
 
-[node name="Cube_486" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_486" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -2.238383, 1.1160543, -1.5568396)
 mesh = SubResource("ArrayMesh_7mquo")
 skeleton = NodePath("")
 
-[node name="Cube_487" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_487" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -2.4581017, 1.481895, -2.7271833)
 mesh = SubResource("ArrayMesh_prqvq")
 skeleton = NodePath("")
 
-[node name="Cube_488" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_488" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -1.821687, 1.5106313, -3.2671504)
 mesh = SubResource("ArrayMesh_xi0xl")
 skeleton = NodePath("")
 
-[node name="Cube_489" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_489" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -2.3933206, 1.4850152, -2.8341763)
 mesh = SubResource("ArrayMesh_fnwf6")
 skeleton = NodePath("")
 
-[node name="Cube_490" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_490" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0035008374, 0, -0.0035057215, 0, -0.027984602, 0, 0.0035057215, 0, 0.0035008374, -2.0306408, 1.4757032, -3.1120389)
 mesh = SubResource("ArrayMesh_fy5uv")
 skeleton = NodePath("")
 
-[node name="Cube_491" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_491" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -4.329423, 1.612317, -3.1029518)
 mesh = SubResource("ArrayMesh_klill")
 skeleton = NodePath("")
 
-[node name="Cube_492" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_492" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -4.222664, 1.6151505, -3.2409186)
 mesh = SubResource("ArrayMesh_txfcf")
 skeleton = NodePath("")
 
-[node name="Cube_493" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_493" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -5.078896, 1.5990344, -2.9899845)
 mesh = SubResource("ArrayMesh_m3e8w")
 skeleton = NodePath("")
 
-[node name="Cube_494" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_494" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.004356025, -2.594345e-09, -0.004362101, -0.001886027, -0.03139776, -0.0018833991, 0.0039332975, -0.015055311, 0.0039278185, -4.9188027, 1.7561404, -3.2736566)
 mesh = SubResource("ArrayMesh_mq7jf")
 skeleton = NodePath("")
 
-[node name="Cube_495" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_495" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -4.0268464, 1.6184268, -3.3578928)
 mesh = SubResource("ArrayMesh_3alb2")
 skeleton = NodePath("")
 
-[node name="Cube_496" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_496" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585206, 0, -0.0055619376, -0.000831292, -0.034429587, -0.00039734485, 0.0054994635, -0.005204333, 0.0026286594, -5.6521344, 1.7011516, -3.1307158)
 mesh = SubResource("ArrayMesh_rgc3i")
 skeleton = NodePath("")
 
-[node name="Cube_497" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_497" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -6.0994754, 1.6161989, -2.9696853)
 mesh = SubResource("ArrayMesh_c8cb3")
 skeleton = NodePath("")
 
-[node name="Cube_498" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_498" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585225, -1.0377379e-09, -0.005561936, -0.0017687994, -0.03301297, -0.00084545935, 0.005273186, -0.011073631, 0.0025205037, -6.4843373, 1.7737391, -3.0728276)
 mesh = SubResource("ArrayMesh_jq0sj")
 skeleton = NodePath("")
 
-[node name="Cube_499" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_499" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560234, 1.2521486e-09, -0.004362102, -0.0018188, -0.031649485, -0.0018162661, 0.0039648325, -0.014518667, 0.0039593084, -6.2328515, 1.8789169, -3.2584696)
 mesh = SubResource("ArrayMesh_r2xmn")
 skeleton = NodePath("")
 
-[node name="Cube_500" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_500" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -6.734223, 1.9525566, -2.90873)
 mesh = SubResource("ArrayMesh_qrm0n")
 skeleton = NodePath("")
 
-[node name="Cube_501" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_501" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -6.7628093, 1.9256744, -2.6989577)
 mesh = SubResource("ArrayMesh_wwmok")
 skeleton = NodePath("")
 
-[node name="Cube_502" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_502" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -6.293981, 1.6855448, -2.0650342)
 mesh = SubResource("ArrayMesh_qumy2")
 skeleton = NodePath("")
 
-[node name="Cube_503" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_503" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -6.5363393, 1.8075815, -2.2208662)
 mesh = SubResource("ArrayMesh_sf0lg")
 skeleton = NodePath("")
 
-[node name="Cube_504" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_504" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585206, 0, -0.0055619376, -0.000831292, -0.034429587, -0.00039734485, 0.0054994635, -0.005204333, 0.0026286594, -6.916393, 2.0208614, -2.316227)
 mesh = SubResource("ArrayMesh_q5lmv")
 skeleton = NodePath("")
 
-[node name="Cube_505" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_505" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -6.7755218, 2.023217, -2.0702999)
 mesh = SubResource("ArrayMesh_j3mcs")
 skeleton = NodePath("")
 
-[node name="Cube_506" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_506" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -7.131101, 2.2431414, -2.1500545)
 mesh = SubResource("ArrayMesh_g4nta")
 skeleton = NodePath("")
 
-[node name="Cube_507" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_507" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -6.6137643, 1.9900837, -1.8468919)
 mesh = SubResource("ArrayMesh_lex2a")
 skeleton = NodePath("")
 
-[node name="Cube_508" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_508" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -6.1395016, 1.6226678, -1.6927624)
 mesh = SubResource("ArrayMesh_67r78")
 skeleton = NodePath("")
 
-[node name="Cube_509" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_509" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -6.3634815, 1.8068014, -1.4495777)
 mesh = SubResource("ArrayMesh_xtcr0")
 skeleton = NodePath("")
 
-[node name="Cube_510" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_510" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0040123905, -0.013555532, -0.0040179887, -0.001695779, -0.032073807, 0.0016981452, 0.004362102, 4.7523024e-10, 0.0043560234, -6.699575, 2.1898084, -1.3689368)
 mesh = SubResource("ArrayMesh_ypq8x")
 skeleton = NodePath("")
 
-[node name="Cube_511" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_511" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -6.9872212, 2.4346414, -1.6269536)
 mesh = SubResource("ArrayMesh_6fpwl")
 skeleton = NodePath("")
 
-[node name="Cube_512" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_512" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0022380222, -0.018794226, -0.0046822056, -0.0014349174, -0.029313114, 0.003002016, 0.0055619376, -5.646384e-10, 0.0026585206, -6.9149117, 2.409444, -1.2838852)
 mesh = SubResource("ArrayMesh_wkogc")
 skeleton = NodePath("")
 
-[node name="Cube_513" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_513" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.004126043, -0.011164616, -0.0041318, -0.0013966783, -0.032982312, 0.0013986273, 0.004362101, 6.2622424e-10, 0.004356024, -6.9783425, 2.4510467, -1.0460684)
 mesh = SubResource("ArrayMesh_wauip")
 skeleton = NodePath("")
 
-[node name="Cube_514" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_514" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0056164386, -0.016447622, -0.004211935, -0.0023295835, -0.03965389, 0.0017470248, 0.0045598787, 3.2751033e-09, 0.0060804053, -6.7669826, 2.1133919, -0.89286447)
 mesh = SubResource("ArrayMesh_7ceyf")
 skeleton = NodePath("")
 
-[node name="Cube_515" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_515" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -6.0705056, 1.6133003, -1.279432)
 mesh = SubResource("ArrayMesh_hetk8")
 skeleton = NodePath("")
 
-[node name="Cube_516" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_516" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -6.3148, 1.7103047, -1.0821598)
 mesh = SubResource("ArrayMesh_coayr")
 skeleton = NodePath("")
 
-[node name="Cube_517" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_517" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -6.136734, 1.595239, -1.0758342)
 mesh = SubResource("ArrayMesh_ldnr1")
 skeleton = NodePath("")
 
-[node name="Cube_518" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_518" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -6.2337575, 1.5594536, -0.79190826)
 mesh = SubResource("ArrayMesh_js2r2")
 skeleton = NodePath("")
 
-[node name="Cube_473" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_473" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -2.8078358, 1.4898639, -1.7931466)
 mesh = SubResource("ArrayMesh_h6bi7")
 skeleton = NodePath("")
 
-[node name="Cube_466" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_466" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0035008374, 0, -0.0035057215, 0, -0.027984602, 0, 0.0035057215, 0, 0.0035008374, -2.2148511, 1.4879862, -2.9902773)
 mesh = SubResource("ArrayMesh_dwcng")
 skeleton = NodePath("")
 
-[node name="Cube_519" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_519" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0024965762, 0, -0.005223128, 0, -0.032699578, 0, 0.005223128, 0, 0.0024965762, -2.0941834, 1.4833977, -3.0031035)
 mesh = SubResource("ArrayMesh_bgbj2")
 skeleton = NodePath("")
 
-[node name="Cube_520" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_520" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0043560243, 0, -0.004362101, 0, -0.034820706, 0, 0.004362101, 0, 0.0043560243, -0.7782967, 1.172484, -0.8361225)
 mesh = SubResource("ArrayMesh_btv37")
 skeleton = NodePath("")
 
-[node name="Cube_521" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_521" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0026585218, 0, -0.005561937, 0, -0.034820706, 0, 0.005561937, 0, 0.0026585218, -0.673337, 1.1724108, -0.7679885)
 mesh = SubResource("ArrayMesh_ih8cr")
 skeleton = NodePath("")
 
-[node name="Cube_524" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_524" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -0.29914665, 1.2017987, -0.22456169)
 mesh = SubResource("ArrayMesh_nmdkh")
 skeleton = NodePath("")
 
-[node name="Cube_525" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_525" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0041498397, 0.010586042, -0.0041556307, 0.0013242995, -0.03317254, -0.0013261477, 0.0043621017, -3.8860914e-10, 0.0043560243, -2.3562264, 2.58729, 1.8131886)
 mesh = SubResource("ArrayMesh_o3lf7")
 skeleton = NodePath("")
 
-[node name="Cube_526" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_526" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.002204428, 0.0015752416, -0.0057502696, 0.00061956444, -0.034642745, -5.9932394e-05, 0.0057235933, 0.0031432891, 0.00222119, -2.0865781, 2.7215195, 1.9636621)
 mesh = SubResource("ArrayMesh_8666y")
 skeleton = NodePath("")
 
-[node name="Cube_527" type="MeshInstance3D" parent="Map03_Model/Tree"]
+[node name="Cube_527" type="MeshInstance3D" parent="Model/Tree"]
 transform = Transform3D(0.0060804053, 0, -0.0045598787, 0, -0.042929653, 0, 0.0045598787, 0, 0.0060804053, -2.8408144, 1.1481359, -0.2919591)
 mesh = SubResource("ArrayMesh_p4x0y")
 skeleton = NodePath("")
 
-[node name="Landscape" type="Node3D" parent="Map03_Model"]
+[node name="Landscape" type="Node3D" parent="Model"]
 
-[node name="House_061" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="House_061" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-1.0059521, 0, 0.47738147, 0, 1.1134778, 0, -0.47738147, 0, -1.0059521, -4.359602, 1.6073267, -2.6799278)
 mesh = SubResource("ArrayMesh_fk0g5")
 skeleton = NodePath("")
 
-[node name="Mountain" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Mountain" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.170946, 1.6952417, -0.5843893)
 mesh = SubResource("ArrayMesh_wplkp")
 skeleton = NodePath("")
 
-[node name="Icosphere" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.997309, 1.0026646, -1.3538067)
 mesh = SubResource("ArrayMesh_231no")
 skeleton = NodePath("")
 
-[node name="Icosphere_003" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_003" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.47628725, 0, 0.13606036, 0, 0.52891403, 0, -0.18218347, 0, -0.3557063, -1.9790497, 0.96390253, -1.5315732)
 mesh = SubResource("ArrayMesh_f6e5a")
 skeleton = NodePath("")
 
-[node name="Icosphere_004" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_004" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.5899624, 0, -0.3175106, 0, 0.6699766, 0, 0.3175106, 0, 0.5899624, -1.5405598, 0.9839856, -1.51478)
 mesh = SubResource("ArrayMesh_idtfb")
 skeleton = NodePath("")
 
-[node name="Icosphere_005" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_005" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.290935, 0.947969, -1.0445024)
 mesh = SubResource("ArrayMesh_vjwdw")
 skeleton = NodePath("")
 
-[node name="Icosphere_006" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_006" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.51795334, 0, -0.14796309, 0, 0.575184, 0, 0.19812107, 0, 0.38682392, -1.3618956, 0.98977965, -1.2144294)
 mesh = SubResource("ArrayMesh_ucpp4")
 skeleton = NodePath("")
 
-[node name="Icosphere_007" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_007" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.98706186, 0, 0, 0, 0.98706186, 0, 0, 0, 0.98706186, -1.156182, 1.0335983, -0.6958553)
 mesh = SubResource("ArrayMesh_6hmm6")
 skeleton = NodePath("")
 
-[node name="Icosphere_008" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_008" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.7894401, 0, 0, 0, 0.7894401, 0, 0, 0, 0.7894401, -1.1614585, 0.98308134, -0.82536495)
 mesh = SubResource("ArrayMesh_fgnhj")
 skeleton = NodePath("")
 
-[node name="Icosphere_009" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_009" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.29771587, -0.6024437, 0.08504817, -0.22965497, 0.780985, 0.06560524, -0.14382295, -8.511233e-08, -0.28080884, -1.1876321, 1.000795, -0.87935495)
 mesh = SubResource("ArrayMesh_2wqmp")
 skeleton = NodePath("")
 
-[node name="Icosphere_010" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_010" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.2587127, -0.20614497, -0.17752166, -0.1842683, 0.34181142, 0.10725188, 0.05871607, 0.1643959, -0.4456018, -1.2242203, 0.99938184, -0.92779)
 mesh = SubResource("ArrayMesh_1bik3")
 skeleton = NodePath("")
 
-[node name="Icosphere_013" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_013" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(1.3124471, -0.087424055, -0.16260724, 0.10856021, 1.3096558, 0.17209598, 0.14932777, -0.18373728, 1.3040483, -1.6780119, 1.1486545, 0.3991111)
 mesh = SubResource("ArrayMesh_8huxo")
 skeleton = NodePath("")
 
-[node name="Icosphere_014" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_014" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.3161974, -0.63984215, 0.09032778, -0.24391143, 0.8294668, 0.069677874, -0.15275116, -1.1516741e-07, -0.29824087, -1.6155448, 1.1501212, 0.28246528)
 mesh = SubResource("ArrayMesh_akdu2")
 skeleton = NodePath("")
 
-[node name="Icosphere_015" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_015" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.7788846, 0, -0.31037363, 0, 0.8384468, 0, 0.31037363, 0, 0.7788846, -1.5692863, 1.1230432, 0.38573462)
 mesh = SubResource("ArrayMesh_hm18n")
 skeleton = NodePath("")
 
-[node name="Icosphere_016" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_016" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.63076633, 0, 0.22262412, 0, 0.6689002, 0, -0.22262412, 0, 0.63076633, -1.6007113, 1.081698, 0.20574695)
 mesh = SubResource("ArrayMesh_pqo05")
 skeleton = NodePath("")
 
-[node name="Icosphere_017" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_017" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(1.565331, -0.104269065, -0.1939387, 0.12947774, 1.5620023, 0.20525575, 0.17810042, -0.21914005, 1.5553148, -1.5467801, 2.11998, 1.7936251)
 mesh = SubResource("ArrayMesh_g5ro1")
 skeleton = NodePath("")
 
-[node name="Icosphere_018" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_018" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(1.2301655, -0.22890115, 0.9659415, 0.12947778, 1.5620023, 0.20525575, -0.98421246, -0.080614395, 1.234331, -1.4272394, 2.242905, 2.2063165)
 mesh = SubResource("ArrayMesh_jl82u")
 skeleton = NodePath("")
 
-[node name="Icosphere_019" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_019" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.62306064, 0, 1.289351, 0, 1.4320023, 0, -1.289351, 0, 0.62306064, -1.5749388, 2.3187544, 2.017337)
 mesh = SubResource("ArrayMesh_a5pux")
 skeleton = NodePath("")
 
-[node name="Icosphere_020" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_020" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(1.3549047, -0.0053182985, -0.81421775, 0.12947775, 1.5620023, 0.20525572, 0.80387443, -0.2426234, 1.3392779, -1.0273077, 2.0178418, 1.8912516)
 mesh = SubResource("ArrayMesh_t303u")
 skeleton = NodePath("")
 
-[node name="Icosphere_021" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_021" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.9639093, -0.6756375, -0.42157048, 0.71766025, 1.0238615, 0, 0.34521234, -0.24197128, 1.1771182, -1.1164799, 2.2369676, 2.1321876)
 mesh = SubResource("ArrayMesh_q111a")
 skeleton = NodePath("")
 
-[node name="Icosphere_022" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_022" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.9323722, 0.075591475, -0.11099091, -0.033207648, 0.88418096, 0.32322156, 0.13011649, -0.3160077, 0.87781537, -0.9344995, 2.2384222, 1.9987273)
 mesh = SubResource("ArrayMesh_bep7t")
 skeleton = NodePath("")
 
-[node name="Icosphere_023" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_023" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(1.131852, -0.0044427533, -0.680176, 0.10816233, 1.3048557, 0.17146523, 0.67153573, -0.20268121, 1.1187974, -1.095006, 1.5653602, 1.2649128)
 mesh = SubResource("ArrayMesh_u70ut")
 skeleton = NodePath("")
 
-[node name="Icosphere_024" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_024" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.7788792, 0.06314713, -0.09271887, -0.027740797, 0.73862153, 0.27001083, 0.108695894, -0.26398456, 0.73330384, -1.0795159, 1.7568942, 1.30337)
 mesh = SubResource("ArrayMesh_iumjp")
 skeleton = NodePath("")
 
-[node name="Icosphere_025" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_025" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-1.2845646, -0.023258347, -0.08584025, 0.08788581, -0.52234757, -1.1736459, -0.013622894, -1.176702, 0.5226876, -1.67816, 1.22376, 0.7099109)
 mesh = SubResource("ArrayMesh_cfm40")
 skeleton = NodePath("")
 
-[node name="Icosphere_026" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_026" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.8859197, 0, -0.22793016, 0, 0.9147709, 0, 0.22793016, 0, 0.8859197, -1.6388135, 1.3898253, 0.75031716)
 mesh = SubResource("ArrayMesh_3qvim")
 skeleton = NodePath("")
 
-[node name="Icosphere_027" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_027" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.026775278, -0.42459708, 1.3012915, -0.77993774, 1.0743239, 0.33449203, -1.1248732, -0.7347824, -0.26289663, -2.0455797, 0.96478176, -1.8346856)
 mesh = SubResource("ArrayMesh_5ko05")
 skeleton = NodePath("")
 
-[node name="Icosphere_028" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_028" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.91787606, -0.13970476, -0.3714648, 0.2740394, 0.9001374, 0.33860743, 0.2870643, -0.41259563, 0.8644992, -1.436218, 0.8987998, -2.1025026)
 mesh = SubResource("ArrayMesh_uq4hg")
 skeleton = NodePath("")
 
-[node name="Icosphere_029" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_029" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.91787606, -0.13970476, -0.3714648, 0.2740394, 0.9001374, 0.33860743, 0.2870643, -0.41259563, 0.8644992, -1.3999102, 0.95914084, -1.9212172)
 mesh = SubResource("ArrayMesh_d04i2")
 skeleton = NodePath("")
 
-[node name="Icosphere_031" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_031" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.22166005, -0.09785856, -0.32154137, 0.0068664337, 0.5005562, -0.07634235, 0.44070363, 0.041420802, 0.16291465, -1.441956, 0.9489426, -1.8159297)
 mesh = SubResource("ArrayMesh_rpm28")
 skeleton = NodePath("")
 
-[node name="Icosphere_032" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_032" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.35189182, -0.09976625, -0.04879107, 0.10027078, 0.34953645, 0.17327861, -0.00042920554, -0.13659845, 0.479031, -1.4484658, 0.95451635, -1.7627355)
 mesh = SubResource("ArrayMesh_7hbg7")
 skeleton = NodePath("")
 
-[node name="Icosphere_033" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_033" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.42798537, 0, 0.25056776, 0, 0.4959392, 0, -0.25056776, 0, 0.42798537, -1.4057429, 0.96880823, -1.1667053)
 mesh = SubResource("ArrayMesh_upl6f")
 skeleton = NodePath("")
 
-[node name="Icosphere_035" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_035" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.4160458, 0, 0, 0, 0.35534215, 0, 0, 0, 0.35534215, -1.3640409, 0.98846996, -1.277207)
 mesh = SubResource("ArrayMesh_h776m")
 skeleton = NodePath("")
 
-[node name="Icosphere_036" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_036" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.6786309, 0, 0, 0, 0.6786309, 0, 0, 0, 0.6786309, -1.8365068, 0.9967885, -0.8424423)
 mesh = SubResource("ArrayMesh_5sibv")
 skeleton = NodePath("")
 
-[node name="Icosphere_037" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_037" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.72464186, 0, 0.3132249, 0, 0.7894401, 0, -0.3132249, 0, 0.72464186, -1.8417835, 0.98308134, -0.94341356)
 mesh = SubResource("ArrayMesh_elxcs")
 skeleton = NodePath("")
 
-[node name="Icosphere_038" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_038" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.29771587, -0.6024437, 0.08504817, -0.22965497, 0.780985, 0.06560524, -0.14382295, -8.511233e-08, -0.28080884, -1.8462467, 0.98284227, -1.0150986)
 mesh = SubResource("ArrayMesh_lonx4")
 skeleton = NodePath("")
 
-[node name="Icosphere_039" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_039" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.2587127, -0.20614497, -0.17752166, -0.1842683, 0.34181142, 0.10725188, 0.05871607, 0.1643959, -0.4456018, -1.8577251, 0.99938184, -1.074377)
 mesh = SubResource("ArrayMesh_uny8p")
 skeleton = NodePath("")
 
-[node name="Icosphere_040" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_040" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.1354684, -0.17158115, -0.010063379, -0.124933146, 0.17874238, -0.05657935, 0.030297242, -0.03013388, -0.27830607, -1.8974397, 0.99587977, -1.1520578)
 mesh = SubResource("ArrayMesh_1klv5")
 skeleton = NodePath("")
 
-[node name="Icosphere_041" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_041" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.3776906, 0, 0, 0, 0.3776906, 0, 0, 0, 0.3776906, -1.8326142, 0.9814265, -1.2490596)
 mesh = SubResource("ArrayMesh_f2vgb")
 skeleton = NodePath("")
 
-[node name="Icosphere_042" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_042" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.2587127, -0.20614497, -0.17752166, -0.1842683, 0.34181142, 0.10725188, 0.05871607, 0.1643959, -0.4456018, -1.917788, 0.990262, -1.1979437)
 mesh = SubResource("ArrayMesh_wbvcx")
 skeleton = NodePath("")
 
-[node name="Icosphere_043" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_043" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.71232927, 0, -0.7018454, 0, 1, 0, 0.7018454, 0, 0.71232927, -1.918406, 0.95507914, -2.4709346)
 mesh = SubResource("ArrayMesh_3aatr")
 skeleton = NodePath("")
 
-[node name="Icosphere_044" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_044" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.4280382, 0, -0.7017, 0, 1.0708897, 0, 0.9395693, 0, 0.3196724, -1.8186378, 0.9375785, -2.528615)
 mesh = SubResource("ArrayMesh_gwklf")
 skeleton = NodePath("")
 
-[node name="Icosphere_045" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_045" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.7123293, 0, -0.40743464, 0, 1, 0, 0.70184547, 0, 0.41352072, -1.7480791, 0.9225026, -2.726877)
 mesh = SubResource("ArrayMesh_jf4ww")
 skeleton = NodePath("")
 
-[node name="Icosphere_047" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_047" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.7390216, 0.87369233, -1.0829479, -0.89754814, 1.236326, 0.38493174, 1.06326, 0.4363794, 1.077645, -1.615288, 0.91719633, -2.8473573)
 mesh = SubResource("ArrayMesh_hyk0q")
 skeleton = NodePath("")
 
-[node name="Icosphere_048" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_048" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.31399956, -0.3904253, 0.18590021, -0.25658804, 0.5089239, 0.107027635, -0.19459932, -0.041060753, -0.44108376, -1.7375898, 0.95179635, -2.3119605)
 mesh = SubResource("ArrayMesh_peomm")
 skeleton = NodePath("")
 
-[node name="Icosphere_050" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_050" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.2690401, 0, -0.26508042, 0, 0.3776906, 0, 0.26508042, 0, 0.2690401, -1.947932, 0.95028365, -2.3529773)
 mesh = SubResource("ArrayMesh_nkhi5")
 skeleton = NodePath("")
 
-[node name="Icosphere_001" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_001" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.14917204, 0, -0.25926685, 0, 0.39190632, 0, 0.34715575, 0, -0.11140638, -2.0092132, 0.95958817, -1.5932056)
 mesh = SubResource("ArrayMesh_4kvtg")
 skeleton = NodePath("")
 
-[node name="Icosphere_002" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_002" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.33793455, 0, -0.15533602, 0, 0.32777324, 0, 0.18187231, 0, 0.28862783, -1.4947419, 0.988289, -1.475868)
 mesh = SubResource("ArrayMesh_55n0k")
 skeleton = NodePath("")
 
-[node name="Icosphere_011" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Icosphere_011" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.8549818, 0, -0.08154244, 0, 0.8588614, 0, 0.08154244, 0, 0.8549818, -1.3678713, 0.9839856, -1.3780493)
 mesh = SubResource("ArrayMesh_urhe8")
 skeleton = NodePath("")
 
-[node name="Block_011" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Block_011" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -5.7478456, 1.5486683, -0.41310868)
 mesh = SubResource("ArrayMesh_lodvd")
 skeleton = NodePath("")
 
-[node name="Block_012" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Block_012" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.910861, 1.5522935, -0.054322124)
 mesh = SubResource("ArrayMesh_kxpx4")
 skeleton = NodePath("")
 
-[node name="Pole_005" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Pole_005" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.0014630578, 0, 0, 0, -0.0031234634, 0, 0, 0, -0.0014630578, -5.30963, 1.7756432, -0.07670677)
 mesh = SubResource("ArrayMesh_ynxh5")
 skeleton = NodePath("")
 
-[node name="Pole_003" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Pole_003" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.0014630578, 0, 0, 0, -0.0031234634, 0, 0, 0, -0.0014630578, -2.362787, 1.2944045, -1.2004387)
 mesh = SubResource("ArrayMesh_5uuwn")
 skeleton = NodePath("")
 
-[node name="House_044" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="House_044" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0, 0, 0.020155862, 0, 0.020155855, 0, -0.020155862, 0, 0, -2.2640517, 1.1590028, -1.3644174)
 mesh = SubResource("ArrayMesh_u37yl")
 skeleton = NodePath("")
 
-[node name="House_043" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="House_043" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.894465, 1.601272, -0.04401481)
 mesh = SubResource("ArrayMesh_d3026")
 skeleton = NodePath("")
 
-[node name="Building_009" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Building_009" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.6881705, 0, 0, 0, 0.6881705, 0, 0, 0, 0.6881705, -5.6870317, 1.7220865, -0.4491957)
 mesh = SubResource("ArrayMesh_oey7q")
 skeleton = NodePath("")
 
-[node name="House_047" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="House_047" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.008946505, 0, 0.0175763, 0, 0.01972222, 0, -0.0175763, 0, 0.008946505, -2.545468, 1.5447404, -2.4473226)
 mesh = SubResource("ArrayMesh_wxq4o")
 skeleton = NodePath("")
 
-[node name="House_048" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="House_048" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.00244705, 0, 0.01850041, 0, 0.018661534, 0, -0.01850041, 0, 0.00244705, -3.5896056, 1.6372688, -2.2166908)
 mesh = SubResource("ArrayMesh_cw4if")
 skeleton = NodePath("")
 
-[node name="Pole_001" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Pole_001" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.0011892603, 0, -0.0008521727, 0, -0.0031234634, 0, 0.0008521727, 0, -0.0011892603, -2.476805, 1.6712675, -2.6045625)
 mesh = SubResource("ArrayMesh_og02n")
 skeleton = NodePath("")
 
-[node name="Pole_004" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Pole_004" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.0014630578, 0, 0, 0, -0.0031234634, 0, 0, 0, -0.0014630578, -2.7784598, 2.4994347, 1.2696402)
 mesh = SubResource("ArrayMesh_ublcl")
 skeleton = NodePath("")
 
-[node name="House_045" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="House_045" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.019019388, 0, -6.1973027e-09, 0, 0.019019378, 0, 6.1973027e-09, 0, -0.019019388, -2.323226, 2.358134, 1.2545226)
 mesh = SubResource("ArrayMesh_u7jb7")
 skeleton = NodePath("")
 
-[node name="House_046" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="House_046" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(-0.019019388, 0, -6.1973027e-09, 0, 0.019019378, 0, 6.1973027e-09, 0, -0.019019388, -2.535762, 2.358134, 1.2545226)
 mesh = SubResource("ArrayMesh_v510s")
 skeleton = NodePath("")
 
-[node name="House_055" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="House_055" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(0.0064543667, 0, 0.017509837, 0, 0.018661534, 0, -0.017509837, 0, 0.0064543667, -3.0772233, 1.5307008, -1.3858538)
 mesh = SubResource("ArrayMesh_aykwc")
 skeleton = NodePath("")
 
-[node name="Plane_234" type="MeshInstance3D" parent="Map03_Model/Landscape"]
+[node name="Plane_234" type="MeshInstance3D" parent="Model/Landscape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2955723, 2.0082607, -0.38278562)
 mesh = SubResource("ArrayMesh_c3tkb")
 skeleton = NodePath("")
 
-[node name="Powersave" type="Node3D" parent="Map03_Model"]
+[node name="Powersave" type="Node3D" parent="Model"]
 
-[node name="Cube_454" type="MeshInstance3D" parent="Map03_Model/Powersave"]
+[node name="Cube_454" type="MeshInstance3D" parent="Model/Powersave"]
 transform = Transform3D(0, 0, 0.2058193, 0, 0.005973822, 0, -0.15193097, 0, 0, -2.2791011, 1.2140931, -0.91386354)
 mesh = SubResource("ArrayMesh_i6o1w")
 skeleton = NodePath("")
 
-[node name="Cube_455" type="MeshInstance3D" parent="Map03_Model/Powersave"]
+[node name="Cube_455" type="MeshInstance3D" parent="Model/Powersave"]
 transform = Transform3D(0, 0, 0.2058193, 0, 0.005973822, 0, -0.15193097, 0, 0, -2.2791011, 1.2140931, -0.650779)
 mesh = SubResource("ArrayMesh_h3iqv")
 skeleton = NodePath("")
 
-[node name="Cube_453" type="MeshInstance3D" parent="Map03_Model/Powersave"]
+[node name="Cube_453" type="MeshInstance3D" parent="Model/Powersave"]
 transform = Transform3D(0, 0, 0.2058193, 0, 0.005973822, 0, -0.15193097, 0, 0, -4.1893883, 1.5713234, -0.9823929)
 mesh = SubResource("ArrayMesh_3y470")
 skeleton = NodePath("")
 
-[node name="Cube_456" type="MeshInstance3D" parent="Map03_Model/Powersave"]
+[node name="Cube_456" type="MeshInstance3D" parent="Model/Powersave"]
 transform = Transform3D(0, 0, 0.2058193, 0, 0.005973822, 0, -0.15193097, 0, 0, -4.1893883, 1.5713234, -1.2552935)
 mesh = SubResource("ArrayMesh_a5m11")
 skeleton = NodePath("")

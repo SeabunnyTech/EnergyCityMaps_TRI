@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfhecrme1uqwg"
-path="res://.godot/imported/Map01_wind_color palatte5_工作區域 1 複本.jpg-f5607ef25bdc8b85544335f653afd4be.ctex"
+path.s3tc="res://.godot/imported/Map01_wind_color palatte5_工作區域 1 複本.jpg-f5607ef25bdc8b85544335f653afd4be.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "a6d7c229a8dfe4b02a005a7c56a1c40a"
@@ -14,11 +15,11 @@ generator_parameters={
 [deps]
 
 source_file="res://maps/Model/map01_lowpoly/Map01_wind_color palatte5_工作區域 1 複本.jpg"
-dest_files=["res://.godot/imported/Map01_wind_color palatte5_工作區域 1 複本.jpg-f5607ef25bdc8b85544335f653afd4be.ctex"]
+dest_files=["res://.godot/imported/Map01_wind_color palatte5_工作區域 1 複本.jpg-f5607ef25bdc8b85544335f653afd4be.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

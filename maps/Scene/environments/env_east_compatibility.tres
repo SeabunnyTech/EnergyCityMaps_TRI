@@ -1,0 +1,28 @@
+[gd_resource type="Environment" load_steps=3 format=3]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
+
+[sub_resource type="Sky" id="Sky_1"]
+sky_material = SubResource("ProceduralSkyMaterial_1")
+
+[resource]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 3.07
+sky = SubResource("Sky_1")
+sky_rotation = Vector3(1.12748, 1.46084, 0)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.61
+tonemap_mode = 4
+tonemap_white = 2.92
+glow_intensity = 0.35
+glow_strength = 1.15
+glow_bloom = 0.1
+fog_light_color = Color(0.588215, 0.71243984, 1, 1)
+fog_light_energy = 0.48
+fog_sun_scatter = 0.09
+fog_density = 0.048
+fog_height_density = -0.3357
+adjustment_enabled = true
+adjustment_contrast = 1.54

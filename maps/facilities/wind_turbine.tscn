@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://yjee51i1wdbj"]
 
-[ext_resource type="PackedScene" path="res://maps/Model/map01_model/map01_windbase.glb" id="1_p50qj"]
+[ext_resource type="PackedScene" uid="uid://sbbfwa5bftvq" path="res://maps/facilities/wind_turbine.glb" id="1_p50qj"]
 [ext_resource type="Script" uid="uid://bdecvu8fejb4m" path="res://maps/facilities/wind_turbine.gd" id="2_t7ujj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_particle"]

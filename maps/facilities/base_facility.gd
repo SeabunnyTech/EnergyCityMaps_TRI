@@ -81,16 +81,16 @@ func _setup_debug_mode() -> void:
 	_debug_camera = Camera3D.new()
 	_debug_camera.name = "DebugCamera"
 	_debug_camera.top_level = true  # 不受父節點變換影響
-	_debug_camera.global_position = debug_camera_position
 	add_child(_debug_camera)
+	_debug_camera.global_position = debug_camera_position
 	_debug_camera.look_at(debug_camera_target)
 
 	# 添加測試用方向光
 	_debug_light = DirectionalLight3D.new()
 	_debug_light.name = "DebugLight"
 	_debug_light.top_level = true  # 不受父節點變換影響
-	_debug_light.light_energy = 1.0
 	_debug_light.rotation_degrees = Vector3(-45, -45, 0)
+	_debug_light.light_energy = 1.0
 	add_child(_debug_light)
 
 	# 添加測試用 2D 標籤顯示 boost_level（固定在螢幕底部）
@@ -124,9 +124,6 @@ func _play_upgrade_animation() -> void:
 	# 取消之前的動畫（如果有）
 	if _upgrade_tween and _upgrade_tween.is_valid():
 		_upgrade_tween.kill()
-
-	_upgrade_tween = create_tween()
-	_upgrade_tween.set_parallel(true)
 
 	# 爆發粒子效果
 	if _burst_particles:
