@@ -53,7 +53,10 @@ func zoom_to(position_id: String, duration: float = -1, on_complete: Callable = 
 		push_warning("相機正在移動中，忽略請求")
 		return false
 	if not camera_positions.has(position_id):
-		push_error("找不到相機位置: " + position_id)
+		var available = ", ".join(camera_positions.keys())
+		push_error("[CameraController] 找不到相機位置: '%s'" % position_id)
+		push_error("[CameraController] 請在 CameraPositions 節點下添加名為 '%s' 的 Camera3D" % position_id)
+		push_error("[CameraController] 可用的位置: %s" % available)
 		return false
 	
 	var tween_duration = duration if duration >= 0 else default_duration

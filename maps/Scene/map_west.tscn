@@ -11,8 +11,8 @@
 [ext_resource type="Material" uid="uid://cg4ukr4py4q3i" path="res://maps/Material/Map02/Map02_Farm2.tres" id="9_a7eb8"]
 [ext_resource type="Material" uid="uid://dcg5ar4wm3c1k" path="res://maps/Material/Map02/Map02_Farm3.tres" id="10_ech08"]
 [ext_resource type="Material" uid="uid://squv58prqiad" path="res://maps/Material/Map02/Map02_Farm.tres" id="11_d5o2b"]
-[ext_resource type="Material" uid="uid://ccr3i16twf48g" path="res://maps_old/Material/Sea_Displace3.tres" id="12_mppgh"]
-[ext_resource type="Material" uid="uid://bfmei6xt25r5i" path="res://maps_old/Material/Water_fall.tres" id="13_spfx5"]
+[ext_resource type="Material" uid="uid://ccr3i16twf48g" path="res://maps/Material/Map02/Map02_Water.tres" id="12_mppgh"]
+[ext_resource type="Material" uid="uid://bfmei6xt25r5i" path="res://maps/Material/Map02/Map02_Waterfall.tres" id="13_spfx5"]
 [ext_resource type="Material" uid="uid://ha1utxcvhcip" path="res://maps/Material/Map02/Map02_Wire.tres" id="14_ubgq2"]
 [ext_resource type="Material" uid="uid://3mqdvu04uo1h" path="res://maps/Material/Map02/Map02_Waterfall_f.tres" id="15_siest"]
 [ext_resource type="Material" uid="uid://uhl44vdtlp0t" path="res://maps/Material/Map02/Map02_Water_f.tres" id="16_54td0"]
@@ -11425,7 +11425,7 @@ size = 3.396
 near = 0.001
 far = 4031.45
 
-[node name="solar" type="Camera3D" parent="CameraPositions"]
+[node name="solar_ground" type="Camera3D" parent="CameraPositions"]
 transform = Transform3D(-0.3526239, -0.5116784, 0.78348047, 0, 0.83726186, 0.54680216, -0.93576515, 0.19281551, -0.29523855, 4.256101, 1.4287322, -7.15835)
 fov = 37.0
 size = 3.396
@@ -11438,6 +11438,10 @@ fov = 37.0
 size = 3.396
 near = 0.001
 far = 4031.45
+
+[node name="energy_storage" type="Camera3D" parent="CameraPositions"]
+transform = Transform3D(-0.6360766, -0.4031735, 0.65791917, 0, 0.8526401, 0.52249867, -0.7716259, 0.33234918, -0.54234445, 6.0058365, 1.2943174, -2.1744452)
+fov = 37.0
 
 [node name="MainCamera" type="Camera3D" parent="."]
 current = true

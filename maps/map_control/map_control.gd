@@ -132,6 +132,18 @@ func boost_facility(topic: String):
 		for storage in $Model/EnergyStorage.get_children():
 			if storage.has_method("boost"):
 				storage.boost()
+	elif topic == 'hydro' and has_node("Model/HydroPower"):
+		for hydro in $Model/HydroPower.get_children():
+			if hydro.has_method("boost"):
+				hydro.boost()
+	elif topic == 'geothermal' and has_node("Model/Geothermal"):
+		for geo in $Model/Geothermal.get_children():
+			if geo.has_method("boost"):
+				geo.boost()
+	elif topic == 'solar' and has_node("Model/SolarPanels"):
+		for panel in $Model/SolarPanels.get_children():
+			if panel.has_method("boost"):
+				panel.boost()
 
 
 func reset():
