@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://b6jvkwaqmqkwj" path="res://maps/Material/Map01/Map01_Sea_f.tres" id="1_tttjy"]
 [ext_resource type="PackedScene" uid="uid://csjwomiybo3yp" path="res://maps/Model/map01_lowpoly/Map01_landscape.glb" id="2_x6lj3"]
 [ext_resource type="Material" uid="uid://c5xubnr8dxna3" path="res://maps/Material/Map01/Map01_Color_Palette.tres" id="3_n78nm"]
-[ext_resource type="Material" uid="uid://c64hh08fh2fia" path="res://maps_old/Material/Sunpanel_Blue.tres" id="4_nfl83"]
+[ext_resource type="Material" uid="uid://c64hh08fh2fia" path="res://maps/Material/Map01/Map01_Sunpanel_Blue.tres" id="4_nfl83"]
 [ext_resource type="Script" uid="uid://bcqkjwv3hbrbp" path="res://maps/map_control/camera_controller.gd" id="CameraControllerScript"]
 [ext_resource type="Script" uid="uid://6mv5bg3phw5s" path="res://maps/map_control/map_control.gd" id="MapControlScript"]
 [ext_resource type="PackedScene" uid="uid://yjee51i1wdbj" path="res://maps/facilities/wind_turbine.tscn" id="WindTurbineScene"]
@@ -4148,7 +4148,7 @@ environment = SubResource("Environment_611qk")
 [node name="CameraPositions" type="Node3D" parent="."]
 
 [node name="wind" type="Camera3D" parent="CameraPositions"]
-transform = Transform3D(0.45399106, -0.4555651, 0.76573664, 0, 0.8594066, 0.5112928, -0.89100623, -0.23212236, 0.39016291, 3.3642728, 2.6772485, 4.70565)
+transform = Transform3D(0.29236993, -0.47090724, 0.8323257, 0, 0.87035567, 0.49242356, -0.95630527, -0.14396985, 0.25446582, 2.8259706, 2.2953055, 4.0690336)
 fov = 37.0
 size = 3.396
 near = 0.001
