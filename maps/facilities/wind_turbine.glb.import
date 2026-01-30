@@ -41,12 +41,12 @@ _subresources={
 "materials": {
 "base": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://maps_old/Material/Wind_yellow.tres",
+"use_external/fallback_path": "res://maps/facilities/Wind_yellow.tres",
 "use_external/path": "uid://dph2dv2gig041"
 },
 "white": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://maps_old/Material/Wind_white.tres",
+"use_external/fallback_path": "res://maps/facilities/Wind_white.tres",
 "use_external/path": "uid://cqkqn2ad4q87h"
 }
 }
