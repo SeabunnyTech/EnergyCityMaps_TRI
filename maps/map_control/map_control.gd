@@ -45,6 +45,7 @@ func _print_debug_help():
 		print("    [%s] %s" % [key_index, child.name])
 		key_index += 1
 	print("  [B] Boost 風機")
+	print("  [S] Boost 太陽能板")
 	print("  [R] 重設設施")
 	print("  [H] 顯示此說明")
 
@@ -106,6 +107,11 @@ func _input(event):
 			boost_facility("wind")
 			print("Boost wind facility")
 
+		# S 鍵：測試 boost_facility (solar_panel)
+		if event.keycode == KEY_S:
+			boost_facility("solar_panel")
+			print("Boost solar panel facility")
+
 		# R 鍵：重設設施
 		if event.keycode == KEY_R:
 			reset()
@@ -144,12 +150,20 @@ func boost_facility(topic: String):
 		for panel in $Model/SolarPanels.get_children():
 			if panel.has_method("boost"):
 				panel.boost()
+	elif topic == 'solar_panel' and has_node("Model/Sunpanel"):
+		for panel in $Model/Sunpanel.get_children():
+			if panel is BaseFacility:
+				panel.boost_level += 1
 
 
 func reset():
 	if has_node("Model/WindTurbines"):
 		for turbine in $Model/WindTurbines.get_children():
 			turbine.boost_level = 0
+	if has_node("Model/Sunpanel"):
+		for panel in $Model/Sunpanel.get_children():
+			if panel is BaseFacility:
+				panel.boost_level = 0
 
 func zoom_to_topic(topic: String, duration: float=1.5):
 	camera.zoom_to(topic, duration)

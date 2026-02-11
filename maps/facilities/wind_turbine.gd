@@ -13,6 +13,17 @@ extends BaseFacility
 # 升級閃光顏色
 @export var upgrade_emission_color: Color = Color(1.0, 0.8, 0.2, 1.0)
 
+# 閃電效果設定（圍繞風機持續噴發）
+@export var bolt_texture_path: String = "res://maps/Texture/bolt.png"
+@export var bolt_spawn_radius: float = 0.6
+@export var bolt_spawn_min_height: float = 0.0
+@export var bolt_spawn_max_height: float = 0.7
+@export var bolt_rise_height: float = 0.5
+@export var bolt_size: float = 0.15
+@export var bolt_lifetime: float = 0.7
+@export var bolt_max_count: int = 10
+@export var bolt_base_interval: float = 0.5        # boost_level 1 時的生成間隔（秒）
+
 var _random_speed_offset: float = 0.0
 var _current_speed: float = 0.0
 var _target_speed: float = 0.0
@@ -21,6 +32,11 @@ var _target_speed: float = 0.0
 var _mesh_instances: Array[MeshInstance3D] = []
 var _original_materials: Array[Material] = []
 var _glow_materials: Array[StandardMaterial3D] = []
+
+# 閃電相關
+var _bolt_texture: Texture2D = null
+var _active_bolts: Array[Sprite3D] = []
+var _bolt_spawn_timer: float = 0.0
 
 @onready var _fan: Node3D = $WindNearFan
 @onready var _wind_particles: Array[GPUParticles3D] = [
@@ -47,6 +63,9 @@ func _facility_ready() -> void:
 
 	# 收集所有 MeshInstance3D 並準備發光材質
 	_setup_glow_materials()
+
+	# 載入閃電貼圖
+	_bolt_texture = load(bolt_texture_path)
 
 
 func _on_boost_level_changed(_old_value: int, _new_value: int) -> void:
@@ -84,6 +103,14 @@ func _physics_process(delta: float) -> void:
 
 	# 繞 X 軸旋轉
 	_fan.rotate_x(deg_to_rad(_current_speed * delta))
+
+	# 持續噴發閃電（噴泉效果）
+	if boost_level > 0 and _bolt_texture != null:
+		_bolt_spawn_timer -= delta
+		if _bolt_spawn_timer <= 0.0:
+			_spawn_single_bolt()
+			# 間隔隨 boost_level 減少 → 噴得越快
+			_bolt_spawn_timer = bolt_base_interval / boost_level
 
 
 func _setup_glow_materials() -> void:
@@ -132,6 +159,60 @@ func _play_extra_upgrade_animation() -> void:
 	restore_tween.tween_callback(_restore_original_materials).set_delay(0.15)
 
 
+
+func _spawn_single_bolt() -> void:
+	# 超過上限時不再生成
+	if _active_bolts.size() >= bolt_max_count:
+		return
+
+	var bolt = Sprite3D.new()
+	bolt.texture = _bolt_texture
+	bolt.pixel_size = bolt_size / 100.0
+	bolt.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	bolt.transparent = true
+	bolt.modulate = Color(1, 1, 1, 0)
+
+	# 用極座標在風機周圍圓柱區域內隨機生成
+	var angle = randf_range(0, TAU)
+	var radius = randf_range(bolt_spawn_radius * 0.3, bolt_spawn_radius)
+	var height = randf_range(bolt_spawn_min_height, bolt_spawn_max_height)
+
+	var start_pos = Vector3(
+		cos(angle) * radius,
+		height,
+		sin(angle) * radius
+	)
+	bolt.position = start_pos
+
+	# 目標位置：從生成點向上飄升，水平略微向外擴散
+	var target_pos = Vector3(
+		start_pos.x + cos(angle) * 0.05,
+		height + bolt_rise_height + randf_range(-0.05, 0.05),
+		start_pos.z + sin(angle) * 0.05
+	)
+
+	# 隨機旋轉增加自然感
+	bolt.rotation_degrees.z = randf_range(-25, 25)
+
+	add_child(bolt)
+	_active_bolts.append(bolt)
+
+	var tween = create_tween()
+	tween.set_parallel(true)
+
+	# 快速淡入
+	tween.tween_property(bolt, "modulate:a", 1.0, bolt_lifetime * 0.15).set_ease(Tween.EASE_OUT)
+
+	# 向上飄升（ease out 模擬減速上升）
+	tween.tween_property(bolt, "position", target_pos, bolt_lifetime * 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+
+	# 淡出
+	tween.chain().tween_property(bolt, "modulate:a", 0.0, bolt_lifetime * 0.3).set_ease(Tween.EASE_IN)
+
+	# 動畫結束後移除
+	tween.chain().tween_callback(_remove_bolt.bind(bolt))
+
+
 func _restore_original_materials() -> void:
 	var material_index = 0
 	for mesh_instance in _mesh_instances:
@@ -140,3 +221,9 @@ func _restore_original_materials() -> void:
 			if material_index < _original_materials.size():
 				mesh_instance.set_surface_override_material(i, _original_materials[material_index])
 				material_index += 1
+
+
+func _remove_bolt(bolt: Sprite3D) -> void:
+	if bolt in _active_bolts:
+		_active_bolts.erase(bolt)
+	bolt.queue_free()
