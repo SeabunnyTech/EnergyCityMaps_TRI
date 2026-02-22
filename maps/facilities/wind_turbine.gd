@@ -85,13 +85,12 @@ func _update_wind_particles() -> void:
 			continue
 
 		if boost_level == 0:
-			# 沒有 boost 時不顯示粒子
 			p.emitting = false
 		else:
-			# 有 boost 時開啟粒子，數量和速度隨 boost_level 增加
 			p.emitting = true
-			p.amount = 5 * boost_level  # 每個發射器: boost 1: 5, boost 2: 10, boost 3: 15
-			p.speed_scale = 0.5 + boost_level * 0.5  # boost 1: 1.0, boost 2: 1.5, boost 3: 2.0
+			# 風機：粒子快速增多，模擬越來越猛烈的風
+			p.amount = 3 + boost_level * 4   # 1→7, 2→11, 3→15
+			p.speed_scale = 0.6 + boost_level * 0.7  # 1→1.3, 2→2.0, 3→2.7
 
 
 func _physics_process(delta: float) -> void:
@@ -109,8 +108,8 @@ func _physics_process(delta: float) -> void:
 		_bolt_spawn_timer -= delta
 		if _bolt_spawn_timer <= 0.0:
 			_spawn_single_bolt()
-			# 間隔隨 boost_level 減少 → 噴得越快
-			_bolt_spawn_timer = bolt_base_interval / boost_level
+			# 風機閃電間隔：較快
+			_bolt_spawn_timer = bolt_base_interval / (boost_level * 1.2)
 
 
 func _setup_glow_materials() -> void:
@@ -184,32 +183,46 @@ func _spawn_single_bolt() -> void:
 	)
 	bolt.position = start_pos
 
-	# 目標位置：從生成點向上飄升，水平略微向外擴散
-	var target_pos = Vector3(
-		start_pos.x + cos(angle) * 0.05,
-		height + bolt_rise_height + randf_range(-0.05, 0.05),
-		start_pos.z + sin(angle) * 0.05
-	)
-
 	# 隨機旋轉增加自然感
-	bolt.rotation_degrees.z = randf_range(-25, 25)
+	bolt.rotation_degrees.z = randf_range(-60, 60)
 
 	add_child(bolt)
 	_active_bolts.append(bolt)
 
+	# 飛行中持續旋轉
+	var spin_tween = create_tween()
+	spin_tween.tween_property(bolt, "rotation_degrees:z", bolt.rotation_degrees.z + randf_range(-120, 120), bolt_lifetime)
+
+	var falls_back = randf() < 0.35
 	var tween = create_tween()
 	tween.set_parallel(true)
-
-	# 快速淡入
 	tween.tween_property(bolt, "modulate:a", 1.0, bolt_lifetime * 0.15).set_ease(Tween.EASE_OUT)
 
-	# 向上飄升（ease out 模擬減速上升）
-	tween.tween_property(bolt, "position", target_pos, bolt_lifetime * 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	if falls_back:
+		# 上升後回落
+		var peak_pos = Vector3(
+			start_pos.x + cos(angle) * 0.05,
+			height + bolt_rise_height * randf_range(0.5, 1.0),
+			start_pos.z + sin(angle) * 0.05
+		)
+		var fall_pos = Vector3(
+			peak_pos.x + randf_range(-0.08, 0.08),
+			height + randf_range(-0.05, 0.05),
+			peak_pos.z + randf_range(-0.08, 0.08)
+		)
+		tween.tween_property(bolt, "position", peak_pos, bolt_lifetime * 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+		tween.chain().tween_property(bolt, "position", fall_pos, bolt_lifetime * 0.3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+		tween.chain().tween_property(bolt, "modulate:a", 0.0, bolt_lifetime * 0.15).set_ease(Tween.EASE_IN)
+	else:
+		# 正常上升
+		var target_pos = Vector3(
+			start_pos.x + cos(angle) * 0.05,
+			height + bolt_rise_height + randf_range(-0.05, 0.05),
+			start_pos.z + sin(angle) * 0.05
+		)
+		tween.tween_property(bolt, "position", target_pos, bolt_lifetime * 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+		tween.chain().tween_property(bolt, "modulate:a", 0.0, bolt_lifetime * 0.3).set_ease(Tween.EASE_IN)
 
-	# 淡出
-	tween.chain().tween_property(bolt, "modulate:a", 0.0, bolt_lifetime * 0.3).set_ease(Tween.EASE_IN)
-
-	# 動畫結束後移除
 	tween.chain().tween_callback(_remove_bolt.bind(bolt))
 
 

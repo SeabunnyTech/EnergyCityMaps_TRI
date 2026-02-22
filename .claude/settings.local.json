@@ -1,7 +1,24 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(python3:*)",
+      "Bash(powershell -Command \"Get-Content ''D:\\\\Tong\\\\Work\\\\2025\\\\Taiwan Research Institute\\\\Godot\\\\EnergyCityMaps_TRI\\\\maps\\\\facilities\\\\dam.tscn'' | Select-Object -Index \\(6810..6835\\) | ForEach-Object { $_}\")",
+      "Bash(powershell -Command \"Get-Content ''D:\\\\Tong\\\\Work\\\\2025\\\\Taiwan Research Institute\\\\Godot\\\\EnergyCityMaps_TRI\\\\maps\\\\facilities\\\\geothermal.tscn'' | Select-Object -Index \\(1700..1725\\) | ForEach-Object { $_}\")",
+      "Bash(python:*)",
+      "Bash(cmd /c \"dir D:\\\\Tong\\\\Work\\\\2025\\\\Taiwan Research Institute\\\\Godot\\\\EnergyCityMaps_TRI\\\\maps\\\\facilities\\\\dam*\")",
+      "Bash(cmd /c \"dir \"\"D:\\\\Tong\\\\Work\\\\2025\\\\Taiwan Research Institute\\\\Godot\\\\EnergyCityMaps_TRI\\\\maps\\\\facilities\\\\dam*\"\"\")",
+      "Bash(cmd /c dir \"D:\\\\Tong\\\\Work\\\\2025\\\\Taiwan Research Institute\\\\Godot\\\\EnergyCityMaps_TRI\\\\maps\\\\facilities\")",
+      "Bash(cmd /c \"cd /d D:\\\\ && dir\")",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(git -C \"D:/Tong/Work/2025/Taiwan Research Institute/Godot/EnergyCityMaps_TRI\" status --short maps/facilities/)",
+      "Bash(git -C \"D:/Tong/Work/2025/Taiwan Research Institute/Godot/EnergyCityMaps_TRI\" stash list:*)",
+      "Bash(git -C \"D:/Tong/Work/2025/Taiwan Research Institute/Godot/EnergyCityMaps_TRI\" log --all --oneline --diff-filter=D -- \"maps/facilities/dam.tscn\")",
+      "Bash(py:*)",
+      "Bash(cd:*)",
+      "Bash(grep:*)",
+      "Bash(cd D:\\\\Tong\\\\Work\\\\2025\\\\Taiwan Research Institute\\\\Godot\\\\EnergyCityMaps_TRI:*)"
     ]
   }
 }

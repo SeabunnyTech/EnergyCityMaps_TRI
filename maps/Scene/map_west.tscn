@@ -1,4 +1,4 @@
-[gd_scene load_steps=671 format=4 uid="uid://b6q4auek3vb7r"]
+[gd_scene load_steps=673 format=4 uid="uid://b6q4auek3vb7r"]
 
 [ext_resource type="Material" uid="uid://c5xubnr8dxna3" path="res://maps/Material/Map01/Map01_Color_Palette.tres" id="1_tt56g"]
 [ext_resource type="Material" uid="uid://c80iryf6ghqbq" path="res://maps/Material/Map02/Map02_Soil3.tres" id="2_2tjsc"]
@@ -16,6 +16,8 @@
 [ext_resource type="Material" uid="uid://ha1utxcvhcip" path="res://maps/Material/Map02/Map02_Wire.tres" id="14_ubgq2"]
 [ext_resource type="Material" uid="uid://3mqdvu04uo1h" path="res://maps/Material/Map02/Map02_Waterfall_f.tres" id="15_siest"]
 [ext_resource type="Material" uid="uid://uhl44vdtlp0t" path="res://maps/Material/Map02/Map02_Water_f.tres" id="16_54td0"]
+[ext_resource type="PackedScene" uid="uid://3sccx5y8t4vo" path="res://maps/facilities/dam.tscn" id="17_d70ln"]
+[ext_resource type="Script" uid="uid://cbyi3qms0vaih" path="res://maps/facilities/dam.gd" id="18_3kr0u"]
 [ext_resource type="Script" uid="uid://bcqkjwv3hbrbp" path="res://maps/map_control/camera_controller.gd" id="CameraControllerScript"]
 [ext_resource type="Script" uid="uid://6mv5bg3phw5s" path="res://maps/map_control/map_control.gd" id="MapControlScript"]
 
@@ -12127,11 +12129,6 @@ transform = Transform3D(-0.025611356, 0, 0.2044525, 0, 0.00601899, 0, -0.1509220
 mesh = SubResource("ArrayMesh_g8653")
 skeleton = NodePath("")
 
-[node name="PowerSave_004" type="MeshInstance3D" parent="Model/Powersave"]
-transform = Transform3D(0.06395043, 0, 0.21145242, 0, 0.0066324477, 0, -0.15608925, 0, 0.08663295, 1.0440458, 0.3780855, -7.3626995)
-mesh = SubResource("ArrayMesh_cu1kc")
-skeleton = NodePath("")
-
 [node name="PowerSave_003" type="MeshInstance3D" parent="Model/Powersave"]
 transform = Transform3D(0.06395043, 0, 0.21145242, 0, 0.0066324477, 0, -0.15608925, 0, 0.08663295, 2.683222, 0.37807834, -5.611941)
 mesh = SubResource("ArrayMesh_wp2ba")
@@ -12147,43 +12144,14 @@ transform = Transform3D(0.052830525, 0, 0.21701448, 0, 0.0066324477, 0, -0.16019
 mesh = SubResource("ArrayMesh_cyte5")
 skeleton = NodePath("")
 
-[node name="Dam" type="Node3D" parent="Model"]
+[node name="PowerSave_004" type="MeshInstance3D" parent="Model/Powersave"]
+transform = Transform3D(0.06395043, 0, 0.21145242, 0, 0.0066324477, 0, -0.15608925, 0, 0.08663295, 1.1396773, 0.37807834, -7.3847866)
+mesh = SubResource("ArrayMesh_bu68w")
+skeleton = NodePath("")
+
+[node name="Dam" parent="Model" instance=ExtResource("17_d70ln")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2234259, 0.55149984, -3.5747705)
-
-[node name="Dam_002" type="MeshInstance3D" parent="Model/Dam"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23350835, -0.11387956, -0.0024886131)
-mesh = SubResource("ArrayMesh_wvwcv")
-skeleton = NodePath("")
-
-[node name="Dam_003" type="MeshInstance3D" parent="Model/Dam"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46546125, 0.14862669, -0.0024886131)
-mesh = SubResource("ArrayMesh_4wdaq")
-skeleton = NodePath("")
-
-[node name="Dam_004" type="MeshInstance3D" parent="Model/Dam"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39392734, 0.013823211, -0.81149244)
-mesh = SubResource("ArrayMesh_fxuj5")
-skeleton = NodePath("")
-
-[node name="Dam_005" type="MeshInstance3D" parent="Model/Dam"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.475065, 0.013823211, 0.8114898)
-mesh = SubResource("ArrayMesh_k11ru")
-skeleton = NodePath("")
-
-[node name="Dam_006" type="MeshInstance3D" parent="Model/Dam"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45147097, 0.31983858, 0)
-mesh = SubResource("ArrayMesh_815c0")
-skeleton = NodePath("")
-
-[node name="Dam_007" type="MeshInstance3D" parent="Model/Dam"]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.52496076, 0.48000574, -0.7868056)
-mesh = SubResource("ArrayMesh_gmu1c")
-skeleton = NodePath("")
-
-[node name="Dam_008" type="MeshInstance3D" parent="Model/Dam"]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.52496076, 0.48000574, 0.84244776)
-mesh = SubResource("ArrayMesh_7e4w0")
-skeleton = NodePath("")
+wave_speeds = Array[float]([0.1, 0.2, 0.3])
 
 [node name="Farmgrass" type="Node3D" parent="Model"]
 

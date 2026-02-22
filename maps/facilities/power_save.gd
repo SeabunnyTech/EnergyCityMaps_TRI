@@ -1,59 +1,80 @@
 extends BaseFacility
 
-## 節電設施
-## 繼承 BaseFacility，添加白色圓點粒子、漣漪和閃電效果
+## 節電設施（儲能電池）
+## 未來科幻風格：擴散粒子 + 護盾球（向內聚攏）+ 收斂閃電爆發
 
-# 升級閃光顏色
-@export var upgrade_emission_color: Color = Color(0.8, 0.95, 1.0, 1.0)
+# === 升級閃光 ===
+@export var upgrade_emission_color: Color = Color(0.4, 0.8, 1.0, 1.0)
 
-# 閃電效果設定
+# === 擴散粒子設定 ===
+@export var disperse_color: Color = Color(0.5, 0.85, 1.0, 0.7)
+@export var disperse_particle_size: float = 0.005
+@export var disperse_lifetime: float = 1.5
+@export var disperse_base_amount: int = 20
+@export var disperse_speed_min: float = 0.2
+@export var disperse_speed_max: float = 0.4
+
+# === 收斂閃電設定 ===
 @export var bolt_texture_path: String = "res://maps/Texture/bolt.png"
-@export var bolt_spawn_radius: float = 0.3
-@export var bolt_spawn_min_height: float = 0.0
-@export var bolt_spawn_max_height: float = 0.3
-@export var bolt_rise_height: float = 0.4
-@export var bolt_size: float = 0.15
-@export var bolt_lifetime: float = 0.7
-@export var bolt_max_count: int = 8
-@export var bolt_base_interval: float = 0.5
+@export var bolt_color: Color = Color(0.7, 0.9, 1.0, 1.0)
+@export var bolt_size: float = 0.12
+@export var bolt_lifetime_min: float = 0.3
+@export var bolt_lifetime_max: float = 0.5
+@export var bolt_max_count: int = 10
+@export var bolt_burst_base_count: int = 6
+@export var bolt_burst_count_per_level: int = 3
+@export var bolt_spawn_range_min: float = 0.8
+@export var bolt_spawn_range_max: float = 1.5
 
-# 漣漪設定
-@export var ripple_max_radius: float = 0.6
-@export var ripple_duration: float = 0.8
-@export var ripple_stagger: float = 0.15
+# === 護盾球設定 ===
+@export var shield_color: Color = Color(0.3, 0.7, 1.0, 0.15)
+@export var shield_radius: float = 0.3
+@export var shield_height: float = 0.6
+@export var shield_shrink_duration: float = 0.4
+@export var shield_fade_duration: float = 0.3
 
-# 持續光粒子
-var _light_particles: GPUParticles3D = null
 
-# 材質相關
+# --- 粒子 ---
+var _disperse_particles: GPUParticles3D = null
+
+# --- 護盾球 ---
+var _shield_sphere: MeshInstance3D = null
+var _shield_material: StandardMaterial3D = null
+
+# --- 材質 ---
 var _mesh_instances: Array[MeshInstance3D] = []
 var _original_materials: Array[Material] = []
 var _glow_materials: Array[StandardMaterial3D] = []
 
-# 閃電相關
+# --- 閃電 ---
 var _bolt_texture: Texture2D = null
 var _active_bolts: Array[Sprite3D] = []
-var _bolt_spawn_timer: float = 0.0
 
-# 閃光動畫
+# --- 動畫 ---
 var _glow_tween: Tween = null
 
 
-## 取得模型在世界座標的 AABB（遍歷 8 個角點轉換）
+## 取得模型在世界座標的 AABB
 func _get_world_aabb() -> AABB:
 	if _mesh_instances.size() > 0:
 		var mi = _mesh_instances[0]
 		var local_aabb = mi.get_aabb()
 		var gt = mi.global_transform
-		# 用第一個角點初始化
 		var first = gt * local_aabb.position
 		var world_min = first
 		var world_max = first
-		# 遍歷 8 個角點
 		for i in 8:
 			var corner = gt * local_aabb.get_endpoint(i)
 			world_min = Vector3(min(world_min.x, corner.x), min(world_min.y, corner.y), min(world_min.z, corner.z))
 			world_max = Vector3(max(world_max.x, corner.x), max(world_max.y, corner.y), max(world_max.z, corner.z))
+		for j in range(1, _mesh_instances.size()):
+			var mj = _mesh_instances[j]
+			var la = mj.get_aabb()
+			var gtj = mj.global_transform
+			for k in 8:
+				var corner = gtj * la.get_endpoint(k)
+				world_min = Vector3(min(world_min.x, corner.x), min(world_min.y, corner.y), min(world_min.z, corner.z))
+				world_max = Vector3(max(world_max.x, corner.x), max(world_max.y, corner.y), max(world_max.z, corner.z))
 		return AABB(world_min, world_max - world_min)
 	return AABB(global_position - Vector3(0.2, 0.1, 0.2), Vector3(0.4, 0.2, 0.4))
 
@@ -68,239 +89,236 @@ func _get_ground_center() -> Vector3:
 
 
 func _facility_ready() -> void:
-	# --- UpgradeBurst（按 SPACE 時，白色半透明圓點向上擴散）---
-	var burst = GPUParticles3D.new()
-	burst.name = "UpgradeBurst"
-	burst.emitting = false
-	burst.one_shot = true
-	burst.amount = 30
-	burst.lifetime = 1.0
-	burst.explosiveness = 0.9
-	burst.top_level = true
-	burst.visibility_aabb = AABB(Vector3(-3, -3, -3), Vector3(6, 6, 6))
+	_setup_disperse_particles()
+	_setup_shield_sphere()
 
-	var burst_override = StandardMaterial3D.new()
-	burst_override.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	burst_override.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
-	burst_override.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	burst_override.albedo_color = Color(1, 1, 1, 0.7)
-	burst.material_override = burst_override
-
-	var burst_mat = ParticleProcessMaterial.new()
-	burst_mat.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
-	burst_mat.emission_box_extents = Vector3(0.05, 0.02, 0.05)  # 先預設，_facility_ready 最後更新
-	burst_mat.direction = Vector3(0, 1, 0)
-	burst_mat.spread = 40.0
-	burst_mat.initial_velocity_min = 0.3
-	burst_mat.initial_velocity_max = 0.8
-	burst_mat.gravity = Vector3(0, -0.3, 0)
-	burst_mat.scale_min = 0.5
-	burst_mat.scale_max = 1.5
-	burst_mat.color = Color(1, 1, 1, 0.7)
-	var burst_gradient = Gradient.new()
-	burst_gradient.set_color(0, Color(1, 1, 1, 0.8))
-	burst_gradient.add_point(0.3, Color(1, 1, 1, 0.6))
-	burst_gradient.set_color(1, Color(1, 1, 1, 0))
-	var burst_ramp = GradientTexture1D.new()
-	burst_ramp.gradient = burst_gradient
-	burst_mat.color_ramp = burst_ramp
-	burst.process_material = burst_mat
-
-	var burst_draw = SphereMesh.new()
-	burst_draw.radius = 0.008
-	burst_draw.height = 0.016
-	burst.draw_pass_1 = burst_draw
-
-	add_child(burst)
-	_burst_particles = burst
-
-	# --- LightParticles（持續白色半透明小圓點向上飄散）---
-	_light_particles = GPUParticles3D.new()
-	_light_particles.name = "LightParticles"
-	_light_particles.emitting = false
-	_light_particles.amount = 8
-	_light_particles.lifetime = 1.2
-	_light_particles.top_level = true
-	_light_particles.visibility_aabb = AABB(Vector3(-2, -2, -2), Vector3(4, 4, 4))
-
-	var light_override = StandardMaterial3D.new()
-	light_override.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	light_override.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	light_override.albedo_color = Color(1.0, 1.0, 1.0, 0.4)
-	_light_particles.material_override = light_override
-
-	var light_mat = ParticleProcessMaterial.new()
-	light_mat.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
-	light_mat.emission_box_extents = Vector3(0.05, 0.02, 0.05)  # 先預設，_facility_ready 最後更新
-	light_mat.direction = Vector3(0, 1, 0)
-	light_mat.spread = 20.0
-	light_mat.initial_velocity_min = 0.2
-	light_mat.initial_velocity_max = 0.5
-	light_mat.gravity = Vector3(0, 0, 0)
-	light_mat.scale_min = 0.3
-	light_mat.scale_max = 1.0
-	light_mat.color = Color(1.0, 1.0, 1.0, 0.4)
-	_light_particles.process_material = light_mat
-
-	var light_draw = SphereMesh.new()
-	light_draw.radius = 0.006
-	light_draw.height = 0.012
-	_light_particles.draw_pass_1 = light_draw
-
-	add_child(_light_particles)
-
-	# 載入閃電貼圖
 	_bolt_texture = load(bolt_texture_path)
-
-	# 收集 mesh 材質準備發光效果
 	_setup_glow_materials()
-
-	# 延遲一幀讓 global_transform 生效後更新粒子範圍
 	call_deferred("_update_emission_extents")
+
+
+# ── 擴散粒子（從中心向外擴散）─────────────────────────
+
+func _setup_disperse_particles() -> void:
+	_disperse_particles = GPUParticles3D.new()
+	_disperse_particles.name = "DisperseParticles"
+	_disperse_particles.emitting = false
+	_disperse_particles.amount = disperse_base_amount
+	_disperse_particles.lifetime = disperse_lifetime
+	_disperse_particles.top_level = true
+	_disperse_particles.visibility_aabb = AABB(Vector3(-3, -3, -3), Vector3(6, 6, 6))
+
+	var mat_override = StandardMaterial3D.new()
+	mat_override.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	mat_override.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
+	mat_override.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	mat_override.albedo_color = Color(1, 1, 1, 1)
+	_disperse_particles.material_override = mat_override
+
+	var proc_mat = ParticleProcessMaterial.new()
+	proc_mat.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_SPHERE
+	proc_mat.emission_sphere_radius = 0.05
+	proc_mat.direction = Vector3(0, 0, 0)
+	proc_mat.spread = 0.0
+	proc_mat.initial_velocity_min = 0.0
+	proc_mat.initial_velocity_max = 0.0
+	proc_mat.radial_velocity_min = disperse_speed_min
+	proc_mat.radial_velocity_max = disperse_speed_max
+	proc_mat.gravity = Vector3(0, 0, 0)
+	proc_mat.scale_min = 0.2
+	proc_mat.scale_max = 0.8
+	proc_mat.color = disperse_color
+	# 離開中心時漸漸消失
+	var gradient = Gradient.new()
+	gradient.set_color(0, Color(0.8, 1.0, 1.0, 0.0))
+	gradient.add_point(0.1, Color(0.6, 0.9, 1.0, 0.9))
+	gradient.add_point(0.5, Color(0.4, 0.7, 1.0, 0.5))
+	gradient.set_color(1, Color(0.3, 0.6, 0.9, 0.0))
+	var ramp = GradientTexture1D.new()
+	ramp.gradient = gradient
+	proc_mat.color_ramp = ramp
+	_disperse_particles.process_material = proc_mat
+
+	var draw_mesh = SphereMesh.new()
+	draw_mesh.radius = disperse_particle_size
+	draw_mesh.height = disperse_particle_size * 2.0
+	_disperse_particles.draw_pass_1 = draw_mesh
+
+	add_child(_disperse_particles)
+
+
+# ── 護盾球（升級時從大向內收縮聚攏）─────────────────────
+
+func _setup_shield_sphere() -> void:
+	_shield_sphere = MeshInstance3D.new()
+	_shield_sphere.name = "ShieldSphere"
+	_shield_sphere.top_level = true
+
+	var sphere = SphereMesh.new()
+	sphere.radius = 0.3
+	sphere.height = 0.6
+	sphere.radial_segments = 32
+	sphere.rings = 16
+	_shield_sphere.mesh = sphere
+
+	_shield_material = StandardMaterial3D.new()
+	_shield_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	_shield_material.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
+	_shield_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	_shield_material.cull_mode = BaseMaterial3D.CULL_DISABLED
+	_shield_material.albedo_color = Color(shield_color.r, shield_color.g, shield_color.b, 0.0)
+	_shield_material.no_depth_test = true
+	_shield_sphere.material_override = _shield_material
+
+	_shield_sphere.visible = false
+	add_child(_shield_sphere)
 
 
 func _update_emission_extents() -> void:
 	var aabb = _get_world_aabb()
 	var half_size = aabb.size * 0.5
-	# burst 用整個模型範圍
+	var max_dim = max(aabb.size.x, max(aabb.size.y, aabb.size.z))
+
+	# 爆發粒子
 	if _burst_particles:
 		var burst_mat: ParticleProcessMaterial = _burst_particles.process_material
-		burst_mat.emission_box_extents = half_size
-	# light particles 也用整個模型範圍
-	if _light_particles:
-		var light_mat: ParticleProcessMaterial = _light_particles.process_material
-		light_mat.emission_box_extents = half_size
+		burst_mat.emission_sphere_radius = max(half_size.x, half_size.z) * 0.3
 
+	# 擴散粒子發射半徑（從中心小範圍開始）
+	if _disperse_particles:
+		var disp_mat: ParticleProcessMaterial = _disperse_particles.process_material
+		disp_mat.emission_sphere_radius = max_dim * 0.15
 
-func _play_upgrade_animation() -> void:
-	# 更新 burst 位置到模型中心
-	if _burst_particles:
-		_burst_particles.global_position = _get_model_center()
-		_burst_particles.amount = 30
-		_burst_particles.restart()
-		_burst_particles.emitting = true
-	# 漣漪效果
-	_spawn_ripples()
-	# 材質閃爍
-	_play_extra_upgrade_animation()
+	# 護盾球大小
+	if _shield_sphere:
+		var sphere: SphereMesh = _shield_sphere.mesh
+		sphere.radius = max_dim * 0.65
+		sphere.height = max_dim * 1.3
 
 
 func _on_boost_level_changed(_old_value: int, _new_value: int) -> void:
-	if _light_particles == null:
-		return
-
 	if _new_value == 0:
-		_light_particles.emitting = false
+		if _disperse_particles:
+			_disperse_particles.emitting = false
 	else:
-		_light_particles.emitting = true
-		_light_particles.amount = 5 * _new_value
-		_light_particles.speed_scale = 0.5 + _new_value * 0.5
+		# 擴散粒子：數量和擴散速度隨等級增加
+		if _disperse_particles:
+			_disperse_particles.emitting = true
+			_disperse_particles.amount = disperse_base_amount + _new_value * 8
+			_disperse_particles.speed_scale = 0.7 + _new_value * 0.3
+			var disp_mat: ParticleProcessMaterial = _disperse_particles.process_material
+			disp_mat.radial_velocity_min = disperse_speed_min + _new_value * 0.1
+			disp_mat.radial_velocity_max = disperse_speed_max + _new_value * 0.08
 
 
-func _physics_process(delta: float) -> void:
-	# 更新 top_level 光粒子位置跟隨模型中心
-	if _light_particles and _light_particles.emitting:
-		_light_particles.global_position = _get_model_center()
+func _play_upgrade_animation() -> void:
+	# 徑向爆發粒子
+	if _burst_particles:
+		_burst_particles.global_position = _get_model_center()
+		_burst_particles.amount = 40
+		_burst_particles.restart()
+		_burst_particles.emitting = true
 
-	# 持續噴發閃電
-	if boost_level > 0 and _bolt_texture != null:
-		_bolt_spawn_timer -= delta
-		if _bolt_spawn_timer <= 0.0:
-			_spawn_single_bolt()
-			_bolt_spawn_timer = bolt_base_interval / boost_level
+	# 護盾球向內聚攏
+	_flash_shield()
 
+	# 收斂閃電
+	_spawn_radial_burst()
 
-# ── 漣漪 ──────────────────────────────────────────────
-
-func _spawn_ripples() -> void:
-	var ground = _get_ground_center()
-	for i in 5:
-		_spawn_single_ripple(ground, i * ripple_stagger)
+	# 材質閃光
+	_play_extra_upgrade_animation()
 
 
-func _spawn_single_ripple(center: Vector3, delay: float) -> void:
-	var ring = MeshInstance3D.new()
-	ring.top_level = true
+func _physics_process(_delta: float) -> void:
+	var center = _get_model_center()
 
-	var torus = TorusMesh.new()
-	torus.inner_radius = 0.035
-	torus.outer_radius = 0.04
-	torus.rings = 48
-	torus.ring_segments = 4
-	ring.mesh = torus
-
-	var mat = StandardMaterial3D.new()
-	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	mat.albedo_color = Color(1, 1, 1, 0.5)
-	ring.material_override = mat
-
-	ring.scale = Vector3(0.1, 0.1, 0.1)
-	add_child(ring)
-	ring.global_position = center
-
-	var tween = create_tween()
-	if delay > 0:
-		tween.tween_interval(delay)
-	tween.set_parallel(true)
-	var target_scale = Vector3(ripple_max_radius, 0.1, ripple_max_radius)
-	tween.tween_property(ring, "scale", target_scale, ripple_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	tween.tween_property(mat, "albedo_color:a", 0.0, ripple_duration).set_ease(Tween.EASE_IN)
-	tween.chain().tween_callback(ring.queue_free)
+	# 更新粒子位置
+	if _disperse_particles and _disperse_particles.emitting:
+		_disperse_particles.global_position = center
 
 
-# ── 閃電 ──────────────────────────────────────────────
+# ── 護盾球動畫（從大縮到小，向內聚攏）────────────────────
 
-func _spawn_single_bolt() -> void:
-	if _active_bolts.size() >= bolt_max_count:
+func _flash_shield() -> void:
+	if _shield_sphere == null:
 		return
 
-	var bolt = Sprite3D.new()
-	bolt.texture = _bolt_texture
-	bolt.pixel_size = bolt_size / 100.0
-	bolt.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	bolt.transparent = true
-	bolt.modulate = Color(1, 1, 1, 0)
-	bolt.top_level = true
-
-	var aabb = _get_world_aabb()
-	var start_pos = Vector3(
-		randf_range(aabb.position.x, aabb.position.x + aabb.size.x),
-		randf_range(aabb.position.y, aabb.position.y + aabb.size.y),
-		randf_range(aabb.position.z, aabb.position.z + aabb.size.z)
-	)
-	var target_pos = Vector3(
-		start_pos.x + randf_range(-0.05, 0.05),
-		start_pos.y + bolt_rise_height + randf_range(-0.05, 0.05),
-		start_pos.z + randf_range(-0.05, 0.05)
-	)
-
-	bolt.rotation_degrees.z = randf_range(-25, 25)
-
-	add_child(bolt)
-	bolt.global_position = start_pos
-	_active_bolts.append(bolt)
+	_shield_sphere.global_position = _get_model_center()
+	_shield_sphere.visible = true
+	_shield_sphere.scale = Vector3(1.2, 1.2, 1.2)
+	_shield_material.albedo_color = Color(shield_color.r, shield_color.g, shield_color.b, shield_color.a)
 
 	var tween = create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(bolt, "modulate:a", 1.0, bolt_lifetime * 0.15).set_ease(Tween.EASE_OUT)
-	tween.tween_property(bolt, "global_position", target_pos, bolt_lifetime * 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	tween.chain().tween_property(bolt, "modulate:a", 0.0, bolt_lifetime * 0.3).set_ease(Tween.EASE_IN)
-	tween.chain().tween_callback(_remove_bolt.bind(bolt))
+	# 從大縮到極小
+	tween.tween_property(_shield_sphere, "scale", Vector3(0.05, 0.05, 0.05), shield_shrink_duration).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	# 後半段漸漸淡出
+	tween.tween_property(_shield_material, "albedo_color:a", 0.0, shield_fade_duration).set_delay(shield_shrink_duration * 0.5).set_ease(Tween.EASE_IN)
+	tween.chain().tween_callback(func(): _shield_sphere.visible = false)
 
 
-# ── 材質閃爍 ──────────────────────────────────────────
+# ── 收斂閃電（升級時從外向內匯聚）────────────────────────
+
+func _spawn_radial_burst() -> void:
+	var center = _get_model_center()
+	var aabb = _get_world_aabb()
+	var max_dim = max(aabb.size.x, max(aabb.size.y, aabb.size.z))
+	var burst_count = bolt_burst_base_count + boost_level * bolt_burst_count_per_level
+
+	for i in burst_count:
+		if _active_bolts.size() >= bolt_max_count + burst_count:
+			break
+
+		var bolt = Sprite3D.new()
+		bolt.texture = _bolt_texture
+		bolt.pixel_size = bolt_size / 100.0
+		bolt.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		bolt.transparent = true
+		bolt.modulate = Color(bolt_color.r, bolt_color.g, bolt_color.b, 0)
+		bolt.top_level = true
+
+		add_child(bolt)
+		_active_bolts.append(bolt)
+
+		# 從外圍隨機位置出發，向中心收斂
+		var dir = Vector3(randf_range(-1, 1), randf_range(-0.3, 1), randf_range(-1, 1)).normalized()
+		var start_pos = center + dir * max_dim * randf_range(bolt_spawn_range_min, bolt_spawn_range_max)
+		bolt.global_position = start_pos
+		var lifetime = randf_range(bolt_lifetime_min, bolt_lifetime_max)
+
+		bolt.rotation_degrees.z = randf_range(-90, 90)
+
+		var spin = create_tween()
+		spin.tween_property(bolt, "rotation_degrees:z", bolt.rotation_degrees.z + randf_range(-180, 180), lifetime)
+
+		var tween = create_tween()
+		tween.tween_method(
+			func(t: float):
+				bolt.global_position = start_pos.lerp(center, t)
+				if t < 0.1:
+					bolt.modulate.a = t / 0.1
+				elif t > 0.7:
+					bolt.modulate.a = (1.0 - t) / 0.3
+				else:
+					bolt.modulate.a = 1.0,
+			0.0, 1.0, lifetime
+		)
+		tween.tween_callback(_remove_bolt.bind(bolt))
+
+
+# ── 材質發光系統 ──────────────────────────────────────────
 
 func _play_extra_upgrade_animation() -> void:
-	_set_glow_emission(0.0)
-	_apply_glow_materials()
-
 	if _glow_tween and _glow_tween.is_valid():
 		_glow_tween.kill()
 
+	_set_glow_emission(0.0)
+	_apply_glow_materials()
+
 	_glow_tween = create_tween()
-	_glow_tween.tween_method(_set_glow_emission, 0.0, 2.5, 0.15).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	_glow_tween.tween_method(_set_glow_emission, 2.5, 0.0, 0.25).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	# 閃光：快速亮起再淡出，恢復原材質
+	_glow_tween.tween_method(_set_glow_emission, 0.0, 3.0, 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	_glow_tween.tween_method(_set_glow_emission, 3.0, 0.0, 0.3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	_glow_tween.tween_callback(_restore_original_materials)
 
 
@@ -335,12 +353,12 @@ func _setup_glow_materials() -> void:
 			glow_mat.albedo_color = upgrade_emission_color
 			glow_mat.emission_enabled = true
 			glow_mat.emission = upgrade_emission_color
-			glow_mat.emission_energy_multiplier = 2.0
+			glow_mat.emission_energy_multiplier = 0.0
 			_glow_materials.append(glow_mat)
 
 
 func _collect_mesh_instances(node: Node) -> void:
-	if node is MeshInstance3D:
+	if node is MeshInstance3D and node != _shield_sphere:
 		_mesh_instances.append(node)
 	for child in node.get_children():
 		_collect_mesh_instances(child)

@@ -1702,9 +1702,17 @@ shadow_mesh = SubResource("ArrayMesh_1i5l6")
 
 [node name="Geothermal" type="Node3D"]
 script = ExtResource("1_h1513")
-debug_mode = true
-debug_camera_position = Vector3(0.5, 0.35, 0.5)
 upgrade_emission_color = Color(0.9017057, 0.8594829, 0, 1)
+bolt_rise_height = 10.0
+bolt_size = 0.08
+bolt_lifetime = 1.0
+bolt_max_count = 40
+continuous_ripple_max_radius = 40.0
+continuous_ripple_duration = 1.5
+continuous_ripple_base_interval = 1.5
+continuous_ripple_color = Color(0.735583, 0.57363164, 0, 0.34901962)
+debug_mode = true
+debug_camera_position = Vector3(1.2, 0.8, 1.2)
 
 [node name="Block_010" type="MeshInstance3D" parent="."]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.70082474, -0.019172668, 0.11672294)

@@ -12,14 +12,20 @@ extends Node3D
 # 升級動畫相關
 var _upgrade_tween: Tween = null
 
-# 加速等級，每答對一題增加 1
+# 加速等級，每答對一題增加 1（最高 3 級）
+const MAX_BOOST_LEVEL: int = 3
+
 var boost_level: int = 0:
 	set(value):
 		var old_value = boost_level
-		boost_level = value
-		_on_boost_level_changed(old_value, value)
+		boost_level = clampi(value, 0, MAX_BOOST_LEVEL)
+		if boost_level == old_value:
+			return
+		if not is_inside_tree():
+			return
+		_on_boost_level_changed(old_value, boost_level)
 		# 只在升級時（而非重置時）播放動畫
-		if value > old_value:
+		if boost_level > old_value:
 			_play_upgrade_animation()
 
 # 通用升級效果節點（子類別可選擇性使用）
