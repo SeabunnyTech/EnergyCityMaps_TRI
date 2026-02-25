@@ -6995,7 +6995,7 @@ shadow_mesh = SubResource("ArrayMesh_r5d1p")
 
 [node name="Dam" type="Node3D"]
 script = ExtResource("1_hrnbn")
-debug_mode = true
+debug_mode = false
 
 [node name="Dam_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23350835, -0.11387956, -0.0024886131)

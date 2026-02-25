@@ -73,5 +73,5 @@ bolt_size = 0.1
 bolt_lifetime_max = 1.0
 shield_color = Color(0.77296984, 0.6673374, 0, 0.14901961)
 shield_shrink_duration = 0.8
-debug_mode = true
+debug_mode = false
 debug_camera_position = Vector3(1.5, 1, 1.5)

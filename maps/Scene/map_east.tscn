@@ -6753,7 +6753,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3344846, 1.1522506, -0.209
 script = ExtResource("8_aynpr")
 upgrade_emission_color = Color(0.8, 0.75686276, 0, 1)
 bolt_size = 0.08
-debug_mode = true
+debug_mode = false
 
 [node name="Water_energy_001" type="MeshInstance3D" parent="Model/Hydroelectric"]
 transform = Transform3D(0, 0, 0.013743422, 0, 0.013743422, 0, -0.103053756, 0, 0, 0, 0, 0)

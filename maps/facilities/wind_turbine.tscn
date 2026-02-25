@@ -53,7 +53,7 @@ height = 0.012
 [node name="Turbine" instance=ExtResource("1_p50qj")]
 script = ExtResource("2_t7ujj")
 bolt_size = 0.08
-debug_mode = true
+debug_mode = false
 debug_camera_position = Vector3(1.2752397, 1.2823611, 1.1830375)
 
 [node name="WindNearFan" parent="." index="1"]
