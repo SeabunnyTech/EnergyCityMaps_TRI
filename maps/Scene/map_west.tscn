@@ -1,4 +1,4 @@
-[gd_scene load_steps=673 format=4 uid="uid://b6q4auek3vb7r"]
+[gd_scene load_steps=672 format=4 uid="uid://b6q4auek3vb7r"]
 
 [ext_resource type="Material" uid="uid://c5xubnr8dxna3" path="res://maps/Material/Map01/Map01_Color_Palette.tres" id="1_tt56g"]
 [ext_resource type="Material" uid="uid://c80iryf6ghqbq" path="res://maps/Material/Map02/Map02_Soil3.tres" id="2_2tjsc"]
@@ -16,8 +16,7 @@
 [ext_resource type="Material" uid="uid://ha1utxcvhcip" path="res://maps/Material/Map02/Map02_Wire.tres" id="14_ubgq2"]
 [ext_resource type="Material" uid="uid://3mqdvu04uo1h" path="res://maps/Material/Map02/Map02_Waterfall_f.tres" id="15_siest"]
 [ext_resource type="Material" uid="uid://uhl44vdtlp0t" path="res://maps/Material/Map02/Map02_Water_f.tres" id="16_54td0"]
-[ext_resource type="PackedScene" uid="uid://3sccx5y8t4vo" path="res://maps/facilities/dam.tscn" id="17_d70ln"]
-[ext_resource type="Script" uid="uid://cbyi3qms0vaih" path="res://maps/facilities/dam.gd" id="18_3kr0u"]
+[ext_resource type="PackedScene" path="res://maps/facilities/dam.tscn" id="17_d70ln"]
 [ext_resource type="Script" uid="uid://bcqkjwv3hbrbp" path="res://maps/map_control/camera_controller.gd" id="CameraControllerScript"]
 [ext_resource type="Script" uid="uid://6mv5bg3phw5s" path="res://maps/map_control/map_control.gd" id="MapControlScript"]
 
@@ -11407,13 +11406,7 @@ transform = Transform3D(0.49999997, -0.46786183, 0.7287697, 0, 0.8415108, 0.5402
 light_color = Color(0.947709, 0.90928483, 0.88032556, 1)
 light_energy = 3.585
 shadow_enabled = true
-shadow_normal_bias = 0.802
-directional_shadow_split_1 = 0.028
-directional_shadow_split_2 = 0.071
-directional_shadow_split_3 = 0.859
-directional_shadow_fade_start = 0.322
-directional_shadow_max_distance = 121.5
-directional_shadow_pancake_size = 2.8
+directional_shadow_max_distance = 30.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cy731")
@@ -12675,7 +12668,7 @@ mesh = SubResource("ArrayMesh_kk1v7")
 skeleton = NodePath("")
 
 [node name="Water_001" type="MeshInstance3D" parent="Model/River"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8425064, 0.6778049, -2.1131287)
+transform = Transform3D(0.9995521, 0.029927926, 0, -0.02991829, 0.9992302, 0.025374364, 0.0007594021, -0.025362998, 0.999678, -5.2447863, 0.61980957, -2.1131287)
 material_override = ExtResource("16_54td0")
 mesh = SubResource("ArrayMesh_fkk51")
 skeleton = NodePath("")
@@ -13053,7 +13046,7 @@ mesh = SubResource("ArrayMesh_q1oxp")
 skeleton = NodePath("")
 
 [node name="Splash" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.68, -0.94650793, 0.32341993, -3.6067183)
+transform = Transform3D(1, 0, 0, 0, 0.9999811, 0.0041775936, 0, -0.00614352, 0.67998713, -0.94650793, 0.32341993, -3.6067183)
 material_override = SubResource("StandardMaterial3D_rllp4")
 cast_shadow = 0
 custom_aabb = AABB(-4, -4, -4, 8, 8, 8)

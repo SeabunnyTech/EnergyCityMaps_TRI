@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://csjwomiybo3yp" path="res://maps/Model/map01_lowpoly/Map01_landscape.glb" id="2_x6lj3"]
 [ext_resource type="Material" uid="uid://c5xubnr8dxna3" path="res://maps/Material/Map01/Map01_Color_Palette.tres" id="3_n78nm"]
 [ext_resource type="Material" uid="uid://c64hh08fh2fia" path="res://maps/Material/Map01/Map01_Sunpanel_Blue.tres" id="4_nfl83"]
-[ext_resource type="PackedScene" uid="uid://1u1huwkahvf5" path="res://maps/facilities/power_save.tscn" id="7_gpkfw"]
+[ext_resource type="PackedScene" path="res://maps/facilities/power_save.tscn" id="7_gpkfw"]
 [ext_resource type="Script" uid="uid://bcqkjwv3hbrbp" path="res://maps/map_control/camera_controller.gd" id="CameraControllerScript"]
 [ext_resource type="Script" uid="uid://6mv5bg3phw5s" path="res://maps/map_control/map_control.gd" id="MapControlScript"]
 [ext_resource type="PackedScene" uid="uid://yjee51i1wdbj" path="res://maps/facilities/wind_turbine.tscn" id="WindTurbineScene"]
@@ -4086,6 +4086,7 @@ script = ExtResource("MapControlScript")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.6547408, 0.7558535, 0, -0.7558535, 0.6547408, 0, 0, 0)
 shadow_enabled = true
+directional_shadow_max_distance = 30.0
 
 [node name="WorldEnvironment_Forward" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_611qk")
@@ -4100,7 +4101,7 @@ near = 0.001
 far = 4031.45
 
 [node name="overview" type="Camera3D" parent="CameraPositions"]
-transform = Transform3D(0.45009902, -0.5528375, 0.7012714, 0, 0.7853171, 0.6190937, -0.89297867, -0.27865347, 0.35347047, 5.115036, 4.8843966, 3.9857912)
+transform = Transform3D(0.49242234, -0.5565397, 0.66916656, 0, 0.76884204, 0.63943887, -0.8703564, -0.314874, 0.378595, 4.489871, 4.7742224, 4.072453)
 fov = 37.0
 size = 3.396
 near = 0.001
