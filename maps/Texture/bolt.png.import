@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://db0e1csnl5e8b"
 path.s3tc="res://.godot/imported/bolt.png-37e7346b00b3258f8d79b58aef26ff3f.s3tc.ctex"
+path.etc2="res://.godot/imported/bolt.png-37e7346b00b3258f8d79b58aef26ff3f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://maps/Texture/bolt.png"
-dest_files=["res://.godot/imported/bolt.png-37e7346b00b3258f8d79b58aef26ff3f.s3tc.ctex"]
+dest_files=["res://.godot/imported/bolt.png-37e7346b00b3258f8d79b58aef26ff3f.s3tc.ctex", "res://.godot/imported/bolt.png-37e7346b00b3258f8d79b58aef26ff3f.etc2.ctex"]
 
 [params]
 

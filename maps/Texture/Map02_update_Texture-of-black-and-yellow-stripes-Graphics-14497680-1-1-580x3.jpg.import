@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkpiotdin1mcl"
 path.s3tc="res://.godot/imported/Map02_update_Texture-of-black-and-yellow-stripes-Graphics-14497680-1-1-580x3.jpg-88363793600f974bd8197720cc69536e.s3tc.ctex"
+path.etc2="res://.godot/imported/Map02_update_Texture-of-black-and-yellow-stripes-Graphics-14497680-1-1-580x3.jpg-88363793600f974bd8197720cc69536e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://maps/Texture/Map02_update_Texture-of-black-and-yellow-stripes-Graphics-14497680-1-1-580x3.jpg"
-dest_files=["res://.godot/imported/Map02_update_Texture-of-black-and-yellow-stripes-Graphics-14497680-1-1-580x3.jpg-88363793600f974bd8197720cc69536e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Map02_update_Texture-of-black-and-yellow-stripes-Graphics-14497680-1-1-580x3.jpg-88363793600f974bd8197720cc69536e.s3tc.ctex", "res://.godot/imported/Map02_update_Texture-of-black-and-yellow-stripes-Graphics-14497680-1-1-580x3.jpg-88363793600f974bd8197720cc69536e.etc2.ctex"]
 
 [params]
 

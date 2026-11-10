@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cv1veox0ddis6"
 path.s3tc="res://.godot/imported/Map01_landscape_color palatte5_工作區域 1 複本.jpg-d74c8b4f0a2549b2351178eccd1c44a6.s3tc.ctex"
+path.etc2="res://.godot/imported/Map01_landscape_color palatte5_工作區域 1 複本.jpg-d74c8b4f0a2549b2351178eccd1c44a6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://maps/Model/map01_lowpoly/Map01_landscape_color palatte5_工作區域 1 複本.jpg"
-dest_files=["res://.godot/imported/Map01_landscape_color palatte5_工作區域 1 複本.jpg-d74c8b4f0a2549b2351178eccd1c44a6.s3tc.ctex"]
+dest_files=["res://.godot/imported/Map01_landscape_color palatte5_工作區域 1 複本.jpg-d74c8b4f0a2549b2351178eccd1c44a6.s3tc.ctex", "res://.godot/imported/Map01_landscape_color palatte5_工作區域 1 複本.jpg-d74c8b4f0a2549b2351178eccd1c44a6.etc2.ctex"]
 
 [params]
 
